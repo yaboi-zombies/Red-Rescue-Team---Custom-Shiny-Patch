@@ -1,3 +1,18 @@
+# Build products
+build/
+*.gba
+*.elf
+*.map
+
+# IDE files
+.vs/
+.vscode/
+
+# Windows junk
+Thumbs.db
+Desktop.ini
+
+ideas.txt
 *.pdf
 rogue_files/shiny_processing/shiny-download/
 deploy.sh

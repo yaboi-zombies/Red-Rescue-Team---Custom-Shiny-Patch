@@ -1,4 +1,4 @@
-CC ?= gcc
+CC := /c/msys64/mingw64/bin/gcc
 .PHONY: all clean
 
 SRCS = gbafix.c

@@ -35,12 +35,12 @@ endif
 DEV ?= 0
 
 PREFIX := arm-none-eabi-
-OBJCOPY := $(PREFIX)objcopy
 OBJDUMP := $(PREFIX)objdump
 AS := $(PREFIX)as
-CC := $(PREFIX)gcc
-AS := $(PREFIX)as
-LD := $(PREFIX)ld
+CC := C:/devkitPro/devkitARM/bin/arm-none-eabi-gcc.exe
+AS := C:/devkitPro/devkitARM/bin/arm-none-eabi-as.exe
+LD := C:/devkitPro/devkitARM/bin/arm-none-eabi-ld.exe
+OBJCOPY := C:/devkitPro/devkitARM/bin/arm-none-eabi-objcopy.exe
 
 # use arm-none-eabi-cpp for macOS
 # as macOS's default compiler is clang
@@ -51,12 +51,12 @@ LD := $(PREFIX)ld
 # don't come with it
 ifneq ($(MODERN),1)
   ifeq ($(shell uname -s),Darwin)
-    CPP := $(PREFIX)cpp
+    CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
   else
-    CPP := $(CC) -E
+    CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
   endif
 else
-  CPP := $(PREFIX)cpp
+  CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -76,15 +76,15 @@ REVISION    := 0
 
 SHELL     := /bin/bash -o pipefail
 SHA1SUM   := sha1sum -c
-GBAGFX    := tools/gbagfx/gbagfx
-GBAFIX    := tools/gbafix/gbafix
-AIF2PCM   := tools/aif2pcm/aif2pcm
-MID2AGB   := tools/mid2agb/mid2agb
-PREPROC   := tools/preproc/preproc
+GBAGFX    := tools/gbagfx/gbagfx$(EXE)
+GBAFIX    := tools/gbafix/gbafix$(EXE)
+AIF2PCM   := tools/aif2pcm/aif2pcm$(EXE)
+MID2AGB   := tools/mid2agb/mid2agb$(EXE)
+PREPROC   := tools/preproc/preproc$(EXE)
 PYTHON    ?= python3
-SCANINC   := tools/scaninc/scaninc
-RAMSCRGEN := tools/ramscrgen/ramscrgen
-DUNGEONJSON := tools/dungeonjson/dungeonjson
+SCANINC   := tools/scaninc/scaninc$(EXE)
+RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
+DUNGEONJSON := tools/dungeonjson/dungeonjson$(EXE)
 
 PERL := perl
 
@@ -106,12 +106,12 @@ ifeq ($(MODERN),0)
   INCLUDE_PATHS   := -I include -I tools/agbcc/include
   CPPFLAGS        := -iquote include -I tools/agbcc/include -nostdinc -undef
 else
-  MODERNCC := $(PREFIX)gcc
-  PATH_MODERNCC := PATH="$(PATH)" $(MODERNCC)
+  MODERNCC := C:/devkitPro/devkitARM/bin/arm-none-eabi-gcc.exe
+  PATH_MODERNCC := $(MODERNCC)
   CC1 := $(shell $(PATH_MODERNCC) --print-prog-name=cc1) -quiet
   LIBPATH := -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libnosys.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libc.a))"
   LIB := $(LIBPATH) -lc -lnosys -lgcc -L../../libagbsyscall -lagbsyscall
-  override CC1FLAGS += -mthumb -mthumb-interwork -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -Wimplicit -Wparentheses -Wunused -Werror -O2
+  override CC1FLAGS += -mthumb -mthumb-interwork -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -Wimplicit -Wparentheses -Wunused -Wno-incompatible-pointer-types -O2
   INCLUDE_DIRS := include
   INCLUDE_CPP_ARGS := $(INCLUDE_DIRS:%=-iquote %)
   INCLUDE_PATHS := $(INCLUDE_DIRS:%=-I %)
@@ -258,12 +258,6 @@ $(TOOLDIRS):
 compare: $(ROM)
 	@$(SHA1SUM) $(BUILD_NAME).sha1
 
-clean: tidy clean-tools
-	$(RM) $(ALL_OBJECTS) $(ALL_OBJECTS:.o=.d)
-
-clean-tools:
-	@$(foreach tooldir,$(TOOLDIRS),$(MAKE) clean -C $(tooldir);)
-
 tidy:
 	$(RM) -f $(ROM) $(ELF) $(MAP) $(SYM)
 	$(RM) -r $(BUILD_DIR_NORMAL)
@@ -282,11 +276,9 @@ tidy:
 	@$(MAKE) clean -C libagbsyscall
 
 define scaninc
-	( paths="$$($(SCANINC) $1 $<)"; \
-		echo -n "$(@:.d=.o): " > $@; \
-		echo "$$paths" | xargs printf "%s " >> $@; \
-		test -n "$$paths" && echo "$$paths" | xargs printf "\n%s:" >> $@; \
-		echo >> $@; )
+	( paths="$$($(SCANINC) $1 $< | tr -d '\r' | tr '\n' ' ')"; \
+		echo "$(@:.d=.o): $$paths" > $@; \
+		for path in $$paths; do echo "$$path:" >> $@; done; )
 endef
 
 $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.c
@@ -297,6 +289,7 @@ $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.c
 
 $(C_BUILDDIR)/%.d: $(C_SUBDIR)/%.c
 	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
 
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s dungeon_pokemon dungeon_floor dungeon_trap dungeon_item data_monster data_item data_move data_learnset data_learnset_ptrs data_dungeon
 	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(DATA_ASM_BUILDDIR)/$*.i.s
@@ -305,6 +298,7 @@ $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s dungeon_pokemon dungeon_floor d
 
 $(DATA_ASM_BUILDDIR)/%.d: $(DATA_ASM_SUBDIR)/%.s
 	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
 
 $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
 	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(ASM_BUILDDIR)/$*.s
@@ -312,6 +306,7 @@ $(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
 
 $(ASM_BUILDDIR)/%.d: $(ASM_SUBDIR)/%.s
 	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
 	
 $(SONG_BUILDDIR)/%.o: $(SONG_SUBDIR)/%.s
 	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(SONG_BUILDDIR)/$*.s
@@ -319,6 +314,7 @@ $(SONG_BUILDDIR)/%.o: $(SONG_SUBDIR)/%.s
 
 $(SONG_BUILDDIR)/%.d: $(SONG_SUBDIR)/%.s
 	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
 	
 $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
 	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.s
@@ -326,6 +322,7 @@ $(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
 	
 $(C_BUILDDIR)/%.d: $(C_SUBDIR)/%.s
 	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
 
 libagbsyscall:
 	@$(MAKE) -C libagbsyscall TOOLCHAIN=$(TOOLCHAIN)
@@ -350,13 +347,20 @@ else
   LD_SCRIPT_DEPS :=
 endif
 
+empty :=
+space := $(empty) $(empty)
+define newline
+
+
+endef
+
 # Elf from object files
 LDFLAGS = -Map ../../$(MAP)
 $(ELF): $(LD_SCRIPT) $(LD_SCRIPT_DEPS) $(ALL_OBJECTS) libagbsyscall
-	@cd $(BUILD_DIR) && $(LD) $(LDFLAGS) -T ../../$< --print-memory-usage -o ../../$@ $(OBJS_REL) $(LIB) | cat
-	@echo "cd $(BUILD_DIR) && $(LD) $(LDFLAGS) -T ../../$< --print-memory-usage -o ../../$@ <objs> <libs> | cat"
+	$(file >$(BUILD_DIR)/objects.rsp,$(subst $(space),$(newline),$(strip $(OBJS_REL))))
+	@cd $(BUILD_DIR) && $(LD) $(LDFLAGS) -T ../../$< --print-memory-usage -o ../../$@ @objects.rsp $(LIB) | cat
+	@echo "cd $(BUILD_DIR) && $(LD) $(LDFLAGS) -T ../../$< --print-memory-usage -o ../../$@ @objects.rsp <libs> | cat"
 	$(GBAFIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
-
 # Builds the rom from the elf file
 $(ROM): %.gba: $(ELF)
 	$(OBJCOPY) -O binary --gap-fill 0xFF --pad-to 0xA000000 $< $@

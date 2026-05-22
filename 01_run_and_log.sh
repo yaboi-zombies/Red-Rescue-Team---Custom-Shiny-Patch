@@ -12,8 +12,8 @@ sleep 3
 echo
 
 gba() {
-    "$HOME/Documents/pmd/mGBA.app/Contents/MacOS/mGBA" \
-        -d "$HOME/Documents/pmd/rogue-rescue-team/pmd_red.gba" "$@"
+    "C:\Program Files\mGBA\mGBA.exe" \
+         "C:\Users\joshb\Downloads\Pokemon Mystery Dungeon - Red Rescue Team (U).gba" "$@"
 }
 
 # Append WARN lines under the date header

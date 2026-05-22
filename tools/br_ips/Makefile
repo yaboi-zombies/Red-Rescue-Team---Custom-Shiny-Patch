@@ -1,4 +1,4 @@
-CC := gcc
+CC := /c/msys64/mingw64/bin/gcc
 CFLAGS := -O3
 
 all: br_ips ips_patch

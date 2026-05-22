@@ -1,4 +1,4 @@
-CC = gcc
+CC := /c/msys64/mingw64/bin/gcc
 
 CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=c11 -DPNG_SKIP_SETJMP_CHECK
 CFLAGS += $(shell pkg-config --cflags libpng)

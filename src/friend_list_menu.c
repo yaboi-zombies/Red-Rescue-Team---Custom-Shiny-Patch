@@ -121,7 +121,7 @@ bool8 CreateFriendListMenu(s32 param_1)
   }
   else {
     gUnknown_203B2B4 = MemoryAlloc(sizeof(unkStruct_203B2B4), MEMALLOC_GROUP_8);
-    gUnknown_203B2B4->menuAction1 = 0;
+	MemoryFill8(gUnknown_203B2B4, 0, sizeof(*gUnknown_203B2B4));gUnknown_203B2B4->menuAction1 = 0;
     gUnknown_203B2B4->unk0 = param_1;
     gUnknown_203B2B4->unkC = MapIdToFriendAreaId(GetGroundMapID());
     gUnknown_203B2B4->unkD = 0;
@@ -346,7 +346,7 @@ static void sub_8025728(void)
     else {
         gUnknown_203B2B4->unkC8[loopMax].text = sVisit;
         gUnknown_203B2B4->unkC8[loopMax].menuAction = FRIEND_LIST_MENU_VISIT;
-        if (gUnknown_203B2B4->unkC == GetFriendArea(gUnknown_203B2B4->pokeStruct->speciesNum)) {
+        if (gUnknown_203B2B4->unkC == GetFriendArea(pokeStruct->speciesNum)) {
             gUnknown_203B2B4->unk108[loopMax] = 1;
         }
         loopMax += 1;

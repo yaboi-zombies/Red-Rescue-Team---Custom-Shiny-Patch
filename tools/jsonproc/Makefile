@@ -1,4 +1,4 @@
-CXX ?= g++
+CXX := /c/msys64/mingw64/bin/g++
 
 CXXFLAGS := -Wall -std=c++11 -O2
 

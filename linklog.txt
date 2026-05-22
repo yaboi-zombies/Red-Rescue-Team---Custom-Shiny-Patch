@@ -1,0 +1,9 @@
+/bin/bash: line 1: /bin/arm-none-eabi-gcc: No such file or directory
+/bin/bash: line 1: /bin/arm-none-eabi-gcc: No such file or directory
+/bin/bash: line 1: /bin/arm-none-eabi-gcc: No such file or directory
+/bin/bash: line 1: /bin/arm-none-eabi-gcc: No such file or directory
+make[2]: Nothing to be done for 'all'.
+C:\devkitPro\devkitARM\bin\arm-none-eabi-ld.exe: cannot find -lc: No such file or directory
+C:\devkitPro\devkitARM\bin\arm-none-eabi-ld.exe: cannot find -lnosys: No such file or directory
+C:\devkitPro\devkitARM\bin\arm-none-eabi-ld.exe: cannot find -lgcc: No such file or directory
+make: *** [Makefile:350: pmd_red_modern.elf] Error 1

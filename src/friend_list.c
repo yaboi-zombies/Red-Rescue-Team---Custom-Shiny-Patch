@@ -52,9 +52,16 @@ bool8 FriendList_Init(u32 r5, u32 windowId, DungeonPos *pos, u32 r10)
         return FALSE;
     }
 
-    if (sFriendList == NULL) {
+/*     if (sFriendList == NULL) {
         sFriendList = MemoryAlloc(sizeof(*sFriendList), MEMALLOC_GROUP_8);
-    }
+    } */
+	
+	if (sFriendList != NULL) {
+		MemoryFree(sFriendList);
+		sFriendList = NULL;
+	}
+
+	sFriendList = MemoryAlloc(sizeof(*sFriendList), MEMALLOC_GROUP_8);
 
     sFriendList->unk0 = r5;
     if (gUnknown_203B2A0 != r5) {

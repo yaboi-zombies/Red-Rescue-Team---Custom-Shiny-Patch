@@ -1,4 +1,4 @@
-CC ?= gcc
+CC := /c/msys64/mingw64/bin/gcc
 
 CFLAGS = -Wall -Wextra -Wno-switch -Werror -std=c11 -O2
 
