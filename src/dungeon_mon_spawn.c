@@ -44,10 +44,63 @@
 #include "dungeon_action_execution.h"
 #include "exclusive_pokemon.h"
 #include "shiny.h"
+static s32 GetShinySpawnChanceDenom(s16 species);
 
-static bool8 RollShinySpawn(void)
+static bool8 RollShinySpawn(s16 species)
 {
-    return DungeonRandInt(SHINY_SPAWN_CHANCE_DENOM) < SHINY_SPAWN_CHANCE;
+    s32 denom = GetShinySpawnChanceDenom(species);
+    return DungeonRandInt(denom) < SHINY_SPAWN_CHANCE;
+}
+
+static s32 GetShinySpawnChanceDenom(s16 species)
+{
+    switch (species) {
+        case MONSTER_ARTICUNO:
+            return 128;
+        case MONSTER_ZAPDOS:
+            return 128;
+        case MONSTER_MOLTRES:
+            return 128;
+        case MONSTER_MEWTWO:
+            return 128;
+        case MONSTER_MEW:
+            return 128;
+        case MONSTER_RAIKOU:
+            return 128;
+        case MONSTER_ENTEI:
+            return 128;
+        case MONSTER_SUICUNE:
+            return 128;
+        case MONSTER_LUGIA:
+            return 128;
+        case MONSTER_HO_OH:
+            return 128;
+        case MONSTER_CELEBI:
+            return 128;
+        case MONSTER_REGIROCK:
+            return 128;
+        case MONSTER_REGICE:
+            return 128;
+        case MONSTER_REGISTEEL:
+            return 128;
+        case MONSTER_LATIAS: //Not neccessary?
+            return 128;
+        case MONSTER_LATIOS:
+            return 128;
+        case MONSTER_KYOGRE:
+            return 128;
+        case MONSTER_GROUDON:
+            return 128;
+        case MONSTER_RAYQUAZA:
+            return 128;
+        case MONSTER_JIRACHI:
+            return 128;
+        case MONSTER_DEOXYS_NORMAL:
+            return 128;
+
+        default:
+            return SHINY_SPAWN_CHANCE_DENOM;
+    }
 }
 
 static bool8 IsForcedPersistentShiny(s16 species)
@@ -547,7 +600,7 @@ Entity* SpawnWildMon(struct MonSpawnInfo *monSpawnInfo, bool8 a1)
     entityInfo->HP = entityInfo->maxHPStat;
     entityInfo->moveRandomly = monSpawnInfo->unk4;
     {
-        bool8 isShiny = RollShinySpawn();
+        bool8 isShiny = RollShinySpawn(entityInfo->id);
 
         if (!isShiny && IsForcedPersistentShiny(entityInfo->id)) {
             isShiny = TRUE;

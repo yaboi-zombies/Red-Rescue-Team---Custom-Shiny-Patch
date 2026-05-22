@@ -11,4 +11,6 @@ bool8 MonsterJoinSequence_Async(Entity *entity1, Entity *entity2, struct unkStru
 bool8 CanEntityBeRecruited(Entity *param_1);
 bool8 HandleSpecialEntityJoinSequence(Entity *entity1,Entity *entity2,Entity **entityPtr);
 
+static bool8 ONLY_RECRUIT_SHINY;
+
 #endif // GUARD_DUNGEON_MON_RECRUIT_H
