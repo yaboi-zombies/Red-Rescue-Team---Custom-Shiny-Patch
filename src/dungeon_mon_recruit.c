@@ -31,11 +31,11 @@
 #include "dungeon_mon_spawn.h"
 #include "move_orb_effects_5.h"
 #include "adventure_info.h"
+#include "wigglytuff_config.h"
 
 static void nullsub_96(Entity *pokemon,Entity *target);
 static void sub_806F910(void);
 static bool8 IsMonsterRecruitableInternal(s32 species, bool8 bypassStoryRestrictions);
-static bool8 ONLY_RECRUIT_SHINY = TRUE;
 
 bool8 TryRecruitMonster(Entity *attacker, Entity *target)
 {
@@ -51,9 +51,9 @@ bool8 TryRecruitMonster(Entity *attacker, Entity *target)
     isShiny = (targetInfo->visualFlags & VISUAL_FLAG_SHINY) != 0;
     bypassStoryRestrictions = isShiny;
 
-	if (ONLY_RECRUIT_SHINY && !isShiny) {
-			return FALSE;
-	}
+    if (!isShiny && !gCustomGameOptions.recruitNonShiny) {
+        return FALSE;
+    }
 	
 #ifdef DEV
     if (!isShiny) {

@@ -20,6 +20,7 @@
 #include "text_util.h"
 #include "dungeon_data.h"
 #include "strings.h"
+#include "wigglytuff_config.h"
 
 static EWRAM_DATA MonsterDataEntry *sMonsterParameters = {NULL}; // B=02135090
 static EWRAM_DATA OpenedFile *sMonsterParametersFile = {NULL};
@@ -423,9 +424,39 @@ bool8 sub_808D4B0(void)
     s32 index;
     Pokemon *pokeStruct;
     bool8 flag;
+    s32 team[MAX_TEAM_MEMBERS];
+    s32 teamCount;
+    s32 keepCount;
 
     pokeStruct = gRecruitedPokemonRef->pokemon;
     flag = FALSE;
+
+    if (gCustomGameOptions.persistentParty) {
+        teamCount = sub_808D580(team);
+
+        for(index = 0; index < NUM_MONSTERS; index++, pokeStruct++)
+        {
+            if(PokemonIsOnTeam(pokeStruct) && !IsMonTeamLeader(pokeStruct)){
+                flag = TRUE;
+                pokeStruct->flags &= ~(POKEMON_FLAG_ON_TEAM);
+            }
+        }
+
+        keepCount = teamCount;
+        if (keepCount > 3)
+            keepCount = 3;
+
+        for(index = 0; index < keepCount; index++)
+        {
+            if (team[index] >= 0 && team[index] < NUM_MONSTERS) {
+                gRecruitedPokemonRef->pokemon[team[index]].flags |= POKEMON_FLAG_ON_TEAM;
+            }
+        }
+
+        sub_808ED00();
+        return flag;
+    }
+
     for(index = 0; index < NUM_MONSTERS; index++, pokeStruct++)
     {
         if(PokemonIsOnTeam(pokeStruct) && !IsMonTeamLeader(pokeStruct) && !IsMonPartner(pokeStruct)){
@@ -441,9 +472,39 @@ bool8 sub_808D500(void)
     s32 index;
     Pokemon *pokeStruct;
     bool8 flag;
+    s32 team[MAX_TEAM_MEMBERS];
+    s32 teamCount;
+    s32 keepCount;
 
     pokeStruct = gRecruitedPokemonRef->pokemon;
     flag = FALSE;
+
+    if (gCustomGameOptions.persistentParty) {
+        teamCount = sub_808D580(team);
+
+        for(index = 0; index < NUM_MONSTERS; index++, pokeStruct++)
+        {
+            if(PokemonIsOnTeam(pokeStruct) && !IsMonTeamLeader(pokeStruct)){
+                flag = TRUE;
+                pokeStruct->flags &= ~(POKEMON_FLAG_ON_TEAM);
+            }
+        }
+
+        keepCount = teamCount;
+        if (keepCount > 3)
+            keepCount = 3;
+
+        for(index = 0; index < keepCount; index++)
+        {
+            if (team[index] >= 0 && team[index] < NUM_MONSTERS) {
+                gRecruitedPokemonRef->pokemon[team[index]].flags |= POKEMON_FLAG_ON_TEAM;
+            }
+        }
+
+        sub_808ED00();
+        return flag;
+    }
+
     for(index = 0; index < NUM_MONSTERS; index++, pokeStruct++)
     {
         if(PokemonIsOnTeam(pokeStruct) && !IsMonTeamLeader(pokeStruct)){

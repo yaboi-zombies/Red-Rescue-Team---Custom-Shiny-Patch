@@ -56,6 +56,7 @@
 #include "dungeon_recruit_release_menu.h"
 #include "dungeon_8041AD0.h"
 #include "dungeon_pokemon_sprites.h"
+#include "wigglytuff_config.h"
 
 static void EnsureCastformLoaded(void);
 static void EnsureDeoxysLoaded(void);
@@ -400,6 +401,17 @@ void sub_8068BDC(bool8 a0)
                 }
             }
         }
+    }
+    if (gCustomGameOptions.persistentParty) {
+        for (id = 0; id < 3; id++) {
+            DungeonMon *monPtr = &gRecruitedPokemonRef->dungeonTeam[id];
+
+            if (DungeonMonExists(monPtr) && sub_806A58C(monPtr->recruitedPokemonId)) {
+                gRecruitedPokemonRef->pokemon[monPtr->recruitedPokemonId].flags |= POKEMON_FLAG_ON_TEAM;
+            }
+        }
+
+        sub_808ED00();
     }
 }
 

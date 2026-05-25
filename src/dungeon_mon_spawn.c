@@ -44,6 +44,8 @@
 #include "dungeon_action_execution.h"
 #include "exclusive_pokemon.h"
 #include "shiny.h"
+#include "wigglytuff_config.h"
+
 static s32 GetShinySpawnChanceDenom(s16 species);
 
 static bool8 RollShinySpawn(s16 species)
@@ -52,54 +54,68 @@ static bool8 RollShinySpawn(s16 species)
     return DungeonRandInt(denom) < SHINY_SPAWN_CHANCE;
 }
 
-static s32 GetShinySpawnChanceDenom(s16 species)
+static bool8 IsLegendaryOrMythical(s16 species)
 {
     switch (species) {
         case MONSTER_ARTICUNO:
-            return 128;
         case MONSTER_ZAPDOS:
-            return 128;
         case MONSTER_MOLTRES:
-            return 128;
         case MONSTER_MEWTWO:
-            return 128;
         case MONSTER_MEW:
-            return 128;
         case MONSTER_RAIKOU:
-            return 128;
         case MONSTER_ENTEI:
-            return 128;
         case MONSTER_SUICUNE:
-            return 128;
         case MONSTER_LUGIA:
-            return 128;
         case MONSTER_HO_OH:
-            return 128;
         case MONSTER_CELEBI:
-            return 128;
         case MONSTER_REGIROCK:
-            return 128;
         case MONSTER_REGICE:
-            return 128;
         case MONSTER_REGISTEEL:
-            return 128;
-        case MONSTER_LATIAS: //Not neccessary?
-            return 128;
+        case MONSTER_LATIAS:
         case MONSTER_LATIOS:
-            return 128;
         case MONSTER_KYOGRE:
-            return 128;
         case MONSTER_GROUDON:
-            return 128;
         case MONSTER_RAYQUAZA:
-            return 128;
         case MONSTER_JIRACHI:
-            return 128;
         case MONSTER_DEOXYS_NORMAL:
-            return 128;
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
+
+static s32 GetShinySpawnChanceDenom(s16 species)
+{
+    s32 shinyRateNormal;
+    s32 shinyRateLegend;
+
+    switch (gCustomGameOptions.shinyRate) {
+        case CUSTOM_SHINY_RATE_PURIST:
+            shinyRateNormal = 2048;
+            shinyRateLegend = 2048;
+            break;
+
+        case CUSTOM_SHINY_RATE_BALANCED:
+            shinyRateNormal = 1024;
+            shinyRateLegend = 128;
+            break;
+
+        case CUSTOM_SHINY_RATE_PARENT:
+            shinyRateNormal = 512;
+            shinyRateLegend = 64;
+            break;
 
         default:
-            return SHINY_SPAWN_CHANCE_DENOM;
+            shinyRateNormal = 2048;
+            shinyRateLegend = 2048;
+            break;
+    }
+
+    if (IsLegendaryOrMythical(species)) {
+        return shinyRateLegend;
+    }
+    else {
+        return shinyRateNormal;
     }
 }
 

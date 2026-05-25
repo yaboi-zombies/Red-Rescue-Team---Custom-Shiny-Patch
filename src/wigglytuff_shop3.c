@@ -17,13 +17,18 @@
 #include "wigglytuff_shop1.h"
 #include "wigglytuff_shop2.h"
 #include "wigglytuff_shop3.h"
+#include "wigglytuff_config.h"
+#include "wigglytuff_info.h"
 
 static EWRAM_INIT WigglytuffShop3Work *sWigglytuffShop3Work = {NULL};
 
 #include "data/wigglytuff_shop3.h"
 
+ALIGNED(4) static const u8 sConfig[] = _("Config");
+
 enum menuActions {
     CANCEL_ACTION = 1,
+    CONFIG_ACTION,
     BUY_ACTION,
     CHECK_ACTION,
     INFO_ACTION,
@@ -40,6 +45,8 @@ static void sub_8021D5C(void);
 static void BuildWigglytuffMainMenu(void);
 static void sub_8022380(void);
 static void HandleWigglytuffMainMenu(void);
+static void HandleWigglytuffCustomConfigMenu(void);
+static void HandleWigglytuffCustomInfoMenu(void);
 static void sub_8022538(void);
 static void sub_80225C8(void);
 static void sub_8022668(void);
@@ -88,6 +95,12 @@ u32 sub_8021C5C(void)
         case WIGGLYTUFF_INIT:
         case WIGGLYTUFF_MAIN_MENU:
             HandleWigglytuffMainMenu();
+            break;
+        case WIGGLYTUFF_CUSTOM_CONFIG:
+            HandleWigglytuffCustomConfigMenu();
+            break;
+        case WIGGLYTUFF_CUSTOM_INFO:
+            HandleWigglytuffCustomInfoMenu();
             break;
         case WIGGLYTUFF_UNK9:
         case WIGGLYTUFF_UNKA:
@@ -170,11 +183,37 @@ static void UpdateWigglytuffDialogue(void)
     switch (sWigglytuffShop3Work->state) {
         case WIGGLYTUFF_INIT:
             BuildWigglytuffMainMenu();
-            CreateMenuDialogueBoxAndPortrait(gCommonWigglytuff[sWigglytuffShop3Work->mode][WIGGLY_DLG_00], 0, sWigglytuffShop3Work->menuAction1, sWigglytuffShop3Work->unk1C, sWigglytuffShop3Work->unk5C, 4, 0, sWigglytuffShop3Work->monPortraitPtr, 12);
+            CreateMenuDialogueBoxAndPortrait(
+                gCommonWigglytuff[sWigglytuffShop3Work->mode][WIGGLY_DLG_00],
+                0,
+                sWigglytuffShop3Work->menuAction1,
+                sWigglytuffShop3Work->unk1C,
+                sWigglytuffShop3Work->unk5C,
+                4,
+                0,
+                sWigglytuffShop3Work->monPortraitPtr,
+                12
+            );
             break;
         case WIGGLYTUFF_MAIN_MENU:
             BuildWigglytuffMainMenu();
-            CreateMenuDialogueBoxAndPortrait(gCommonWigglytuff[sWigglytuffShop3Work->mode][WIGGLY_DLG_01], 0, sWigglytuffShop3Work->menuAction1, sWigglytuffShop3Work->unk1C, sWigglytuffShop3Work->unk5C, 4, 0, sWigglytuffShop3Work->monPortraitPtr, 12);
+            CreateMenuDialogueBoxAndPortrait(
+                gCommonWigglytuff[sWigglytuffShop3Work->mode][WIGGLY_DLG_01],
+                0,
+                sWigglytuffShop3Work->menuAction1,
+                sWigglytuffShop3Work->unk1C,
+                sWigglytuffShop3Work->unk5C,
+                4,
+                0,
+                sWigglytuffShop3Work->monPortraitPtr,
+                12
+            );
+            break;
+        case WIGGLYTUFF_CUSTOM_CONFIG:
+            CreateCustomConfigMenu();
+            break;
+        case WIGGLYTUFF_CUSTOM_INFO:
+            CreateWigglytuffInfoMenu();
             break;
         case FRIEND_AREA_SELECT_BUY:
             sWigglytuffShop3Work->fallbackState = WIGGLYTUFF_UNK9;
@@ -328,12 +367,8 @@ static void BuildWigglytuffMainMenu(void)
 
     MemoryFill16(sWigglytuffShop3Work->unk5C, 0, sizeof(sWigglytuffShop3Work->unk5C));
 
-    sWigglytuffShop3Work->unk1C[index].text = gCommonBuy[0];
-    sWigglytuffShop3Work->unk1C[index].menuAction = BUY_ACTION;
-
-    index++;
-    sWigglytuffShop3Work->unk1C[index].text = gCommonCheck[0];
-    sWigglytuffShop3Work->unk1C[index].menuAction = CHECK_ACTION;
+    sWigglytuffShop3Work->unk1C[index].text = sConfig;
+    sWigglytuffShop3Work->unk1C[index].menuAction = CONFIG_ACTION;
 
     index++;
     sWigglytuffShop3Work->unk1C[index].text = gCommonInfo[0];
@@ -420,6 +455,12 @@ static void HandleWigglytuffMainMenu(void)
         sWigglytuffShop3Work->menuAction1 = menuAction;
 
     switch (menuAction) {
+        case CONFIG_ACTION:
+            SetWigglytuffState(WIGGLYTUFF_CUSTOM_CONFIG);
+            break;
+        case INFO_ACTION:
+            SetWigglytuffState(WIGGLYTUFF_CUSTOM_INFO);
+            break;
         case BUY_ACTION:
             if (sub_8021700(2))
                 SetWigglytuffState(WIGGLYTUFF_CANT_ADD_FRIEND_AREA);
@@ -429,11 +470,38 @@ static void HandleWigglytuffMainMenu(void)
         case CHECK_ACTION:
             SetWigglytuffState(WIGGLYTUFF_CHECK);
             break;
-        case INFO_ACTION:
-            SetWigglytuffState(WIGGLYTUFF_INFO);
-            break;
         case CANCEL_ACTION:
             SetWigglytuffState(WIGGLYTUFF_PRE_EXIT);
+            break;
+    }
+}
+
+static void HandleWigglytuffCustomConfigMenu(void)
+{
+    switch (HandleCustomConfigMenuInput()) {
+        case 2:
+        case 3:
+            CleanCustomConfigMenu();
+            SetWigglytuffState(WIGGLYTUFF_MAIN_MENU);
+            break;
+        case 0:
+        case 1:
+        default:
+            break;
+    }
+}
+
+static void HandleWigglytuffCustomInfoMenu(void)
+{
+    switch (HandleWigglytuffInfoMenuInput()) {
+        case 2:
+        case 3:
+            CleanWigglytuffInfoMenu();
+            SetWigglytuffState(WIGGLYTUFF_MAIN_MENU);
+            break;
+        case 0:
+        case 1:
+        default:
             break;
     }
 }
