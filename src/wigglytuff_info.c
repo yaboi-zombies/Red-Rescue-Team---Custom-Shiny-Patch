@@ -14,7 +14,6 @@ enum WigglytuffInfoTopics
     WIGGLYTUFF_INFO_RECRUIT_NON_SHINY,
     WIGGLYTUFF_INFO_PERSISTENT_PARTY,
     WIGGLYTUFF_INFO_BODY_SIZE_LIMIT,
-    WIGGLYTUFF_INFO_DX_PARTY_SIZE,
     WIGGLYTUFF_INFO_COUNT
 };
 
@@ -75,13 +74,6 @@ ALIGNED(4) static const u8 sBodyBodySizeLimit[] = _(
     "party limit."
 );
 
-ALIGNED(4) static const u8 sHeadingDxPartySize[] = _("DX party size");
-ALIGNED(4) static const u8 sBodyDxPartySize[] = _(
-    "Enable to use DX's eight\n"
-    "member party limit, or\n"
-    "disable for the standard\n"
-    "four member party limit."
-);
 
 static const WigglytuffInfoEntry sWigglytuffInfoEntries[WIGGLYTUFF_INFO_COUNT] = {
     [WIGGLYTUFF_INFO_SHINY_RATE] = {
@@ -99,10 +91,6 @@ static const WigglytuffInfoEntry sWigglytuffInfoEntries[WIGGLYTUFF_INFO_COUNT] =
     [WIGGLYTUFF_INFO_BODY_SIZE_LIMIT] = {
         sHeadingBodySizeLimit,
         sBodyBodySizeLimit
-    },
-    [WIGGLYTUFF_INFO_DX_PARTY_SIZE] = {
-        sHeadingDxPartySize,
-        sBodyDxPartySize
     },
 };
 

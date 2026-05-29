@@ -18,7 +18,6 @@ enum WigglytuffConfigMenuActions
     WIGGLYTUFF_CONFIG_RECRUIT_NON_SHINY,
     WIGGLYTUFF_CONFIG_PERSISTENT_PARTY,
     WIGGLYTUFF_CONFIG_BODY_LIMIT,
-    WIGGLYTUFF_CONFIG_DX_PARTY_SIZE,
     WIGGLYTUFF_CONFIG_COUNT
 };
 
@@ -162,9 +161,6 @@ ALIGNED(4) static const u8 sPersistentPartyRow[] =
 ALIGNED(4) static const u8 sBodyLimitRow[] =
     _("Body size limit{MOVE_X_POSITION_BY_136}On{MOVE_X_POSITION_BY_160}Off");
 
-ALIGNED(4) static const u8 sDxPartySizeRow[] =
-    _("DX party size{MOVE_X_POSITION_BY_136}On{MOVE_X_POSITION_BY_160}Off");
-
 ALIGNED(4) static const u8 sPuristText[] = _("Purist");
 ALIGNED(4) static const u8 sMidText[] = _("Balance");
 ALIGNED(4) static const u8 sParentText[] = _("Parent");
@@ -270,8 +266,7 @@ static void DrawWigglytuffConfigMenu(void)
     PrintStringOnWindow(8, y[WIGGLYTUFF_CONFIG_RECRUIT_NON_SHINY], sRecruitNonShinyRow, sWigglytuffConfigMenu->windowId, 0);
     PrintStringOnWindow(8, y[WIGGLYTUFF_CONFIG_PERSISTENT_PARTY], sPersistentPartyRow, sWigglytuffConfigMenu->windowId, 0);
     PrintStringOnWindow(8, y[WIGGLYTUFF_CONFIG_BODY_LIMIT], sBodyLimitRow, sWigglytuffConfigMenu->windowId, 0);
-    PrintStringOnWindow(8, y[WIGGLYTUFF_CONFIG_DX_PARTY_SIZE], sDxPartySizeRow, sWigglytuffConfigMenu->windowId, 0);
-
+    
     for (i = 0; i < WIGGLYTUFF_CONFIG_COUNT; i++) {
         DrawWigglytuffConfigUnderline(i, y[i]);
     }
@@ -300,10 +295,6 @@ static void ChangeWigglytuffConfigOptionLeft(s32 optionId)
         case WIGGLYTUFF_CONFIG_BODY_LIMIT:
             gCustomGameOptions.bodyLimit = !gCustomGameOptions.bodyLimit;
             break;
-
-        case WIGGLYTUFF_CONFIG_DX_PARTY_SIZE:
-            gCustomGameOptions.dxPartySize = !gCustomGameOptions.dxPartySize;
-            break;
     }
 }
 
@@ -326,10 +317,6 @@ static void ChangeWigglytuffConfigOptionRight(s32 optionId)
 
         case WIGGLYTUFF_CONFIG_BODY_LIMIT:
             gCustomGameOptions.bodyLimit = !gCustomGameOptions.bodyLimit;
-            break;
-
-        case WIGGLYTUFF_CONFIG_DX_PARTY_SIZE:
-            gCustomGameOptions.dxPartySize = !gCustomGameOptions.dxPartySize;
             break;
     }
 }
@@ -391,17 +378,6 @@ static void DrawWigglytuffConfigUnderline(s32 optionId, s32 y)
             }
             break;
 
-        case WIGGLYTUFF_CONFIG_DX_PARTY_SIZE:
-        default:
-            if (gCustomGameOptions.dxPartySize) {
-                text = sOnText;
-                x = 136;
-            }
-            else {
-                text = sOffText;
-                x = 160;
-            }
-            break;
     }
 
     AddDoubleUnderScoreHighlight(

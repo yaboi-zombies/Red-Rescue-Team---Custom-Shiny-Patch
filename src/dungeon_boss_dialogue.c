@@ -2620,7 +2620,7 @@ const u8 *const gUnknown_8105798 =_("{COLOR YELLOW_N}{POKEMON_2}{RESET}: What is
 const MenuItem gUnknown_810579C[] = {
     {_("Lots of money."), 1},
     {_("Lots of items."), 2},
-    {_("A Friend Area."), 3},
+    {_("Shiny team founders."), 3},
     {_("More strength."), 4},
     {_("Something good!"), 5},
     {NULL, -1},
@@ -2694,7 +2694,7 @@ const struct DungeonDialogueStruct gUnknown_8105AD4 = {
     .spritePlacementId = 13,
     .speciesId = MONSTER_JIRACHI,
     .allowType = DIALOGUE_ALLOW_ALL,
-    .str = _(" You want a Friend Area?{EXTRA_MSG} As you wish.{WAIT_PRESS}\nNow...{WAIT_PRESS}\nHere goes!"),
+    .str = _(" You want your starter and partner\nto become shiny?{EXTRA_MSG} As you wish.{WAIT_PRESS}\nNow...{WAIT_PRESS}\nHere goes!"),
 };
 
 const struct DungeonDialogueStruct gUnknown_8105B20 = {
@@ -2703,7 +2703,7 @@ const struct DungeonDialogueStruct gUnknown_8105B20 = {
     .spritePlacementId = 13,
     .speciesId = MONSTER_JIRACHI,
     .allowType = DIALOGUE_ALLOW_ALL,
-    .str = _(" I opened a new Friend Area\nfor you. It's yours to use!"),
+    .str = _("Your wish has been granted.{EXTRA_MSG} You and your partner's\ntrue colors show!"),
 };
 
 const struct DungeonDialogueStruct gUnknown_8105B68 = {
@@ -2712,7 +2712,7 @@ const struct DungeonDialogueStruct gUnknown_8105B68 = {
     .spritePlacementId = 0,
     .speciesId = MONSTER_NONE,
     .allowType = DIALOGUE_ALLOW_ALL,
-    .str = _("{CENTER_ALIGN}{COLOR CYAN_M}{POKEMON_0}{RESET} obtained\n{CENTER_ALIGN}the Friend Area\n{CENTER_ALIGN}{COLOR GREEN_H}{MOVE_ITEM_0}{RESET}!"),
+    .str = _("{CENTER_ALIGN}The wish came true!"),
 };
 
 const struct DungeonDialogueStruct gUnknown_8105BA8 = {

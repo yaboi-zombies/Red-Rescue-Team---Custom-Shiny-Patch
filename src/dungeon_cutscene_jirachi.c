@@ -46,6 +46,53 @@ static void JirachiWishGrantDialogue(Entity *jirachiEntity);
 static void CreateJirachiWishWarpTile(void);
 static void EnableJirachiWishWarpTile(void);
 static u8 JirachiFriendAreaSearch(void);
+static void MakeLeaderAndPartnerShiny(void);
+static void MakePokemonAndDungeonCopyShiny(Pokemon *pokemon);
+
+static void MakePokemonAndDungeonCopyShiny(Pokemon *pokemon)
+{
+    s32 i;
+    s32 recruitedPokemonId;
+
+    if (pokemon == NULL || !PokemonExists(pokemon)) {
+        return;
+    }
+
+    pokemon->flags |= POKEMON_FLAG_SHINY;
+
+    recruitedPokemonId = pokemon - gRecruitedPokemonRef->pokemon;
+
+    for (i = 0; i < MAX_TEAM_MEMBERS; i++) {
+        DungeonMon *dungeonMon = &gRecruitedPokemonRef->dungeonTeam[i];
+
+        if (DungeonMonExists(dungeonMon)
+            && dungeonMon->recruitedPokemonId == recruitedPokemonId)
+        {
+            dungeonMon->flags |= POKEMON_FLAG_SHINY;
+        }
+    }
+
+    for (i = 0; i < MAX_TEAM_MEMBERS; i++) {
+        Entity *teamMon = gDungeon->teamPokemon[i];
+
+        if (EntityIsValid(teamMon)) {
+            EntityInfo *teamMonInfo = GetEntInfo(teamMon);
+            DungeonMon *dungeonMon = &gRecruitedPokemonRef->dungeonTeam[teamMonInfo->teamIndex];
+
+            if (DungeonMonExists(dungeonMon)
+                && dungeonMon->recruitedPokemonId == recruitedPokemonId)
+            {
+                teamMonInfo->visualFlags |= VISUAL_FLAG_SHINY;
+            }
+        }
+    }
+}
+
+static void MakeLeaderAndPartnerShiny(void)
+{
+    MakePokemonAndDungeonCopyShiny(GetLeaderMon1());
+    MakePokemonAndDungeonCopyShiny(GetPartnerMon());
+}
 
 void sub_808B2F4(void)
 {
@@ -262,31 +309,18 @@ static void JirachiWish_Async(void)
 
     if (wishChoice == 3)
     {
-        // A Friend Area
-        s32 friendArea = JirachiFriendAreaSearch();
-        if (friendArea == NUM_FRIEND_AREAS)
-        {
-            // You want a friend area? But you already have many friend areas...
-            DisplayDungeonDialogue_Async(&gUnknown_8105A08);
-            DungeonWaitFrames_Async(10,0x46);
-            continue;
-        }
-        else
-        {
-        // You want a friend area? As you wish..
-          DisplayDungeonDialogue_Async(&gUnknown_8105AD4);
-          DungeonWaitFrames_Async(10,0x46);
-          JirachiWishGrantDialogue(jirachiEntity);
-          GetEntInfo(jirachiEntity)->unk15D  = 0;
-          DisplayDungeonDialogue_Async(&gUnknown_8105B20);
-          UnlockFriendArea(friendArea);
-          PlaySoundEffect(0xd4);
-          leaderEntity = GetLeader();
-          SubstitutePlaceholderStringTags(gFormatBuffer_Monsters[0],leaderEntity,0);
-          WriteFriendAreaName(gFormatBuffer_Items[0],friendArea,FALSE);
-          // Obtained the friend area!
-          DisplayDungeonDialogue_Async(&gUnknown_8105B68);
-        }
+        // Make the player and partner shiny.
+        DisplayDungeonDialogue_Async(&gUnknown_8105AD4);
+        DungeonWaitFrames_Async(10,0x46);
+
+        JirachiWishGrantDialogue(jirachiEntity);
+
+        MakeLeaderAndPartnerShiny();
+
+        GetEntInfo(jirachiEntity)->unk15D = 0;
+        DisplayDungeonDialogue_Async(&gUnknown_8105B20);
+        PlaySoundEffect(0xd4);
+        DisplayDungeonDialogue_Async(&gUnknown_8105B68);
     }
     if (wishChoice == 4) {
         s32 counter, index;
