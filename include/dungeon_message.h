@@ -48,6 +48,7 @@ void xxx_draw_string_80524F0(void);
 void sub_80526D0(s32 r0);
 void sub_8052740(s32 a0);
 void DisplayDungeonMessage_Async(struct MonDialogueSpriteInfo *monSpriteInfo, const u8 *str, bool8 a2);
+void DisplayDungeonMessageStartDismiss_Async(struct MonDialogueSpriteInfo *monSpriteInfo, const u8 *str, bool8 a2);
 void DisplayDungeonDialogue_Async(const struct DungeonDialogueStruct *dialogueInfo);
 bool32 DisplayDungeonYesNoMessage_Async(struct MonDialogueSpriteInfo *monSpriteInfo, const u8 *str, bool32 defaultYes);
 s32 DisplayDungeonMenuMessage(struct MonDialogueSpriteInfo *monSpriteInfo, const u8 *str, const MenuItem *menuItems, u16 unkArg);

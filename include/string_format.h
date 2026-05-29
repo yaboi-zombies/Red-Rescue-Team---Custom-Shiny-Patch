@@ -10,6 +10,8 @@
 #define FORMAT_BUFFER_LEN 80
 #define FRIEND_AREA_BUFFER_LEN 184
 
+#define STR_FORMAT_FLAG_WAIT_FOR_START_PRESS 0x8000
+
 extern s32 gFormatArgs[10];
 extern u8 gFormatBuffer_Items[4][FORMAT_BUFFER_LEN];
 extern u8 gFormatBuffer_Monsters[10][FORMAT_BUFFER_LEN];

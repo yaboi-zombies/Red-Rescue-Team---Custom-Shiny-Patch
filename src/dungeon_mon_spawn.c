@@ -88,31 +88,42 @@ static s32 GetShinySpawnChanceDenom(s16 species)
 {
     s32 shinyRateNormal;
     s32 shinyRateLegend;
+    s32 shinyRateLvl1;
 
     switch (gCustomGameOptions.shinyRate) {
         case CUSTOM_SHINY_RATE_PURIST:
             shinyRateNormal = 2048;
             shinyRateLegend = 2048;
+            shinyRateLvl1 = 2048;
             break;
 
         case CUSTOM_SHINY_RATE_BALANCED:
             shinyRateNormal = 1024;
             shinyRateLegend = 128;
+            shinyRateLvl1 = 32;
             break;
 
         case CUSTOM_SHINY_RATE_PARENT:
             shinyRateNormal = 512;
             shinyRateLegend = 64;
+            shinyRateLvl1 = 16;
             break;
 
         default:
             shinyRateNormal = 2048;
             shinyRateLegend = 2048;
+            shinyRateLvl1 = 2048;
             break;
     }
 
     if (IsLegendaryOrMythical(species)) {
-        return shinyRateLegend;
+        switch (species){
+            case MONSTER_CELEBI:
+            case MONSTER_JIRACHI:
+                return shinyRateLvl1;
+            default:
+                return shinyRateLegend;
+        }
     }
     else {
         return shinyRateNormal;
@@ -628,7 +639,7 @@ Entity* SpawnWildMon(struct MonSpawnInfo *monSpawnInfo, bool8 a1)
             entityInfo->visualFlags |= VISUAL_FLAG_SHINY;
             if (showRareFloorMessage) {
                 sub_8083E28();
-                DisplayDungeonMessage_Async(NULL, gText_ThisFloorYouSenseSomethingRare, TRUE);
+                DisplayDungeonMessageStartDismiss_Async(NULL, gText_ThisFloorYouSenseSomethingRare, TRUE);
                 DisplayDungeonLoggableMessageFalse_Async(GetLeader(), gText_ThisFloorYouSenseSomethingRare);
             }
         }

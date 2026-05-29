@@ -1,7 +1,7 @@
 #define WIGGLY_AWAKE_DLG_00 (_( \
     " Friends are my treasures!\n" \
-    "Welcome to the {POKEMON_6} Club--\n" \
-    "a circle of friends! "))
+    "Welcome to {POKEMON_6} Config Club--\n" \
+    "Set your patch settings! "))
 
 #define WIGGLY_AWAKE_DLG_01 (_( \
     " Anything else I can do for\n" \

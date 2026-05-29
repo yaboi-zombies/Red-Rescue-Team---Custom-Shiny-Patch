@@ -362,6 +362,68 @@ void DisplayDungeonMessage_Async(struct MonDialogueSpriteInfo *monSpriteInfo, co
     DungeonWaitFrames_Async(8, 9);
 }
 
+void DisplayDungeonMessageStartDismiss_Async(struct MonDialogueSpriteInfo *monSpriteInfo, const u8 *str, bool8 a2)
+{
+    MonPortraitMsg monPortrait, *monPortraitPtr;
+    s32 chosenMenuIndex;
+
+    if (gUnknown_203B40C) {
+        sub_8052740(10);
+    }
+
+    sub_803EAF0(2, NULL);
+    sub_8052210(FALSE);
+
+    monPortraitPtr = NULL;
+    monPortrait.faceFile = NULL;
+    monPortrait.faceData = NULL;
+    if (!gDungeon->unk181e8.blinded
+        && !gDungeon->unk181e8.hallucinating
+        && monSpriteInfo != NULL
+        && IsPokemonDialogueSpriteAvail(monSpriteInfo->species, monSpriteInfo->spriteId))
+    {
+        monPortrait.faceFile = GetDialogueSpriteDataPtr(monSpriteInfo->species);
+        monPortrait.faceData = (PortraitGfx *) monPortrait.faceFile->data;
+        monPortrait.pos.x = 2;
+        monPortrait.pos.y = 9;
+        monPortrait.spriteId = monSpriteInfo->spriteId;
+        monPortrait.flip = FALSE;
+        monPortrait.unkE = 0;
+        monPortraitPtr = &monPortrait;
+    }
+
+    CreateMenuDialogueBoxAndPortrait(
+    str,
+    0,
+    0,
+    NULL,
+    NULL,
+    3,
+    0,
+    monPortraitPtr,
+    (a2 ? 0x701 : 0x400) | STR_FORMAT_FLAG_WAIT_FOR_START_PRESS);
+    gDungeon->unk1BDD4.unk1C05F = 1;
+    PRINT_STRING_WAIT_PRESS_ASYNC(&chosenMenuIndex);
+    gDungeon->unk1BDD4.unk1C05F = 0;
+
+    if (monPortrait.faceFile != NULL) {
+        CloseFile(monPortrait.faceFile);
+    }
+
+    if (a2) {
+        sub_805E804();
+        LoadDungeonMapPalette();
+        if (gShowDungeonMap) {
+            sub_803EAF0(0, NULL);
+        }
+        else {
+            sub_803EAF0(1, NULL);
+        }
+    }
+
+    DungeonWaitFrames_Async(8, 9);
+}
+
 void DisplayDungeonLoggableMessage(Entity *pokemon, const u8 *str)
 {
     DisplayDungeonMessage_Async(NULL, str, TRUE);

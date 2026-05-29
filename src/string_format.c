@@ -454,6 +454,11 @@ void DrawDialogueBoxString_Async(void)
                             buttonPress = TRUE;
                         }
                     }
+                    else if (sStringFormatFlags & STR_FORMAT_FLAG_WAIT_FOR_START_PRESS) {
+                        if (gRealInputs.pressed & START_BUTTON) {
+                            buttonPress = TRUE;
+                        }
+                    }
                     else if (gRealInputs.pressed & AB_BUTTONS || sDialogueMenuTouchScreenInput.a_button) {
                         buttonPress = TRUE;
                     }
