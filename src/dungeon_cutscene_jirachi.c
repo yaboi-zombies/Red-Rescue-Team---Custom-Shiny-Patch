@@ -90,8 +90,8 @@ static void MakePokemonAndDungeonCopyShiny(Pokemon *pokemon)
 
 static void MakeLeaderAndPartnerShiny(void)
 {
-    MakePokemonAndDungeonCopyShiny(GetLeaderMon1());
-    MakePokemonAndDungeonCopyShiny(GetPartnerMon());
+    MakePokemonAndDungeonCopyShiny(GetLeaderMon2());
+    MakePokemonAndDungeonCopyShiny(GetPartnerMon2());
 }
 
 void sub_808B2F4(void)
