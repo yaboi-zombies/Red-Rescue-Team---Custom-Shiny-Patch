@@ -18,6 +18,9 @@
 #include "save.h"
 #include "string_format.h"
 #include "training_maze.h"
+#include "wigglytuff_config.h"
+
+#define CUSTOM_EXT_SAVE_SIZE 0x3F
 
 // size: 0x800
 struct unk_struct
@@ -255,6 +258,8 @@ u32 ReadSaveFromPak(u32 *a)
         if (r1 != playerSave->savedMailInfo) {
             saveStatus = 3;
         }
+        r4 += 0x221;
+        RestoreCustomExtendedOptions(r4, CUSTOM_EXT_SAVE_SIZE);
     }
     MemoryFree(playerSave);
     return saveStatus;
@@ -352,6 +357,8 @@ u32 WriteSavetoPak(s32 *param_1, u32 param_2)
   playerSave->unk440 = sub_8095624(array_ptr,0x594);
   array_ptr += 0x594;
   playerSave->savedMailInfo = SaveMailInfo(array_ptr,0x221);
+  array_ptr += 0x221;
+  SaveCustomExtendedOptions(array_ptr, CUSTOM_EXT_SAVE_SIZE);
 
   saveStatus1 = WriteSaveSector(param_1, (u8 *)playerSave, sizeof(struct UnkStruct_sub_8011DAC));
   saveStatus2 = WriteSaveSector(param_1, (u8 *)playerSave, sizeof(struct UnkStruct_sub_8011DAC));

@@ -11,9 +11,12 @@
 enum WigglytuffInfoTopics
 {
     WIGGLYTUFF_INFO_SHINY_RATE,
+    WIGGLYTUFF_INFO_CUSTOM_NORMAL,
+    WIGGLYTUFF_INFO_CUSTOM_LEGEND,
+    WIGGLYTUFF_INFO_CUSTOM_LVL1,
     WIGGLYTUFF_INFO_RECRUIT_NON_SHINY,
     WIGGLYTUFF_INFO_PERSISTENT_PARTY,
-    WIGGLYTUFF_INFO_BODY_SIZE_LIMIT,
+    WIGGLYTUFF_INFO_NO_WIND_WAIT,
     WIGGLYTUFF_INFO_COUNT
 };
 
@@ -43,42 +46,85 @@ typedef struct WigglytuffInfoEntry
     const u8 *body;
 } WigglytuffInfoEntry;
 
-ALIGNED(4) static const u8 sHeadingShinyRate[] = _("Shiny Rate");
+ALIGNED(4) static const u8 sHeadingShinyRate[] = _("Shiny Rates");
 ALIGNED(4) static const u8 sBodyShinyRate[] = _(
-    "Purist: All mons 1/2048.\n\n"
-    "Balance: Basic mons 1/1024,\n"
-    "legends 1/128.\n\n"
-    "Parent: Basic mons 1/512,\n"
-    "legends 1/64."
+    "Select one of three pre-configured\n" 
+    "settings, or use the \"Custom\"\n"
+    "option to manually choose shiny odds\n"
+    "for each type of pokemon. Custom odds\n"
+    "can be changed by pressing {A_BUTTON}. Return\n"
+    "to the main config menu to save your\n"
+    "custom odds."
+);
+
+ALIGNED(4) static const u8 sHeadingCustomNormal[] = _("Configured Rates (1/2)");
+ALIGNED(4) static const u8 sBodyCustomNormal[] = _(
+    "Purist:\n"
+    "    - All mons: 1/2048\n"
+    "Balanced:\n"
+    "    - Normal mons: 1/1024\n"
+    "    - Legendaries: 1/128\n"
+    "    - Celebi & Jirachi: 1/32\n"
+);
+
+ALIGNED(4) static const u8 sHeadingCustomLegend[] = _("Configured Rates (1/2)");
+ALIGNED(4) static const u8 sBodyCustomLegend[] = _(
+    "Parent:\n"
+    "    - Normal mons: 1/512\n"
+    "    - Legendaries: 1/64\n"
+    "    - Celebi & Jirachi: 1/16\n"
+);
+
+ALIGNED(4) static const u8 sHeadingCustomLvl1[] = _("Custom Rates");
+ALIGNED(4) static const u8 sBodyCustomLvl1[] = _(
+    "Selecting the custom rate option will\n"
+    "open a sub-menu where-in shiny rates\n"
+    "for each category can be set by pressing\n"
+    "{A_BUTTON} on the category, choosing a value, and\n"
+    "pressing {A_BUTTON} to confirm. Accepted\n"
+    "values are from 1/1 to 1/8192."
 );
 
 ALIGNED(4) static const u8 sHeadingRecruitNonShiny[] = _("Recruit non-shiny");
 ALIGNED(4) static const u8 sBodyRecruitNonShiny[] = _(
-    "Allows non-shiny Pokemon to\n"
-    "ask to be members of your\n"
-    "rescue team."
+    "When enabled non-shiny pokemon will\n"
+    "offer to join your rescue team as\n"
+    "normal. Disable to only recieve\n"
+    "offers from shiny pokemon.\n"
 );
 
 ALIGNED(4) static const u8 sHeadingPersistentParty[] = _("Persistent party");
 ALIGNED(4) static const u8 sBodyPersistentParty[] = _(
-    "If enabled, the first two\n"
-    "non-leader members of your\n"
-    "party will persist between\n"
-    "days."
+    "When enabled not all of your team\n"
+    "members will be dismissed at the end\n"
+    "of each day. The first two non-leader\n"
+    "mons will remain unless manually\n"
+    "dismissed.\n"
 );
 
-ALIGNED(4) static const u8 sHeadingBodySizeLimit[] = _("Body size limit");
-ALIGNED(4) static const u8 sBodyBodySizeLimit[] = _(
-    "Enable or disable the\n"
-    "standard six-star body size\n"
-    "party limit."
+ALIGNED(4) static const u8 sHeadingNoWindWait[] = _("No post-stirring wait");
+ALIGNED(4) static const u8 sBodyNoWindWait[] = _(
+    "Disables the ability to wait ({A_BUTTON}+{B_BUTTON})\n"
+    "once the \"Something is stirring\"\n"
+    "message appears on a floor.\n"
 );
-
 
 static const WigglytuffInfoEntry sWigglytuffInfoEntries[WIGGLYTUFF_INFO_COUNT] = {
     [WIGGLYTUFF_INFO_SHINY_RATE] = {
         sHeadingShinyRate,
         sBodyShinyRate
+    },
+    [WIGGLYTUFF_INFO_CUSTOM_NORMAL] = {
+        sHeadingCustomNormal,
+        sBodyCustomNormal
+    },
+    [WIGGLYTUFF_INFO_CUSTOM_LEGEND] = {
+        sHeadingCustomLegend,
+        sBodyCustomLegend
+    },
+    [WIGGLYTUFF_INFO_CUSTOM_LVL1] = {
+        sHeadingCustomLvl1,
+        sBodyCustomLvl1
     },
     [WIGGLYTUFF_INFO_RECRUIT_NON_SHINY] = {
         sHeadingRecruitNonShiny,
@@ -88,9 +134,9 @@ static const WigglytuffInfoEntry sWigglytuffInfoEntries[WIGGLYTUFF_INFO_COUNT] =
         sHeadingPersistentParty,
         sBodyPersistentParty
     },
-    [WIGGLYTUFF_INFO_BODY_SIZE_LIMIT] = {
-        sHeadingBodySizeLimit,
-        sBodyBodySizeLimit
+    [WIGGLYTUFF_INFO_NO_WIND_WAIT] = {
+        sHeadingNoWindWait,
+        sBodyNoWindWait
     },
 };
 

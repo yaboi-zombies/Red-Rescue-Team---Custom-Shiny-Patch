@@ -66,6 +66,7 @@
 #include "dungeon_8041AD0.h"
 #include "status_checks.h"
 #include "adventure_info.h"
+#include "wigglytuff_config.h"
 
 static EWRAM_DATA bool8 sInDiagonalMode = 0;
 static EWRAM_DATA bool8 sInRotateMode = 0;
@@ -173,6 +174,13 @@ static bool8 ArePlayerAndTargetInSameRoom(DungeonPos *playerPos, DungeonPos *tar
     const Tile *targetTile = GetTile(targetPos->x, targetPos->y);
 
     return (playerTile->room == targetTile->room) && (playerTile->room != CORRIDOR_ROOM);
+}
+
+static bool8 ShouldExitAutoExploreFromLowBelly(void)
+{
+    EntityInfo *leaderInfo = GetLeaderInfo();
+
+    return leaderInfo != NULL && FixedPointToInt(leaderInfo->belly) <= 1;
 }
 
 bool8 ShouldExitAutoExploreOnInput(void)
@@ -522,6 +530,12 @@ s32 GetAutoExploreDirection(Entity *leader)
         return -1;
     }
 
+    if (ShouldExitAutoExploreFromLowBelly()) {
+        SetAutoExploreActive(FALSE);
+        LogMessageByIdWithPopupCheckUser_Async(leader, "Autopilot stopped due to hunger!");
+        return -1;
+    }
+
     if (ShouldExitAutoExploreOnInput()) {
         SetAutoExploreActive(FALSE);
         LogMessageByIdWithPopupCheckUser_Async(leader, "Autopilot OFF!");
@@ -746,6 +760,9 @@ void DungeonHandlePlayerInput(void)
             }
 
             if (gRealInputs.held & A_BUTTON && gRealInputs.held & B_BUTTON && FixedPointToInt(leaderInfo->belly) != 0) {
+                if (gCustomGameOptions.noWindWait && gDungeon->unk644.windPhase != 0){
+                    break;
+                }
                 SetLeaderActionFields(ACTION_PASS_TURN);
                 gDungeon->unk644.unk2F = 1;
                 break;
@@ -779,7 +796,10 @@ void DungeonHandlePlayerInput(void)
 
             if (gRealInputs.pressed & A_BUTTON) {
                 if (gRealInputs.held & B_BUTTON) {
-                    if (FixedPointToInt(leaderInfo->belly) != 0) {
+                    if (gCustomGameOptions.noWindWait && gDungeon->unk644.windPhase != 0){
+                        break;
+                    }
+                    else if (FixedPointToInt(leaderInfo->belly) != 0) {
                         SetLeaderActionFields(ACTION_PASS_TURN);
                         gDungeon->unk644.unk2F = 1;
                         break;

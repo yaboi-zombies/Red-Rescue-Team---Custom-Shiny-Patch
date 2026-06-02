@@ -109,6 +109,12 @@ static s32 GetShinySpawnChanceDenom(s16 species)
             shinyRateLvl1 = 16;
             break;
 
+        case CUSTOM_SHINY_RATE_CUSTOM:
+            shinyRateNormal = gCustomGameOptions.shinyRateNormalCustom;
+            shinyRateLegend = gCustomGameOptions.shinyRateLegendCustom;
+            shinyRateLvl1 = gCustomGameOptions.shinyRateLvl1Custom;
+            break;
+
         default:
             shinyRateNormal = 2048;
             shinyRateLegend = 2048;
@@ -116,8 +122,15 @@ static s32 GetShinySpawnChanceDenom(s16 species)
             break;
     }
 
+    if (shinyRateNormal < CUSTOM_SHINY_RATE_MIN || shinyRateNormal > CUSTOM_SHINY_RATE_MAX)
+        shinyRateNormal = 2048;
+    if (shinyRateLegend < CUSTOM_SHINY_RATE_MIN || shinyRateLegend > CUSTOM_SHINY_RATE_MAX)
+        shinyRateLegend = 2048;
+    if (shinyRateLvl1 < CUSTOM_SHINY_RATE_MIN || shinyRateLvl1 > CUSTOM_SHINY_RATE_MAX)
+        shinyRateLvl1 = 2048;
+
     if (IsLegendaryOrMythical(species)) {
-        switch (species){
+        switch (species) {
             case MONSTER_CELEBI:
             case MONSTER_JIRACHI:
                 return shinyRateLvl1;
