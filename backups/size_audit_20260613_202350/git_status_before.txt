@@ -1,6 +1,0 @@
-?? SpriteCollab/
-?? backups/
-?? scripts/audit_generated_kao_inc_sizes.py
-?? scripts/audit_kao_size.sh
-?? scripts/audit_size_baseline.sh
-?? tools/reduce_kao_generated_to_normal_only.py
