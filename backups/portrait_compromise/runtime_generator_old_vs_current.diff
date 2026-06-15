@@ -1,0 +1,32 @@
+diff --git a/backups/portrait_compromise/recovered_runtime_sources/gen_spritecollab_runtime_portraits.old.py b/tools/gen_spritecollab_runtime_portraits.py
+index b7bba3b7a..83d48c1ec 100644
+--- a/backups/portrait_compromise/recovered_runtime_sources/gen_spritecollab_runtime_portraits.old.py
++++ b/tools/gen_spritecollab_runtime_portraits.py
+@@ -441,7 +441,7 @@ def convert_variant_assets(variant: Variant, output_root: Path, project_root: Pa
+ 
+ def write_runtime_asm(variants: Sequence[Variant], assets: Dict[Variant, Tuple[Path, Path]], asm_path: Path, project_root: Path) -> None:
+     lines: List[str] = [
+-        '    .section .generated_kao_runtime, "a"',
++        '    .section .rodata',
+         "    .align 2",
+         "",
+         '.include "data/kao_macros.inc"',
+@@ -470,6 +470,18 @@ def write_runtime_asm(variants: Sequence[Variant], assets: Dict[Variant, Tuple[P
+ 
+         lines.append("")
+ 
++    aligned_lines = []
++    for line in lines:
++        if (
++            line.startswith("sKaoRuntime")
++            or line.startswith("gPortraitsRuntime")
++        ):
++            if not aligned_lines or aligned_lines[-1] != "    .align 2":
++                aligned_lines.append("    .align 2")
++        aligned_lines.append(line)
++
++    lines = aligned_lines
++
+     asm_path.write_text("\n".join(lines), encoding="utf-8", newline="\n")
+ 
+ 

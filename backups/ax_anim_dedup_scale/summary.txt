@@ -1,0 +1,4 @@
+Duplicate ax_anim groups: 2,906
+Duplicate ax_anim arrays: 22,632
+Projected ROM savings: 2,233,260 bytes
+Backup dir: backups/ax_anim_dedup_scale/20260613_230155

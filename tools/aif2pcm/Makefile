@@ -1,24 +1,17 @@
-CC := /c/msys64/mingw64/bin/gcc
-
-CFLAGS = -Wall -Wextra -Wno-switch -Werror -std=c11 -O2
-
-LIBS = -lm
-
-SRCS = main.c extended.c
-
-ifeq ($(OS),Windows_NT)
-EXE := .exe
-else
-EXE :=
-endif
+HOSTCC ?= /c/msys64/mingw64/bin/gcc
+CC := $(HOSTCC)
+CFLAGS := -Wall -Wextra -Wno-switch -Werror -std=c11 -O2 -pipe
+LIBS := -lm
 
 .PHONY: all clean
 
-all: aif2pcm$(EXE)
-	@:
-
-aif2pcm$(EXE): $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o $@ $(LDFLAGS) $(LIBS)
+all: aif2pcm
 
 clean:
-	$(RM) aif2pcm aif2pcm.exe
+	rm -f aif2pcm aif2pcm.exe *.o *.i *.s
+
+aif2pcm: main.o extended.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@

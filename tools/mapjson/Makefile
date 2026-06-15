@@ -1,8 +1,10 @@
-CXX := /c/msys64/mingw64/bin/g++
+HOSTCXX ?= /c/msys64/mingw64/bin/g++
+CXX := $(HOSTCXX)
 
-CXXFLAGS := -Wall -std=c++11 -O2
+CXXFLAGS := -Wall -std=c++11 -O2 -pipe
 
 SRCS := json11.cpp mapjson.cpp
+OBJS := $(SRCS:.cpp=.o)
 
 HEADERS := mapjson.h
 
@@ -17,8 +19,11 @@ endif
 all: mapjson$(EXE)
 	@:
 
-mapjson$(EXE): $(SRCS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(SRCS) -o $@ $(LDFLAGS)
+mapjson$(EXE): $(OBJS) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) mapjson mapjson.exe
+	$(RM) mapjson mapjson.exe $(OBJS) *.i *.s

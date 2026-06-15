@@ -1,0 +1,33 @@
+
+pmd_red_modern.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 ewram         0003bdd0  02000000  02000000  00001000  2**2
+                  ALLOC
+  1 iwram         0000543e  03000000  03000000  00001000  2**2
+                  ALLOC
+  2 .text         000a3d78  08000000  08000000  00001000  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  3 .rodata       01e2b4b8  080a3d78  080a3d78  000a4d78  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 ewram_init    0000045c  0203bdd0  09ecf230  01ed0dd0  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 iwram_init    0000051c  03005440  09ecf68c  01ed1440  2**2
+                  CONTENTS, ALLOC, LOAD, CODE
+  6 iwram_lib     00002090  0300595c  09ecfba8  01ed195c  2**2
+                  ALLOC
+  7 sound_data    0006bd74  09ecfba8  09ecfba8  01ed1ba8  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  8 .debug_aranges 000000a0  00000000  00000000  01f3d920  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+  9 .debug_info   0000011e  00000000  00000000  01f3d9c0  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 10 .debug_abbrev 000000c6  00000000  00000000  01f3dade  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 11 .debug_line   000001dd  00000000  00000000  01f3dba4  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 12 .debug_frame  000000c0  00000000  00000000  01f3dd84  2**2
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 13 .debug_str    0000013e  00000000  00000000  01f3de44  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS

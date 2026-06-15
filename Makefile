@@ -86,9 +86,42 @@ SCANINC   := tools/scaninc/scaninc$(EXE)
 RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 DUNGEONJSON := tools/dungeonjson/dungeonjson$(EXE)
 
+SPRITECOLLAB_PORTRAITS := SpriteCollab/portrait
+GEN_SPRITECOLLAB_RUNTIME_PORTRAITS := tools/gen_spritecollab_runtime_portraits.py
+GENERATED_KAO_RUNTIME_ASM := data/generated_kao_runtime_sbin.s
+GENERATED_KAO_TABLE_HEADER := include/generated_kao_table.h
+GENERATED_KAO_TABLE_SRC := src/data/generated_kao_table.c
+GBAGFX := tools/gbagfx/gbagfx$(EXE)
+DOPX := tools/dopx/ppmd_dopx$(EXE)
+
+GENERATED_KAO_RUNTIME_OUTPUTS := \
+        $(GENERATED_KAO_RUNTIME_ASM) \
+        $(GENERATED_KAO_TABLE_HEADER) \
+        $(GENERATED_KAO_TABLE_SRC)
+
+
+SPRITECOLLAB_PORTRAITS := SpriteCollab/portrait
+GENERATED_KAO_DIR := data/kao_generated
+GEN_SPRITECOLLAB_PORTRAITS := tools/gen_spritecollab_portraits.py
+DOPX := tools/dopx/ppmd_dopx$(EXE)
+
+GENERATED_MONSTER_FILE_DECLS := include/generated_monster_file_decls.h
+GENERATED_MONSTER_FILE_ENTRIES := include/generated_monster_file_entries.h
+GENERATED_PORTRAIT_TABLE_HEADER := include/generated_portrait_table.h
+GENERATED_PORTRAIT_TABLE_SRC := src/data/generated_portrait_table.c
+GENERATED_KAO_INCLUDES := $(GENERATED_KAO_DIR)/includes.inc
+
+GENERATED_PORTRAIT_OUTPUTS := \
+        $(GENERATED_MONSTER_FILE_DECLS) \
+        $(GENERATED_MONSTER_FILE_ENTRIES) \
+        $(GENERATED_PORTRAIT_TABLE_HEADER) \
+        $(GENERATED_PORTRAIT_TABLE_SRC) \
+        $(GENERATED_KAO_INCLUDES)
+
+
 PERL := perl
 
-TOOLDIRS := $(filter-out tools/agbcc tools/binutils,$(wildcard tools/*))
+TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/dopx tools/__pycache__,$(shell find tools -mindepth 1 -maxdepth 1 -type d))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
 TOOLS = $(foreach tool,$(TOOLBASE),tools/$(tool)/$(tool)$(EXE))
 
@@ -274,6 +307,25 @@ tidy:
 	$(RM) -f $(DUNGEON_ITEM)
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
 	@$(MAKE) clean -C libagbsyscall
+
+# Generated SpriteCollab portrait outputs.
+$(GENERATED_PORTRAIT_OUTPUTS): $(GEN_SPRITECOLLAB_PORTRAITS)
+	$(PYTHON) $(GEN_SPRITECOLLAB_PORTRAITS) --input $(SPRITECOLLAB_PORTRAITS) --output $(GENERATED_KAO_DIR) --gbagfx $(GBAGFX) --dopx $(DOPX)
+
+# These source files include generated portrait headers/tables.
+$(C_BUILDDIR)/pokemon.o: $(GENERATED_PORTRAIT_TABLE_HEADER)
+$(C_BUILDDIR)/monster_files_table.o: $(GENERATED_MONSTER_FILE_DECLS) $(GENERATED_MONSTER_FILE_ENTRIES)
+$(C_BUILDDIR)/data/generated_portrait_table.o: $(GENERATED_PORTRAIT_TABLE_SRC) $(GENERATED_PORTRAIT_TABLE_HEADER)
+
+# Regenerate SpriteCollab portrait includes before assembling generated portrait data.
+$(DATA_ASM_BUILDDIR)/generated_kao_sbin.o: $(GENERATED_KAO_INCLUDES)
+
+# Runtime generated SpriteCollab dialogue portrait data.
+$(GENERATED_KAO_RUNTIME_OUTPUTS): $(GEN_SPRITECOLLAB_RUNTIME_PORTRAITS)
+	py -3 $(GEN_SPRITECOLLAB_RUNTIME_PORTRAITS) --input-root $(SPRITECOLLAB_PORTRAITS) --output-root data/kao_generated_runtime --asm-path $(GENERATED_KAO_RUNTIME_ASM) --include-dir include --src-data-dir src/data --gbagfx $(GBAGFX) --dopx $(DOPX)
+
+$(DATA_ASM_BUILDDIR)/generated_kao_runtime_sbin.o: $(GENERATED_KAO_RUNTIME_ASM)
+$(C_BUILDDIR)/data/generated_kao_table.o: $(GENERATED_KAO_TABLE_SRC) $(GENERATED_KAO_TABLE_HEADER)
 
 define scaninc
 	( paths="$$($(SCANINC) $1 $< | tr -d '\r' | tr '\n' ' ')"; \

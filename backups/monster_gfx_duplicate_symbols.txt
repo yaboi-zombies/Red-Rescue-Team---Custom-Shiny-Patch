@@ -1,0 +1,633 @@
+Monster gfx objects scanned:        43
+Gfx frame symbols scanned:          34,830
+Gfx frame bytes scanned:            8,035,104
+Exact duplicate groups:             790
+Potential exact-duplicate savings:  96,512 bytes
+Unreadable symbols:                 0
+
+Largest duplicate groups:
+
+size=832 count=2 waste=832
+  sRayquazaGfx115_4                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx115_4           build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=22 waste=672
+  sKrabbyGfx39_3                      build/pmd_red_modern/src/monster_gfx10.o
+  sKrabbyGfx32_3                      build/pmd_red_modern/src/monster_gfx10.o
+  sKrabbyGfx30_2                      build/pmd_red_modern/src/monster_gfx10.o
+  sOmastarGfx25_1                     build/pmd_red_modern/src/monster_gfx14.o
+  sAerodactylGfx19                    build/pmd_red_modern/src/monster_gfx15.o
+  sChinchouGfx16_2                    build/pmd_red_modern/src/monster_gfx17.o
+  sFlaaffyGfx22_3                     build/pmd_red_modern/src/monster_gfx18.o
+  sJumpluffGfx25_3                    build/pmd_red_modern/src/monster_gfx19.o
+  sKingdraGfx35                       build/pmd_red_modern/src/monster_gfx26.o
+  sHoOhGfx63_8                        build/pmd_red_modern/src/monster_gfx28.o
+  sHoOhGfx12_8                        build/pmd_red_modern/src/monster_gfx28.o
+  sPikachuGfx25_3                     build/pmd_red_modern/src/monster_gfx3.o
+  sPikachuGfx20_3                     build/pmd_red_modern/src/monster_gfx3.o
+  sManectricGfx19                     build/pmd_red_modern/src/monster_gfx34.o
+  sManectricGfx17                     build/pmd_red_modern/src/monster_gfx34.o
+  sGulpinGfx43_3                      build/pmd_red_modern/src/monster_gfx35.o
+  sShelgonGfx21_2                     build/pmd_red_modern/src/monster_gfx40.o
+  sShelgonGfx19_2                     build/pmd_red_modern/src/monster_gfx40.o
+  sSealeoGfx46                        build/pmd_red_modern/src/monster_gfx40.o
+  sKyogreGfx47                        build/pmd_red_modern/src/monster_gfx41.o
+  ... 2 more
+
+size=64 count=11 waste=640
+  sKoffingGfx34                       build/pmd_red_modern/src/monster_gfx11.o
+  sRaticateGfx24                      build/pmd_red_modern/src/monster_gfx2.o
+  sSneaselGfx66                       build/pmd_red_modern/src/monster_gfx24.o
+  sParasectGfx39                      build/pmd_red_modern/src/monster_gfx5.o
+  sParasectGfx34                      build/pmd_red_modern/src/monster_gfx5.o
+  sParasectGfx31                      build/pmd_red_modern/src/monster_gfx5.o
+  sParasectGfx28                      build/pmd_red_modern/src/monster_gfx5.o
+  sParasectGfx25                      build/pmd_red_modern/src/monster_gfx5.o
+  sParasectGfx16                      build/pmd_red_modern/src/monster_gfx5.o
+  sPoliwagGfx24                       build/pmd_red_modern/src/monster_gfx6.o
+  sPoliwagGfx20                       build/pmd_red_modern/src/monster_gfx6.o
+
+size=128 count=6 waste=640
+  sSableyeGfx55                       build/pmd_red_modern/src/monster_gfx33.o
+  sCacturneGfx48                      build/pmd_red_modern/src/monster_gfx36.o
+  sDusclopsGfx79                      build/pmd_red_modern/src/monster_gfx39.o
+  sDuskullGfx35                       build/pmd_red_modern/src/monster_gfx39.o
+  sDeoxysSpeedGfx57                   build/pmd_red_modern/src/monster_gfx42.o
+  sDeoxysAttackGfx74                  build/pmd_red_modern/src/monster_gfx42.o
+
+size=128 count=6 waste=640
+  sSableyeGfx54                       build/pmd_red_modern/src/monster_gfx33.o
+  sCacturneGfx47                      build/pmd_red_modern/src/monster_gfx36.o
+  sDusclopsGfx78                      build/pmd_red_modern/src/monster_gfx39.o
+  sDuskullGfx34                       build/pmd_red_modern/src/monster_gfx39.o
+  sDeoxysSpeedGfx56                   build/pmd_red_modern/src/monster_gfx42.o
+  sDeoxysAttackGfx73                  build/pmd_red_modern/src/monster_gfx42.o
+
+size=128 count=6 waste=640
+  sSableyeGfx53                       build/pmd_red_modern/src/monster_gfx33.o
+  sCacturneGfx46                      build/pmd_red_modern/src/monster_gfx36.o
+  sDusclopsGfx77                      build/pmd_red_modern/src/monster_gfx39.o
+  sDuskullGfx33                       build/pmd_red_modern/src/monster_gfx39.o
+  sDeoxysSpeedGfx55                   build/pmd_red_modern/src/monster_gfx42.o
+  sDeoxysAttackGfx72                  build/pmd_red_modern/src/monster_gfx42.o
+
+size=32 count=19 waste=576
+  sCuboneGfx59_3                      build/pmd_red_modern/src/monster_gfx11.o
+  sCuboneGfx41_3                      build/pmd_red_modern/src/monster_gfx11.o
+  sSeadraGfx21_3                      build/pmd_red_modern/src/monster_gfx12.o
+  sHorseaGfx20_3                      build/pmd_red_modern/src/monster_gfx12.o
+  sDragonairGfx123                    build/pmd_red_modern/src/monster_gfx15.o
+  sZapdosGfx151_2                     build/pmd_red_modern/src/monster_gfx15.o
+  sMeganiumGfx44                      build/pmd_red_modern/src/monster_gfx16.o
+  sKingdraGfx31                       build/pmd_red_modern/src/monster_gfx26.o
+  sTreeckoGfx42_3                     build/pmd_red_modern/src/monster_gfx28.o
+  sTreeckoGfx37_3                     build/pmd_red_modern/src/monster_gfx28.o
+  sTreeckoGfx23_3                     build/pmd_red_modern/src/monster_gfx28.o
+  sShedinjaGfx16_3                    build/pmd_red_modern/src/monster_gfx32.o
+  sManectricGfx11                     build/pmd_red_modern/src/monster_gfx34.o
+  sMedititeGfx26_1                    build/pmd_red_modern/src/monster_gfx34.o
+  sTorkoalGfx17                       build/pmd_red_modern/src/monster_gfx35.o
+  sCastformSunnyGfx17_3               build/pmd_red_modern/src/monster_gfx38.o
+  sCastformSnowyGfx31_3               build/pmd_red_modern/src/monster_gfx38.o
+  sFeebasGfx16_3                      build/pmd_red_modern/src/monster_gfx38.o
+  sPonytaGfx21_3                      build/pmd_red_modern/src/monster_gfx8.o
+
+size=576 count=2 waste=576
+  sRayquazaGfx211_2                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx211_2           build/pmd_red_modern/src/monster_gfx43.o
+
+size=576 count=2 waste=576
+  sRayquazaGfx173_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx173_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=576 count=2 waste=576
+  sRayquazaGfx168_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx168_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=18 waste=544
+  sStarmieGfx31_2                     build/pmd_red_modern/src/monster_gfx13.o
+  sStarmieGfx30_3                     build/pmd_red_modern/src/monster_gfx13.o
+  sStarmieGfx28_1                     build/pmd_red_modern/src/monster_gfx13.o
+  sStarmieGfx27_1                     build/pmd_red_modern/src/monster_gfx13.o
+  sAerodactylGfx32_3                  build/pmd_red_modern/src/monster_gfx15.o
+  sKabutopsGfx29_2                    build/pmd_red_modern/src/monster_gfx15.o
+  sPorygon2Gfx18_4                    build/pmd_red_modern/src/monster_gfx26.o
+  sPupitarGfx21_1                     build/pmd_red_modern/src/monster_gfx28.o
+  sMakuhitaGfx26_2                    build/pmd_red_modern/src/monster_gfx33.o
+  sGulpinGfx41_2                      build/pmd_red_modern/src/monster_gfx35.o
+  sDusclopsGfx67_1                    build/pmd_red_modern/src/monster_gfx39.o
+  sNinetalesGfx35_3                   build/pmd_red_modern/src/monster_gfx4.o
+  sLatiosGfx30                        build/pmd_red_modern/src/monster_gfx41.o
+  sLatiosGfx26                        build/pmd_red_modern/src/monster_gfx41.o
+  sVileplumeGfx19_2                   build/pmd_red_modern/src/monster_gfx5.o
+  sGloomGfx32_3                       build/pmd_red_modern/src/monster_gfx5.o
+  sGloomGfx28_2                       build/pmd_red_modern/src/monster_gfx5.o
+  sTentacruelGfx20_4                  build/pmd_red_modern/src/monster_gfx8.o
+
+size=32 count=18 waste=544
+  sZapdosGfx155                       build/pmd_red_modern/src/monster_gfx15.o
+  sSuicuneGfx79                       build/pmd_red_modern/src/monster_gfx27.o
+  sSmoochumGfx36_3                    build/pmd_red_modern/src/monster_gfx27.o
+  sSpearowGfx26_3                     build/pmd_red_modern/src/monster_gfx3.o
+  sPelipperGfx34                      build/pmd_red_modern/src/monster_gfx31.o
+  sSlakothGfx23_2                     build/pmd_red_modern/src/monster_gfx32.o
+  sNumelGfx18_2                       build/pmd_red_modern/src/monster_gfx35.o
+  sBanetteGfx38_3                     build/pmd_red_modern/src/monster_gfx39.o
+  sWigglytuffGfx17_3                  build/pmd_red_modern/src/monster_gfx4.o
+  sNinetalesGfx22_1                   build/pmd_red_modern/src/monster_gfx4.o
+  sWalreinGfx45                       build/pmd_red_modern/src/monster_gfx40.o
+  sWalreinGfx31                       build/pmd_red_modern/src/monster_gfx40.o
+  sSealeoGfx45                        build/pmd_red_modern/src/monster_gfx40.o
+  sRayquazaCutsceneGfx286             build/pmd_red_modern/src/monster_gfx43.o
+  sVileplumeGfx18_3                   build/pmd_red_modern/src/monster_gfx5.o
+  sSlowbroGfx31_1                     build/pmd_red_modern/src/monster_gfx8.o
+  sTentacruelGfx32_2                  build/pmd_red_modern/src/monster_gfx8.o
+  sTentacruelGfx18_3                  build/pmd_red_modern/src/monster_gfx8.o
+
+size=544 count=2 waste=544
+  sRayquazaGfx164_3                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx164_3           build/pmd_red_modern/src/monster_gfx43.o
+
+size=64 count=9 waste=512
+  sSeadraGfx20_1                      build/pmd_red_modern/src/monster_gfx12.o
+  sFlaaffyGfx35_3                     build/pmd_red_modern/src/monster_gfx18.o
+  sAipomGfx26_3                       build/pmd_red_modern/src/monster_gfx19.o
+  sSudowoodoGfx45_3                   build/pmd_red_modern/src/monster_gfx19.o
+  sSpearowGfx30_3                     build/pmd_red_modern/src/monster_gfx3.o
+  sSpearowGfx29_2                     build/pmd_red_modern/src/monster_gfx3.o
+  sCastformSnowyGfx40_3               build/pmd_red_modern/src/monster_gfx38.o
+  sJigglypuffGfx24_3                  build/pmd_red_modern/src/monster_gfx4.o
+  sMachopGfx25_3                      build/pmd_red_modern/src/monster_gfx7.o
+
+size=128 count=5 waste=512
+  sSableyeGfx56                       build/pmd_red_modern/src/monster_gfx33.o
+  sDusclopsGfx80                      build/pmd_red_modern/src/monster_gfx39.o
+  sDuskullGfx36                       build/pmd_red_modern/src/monster_gfx39.o
+  sDeoxysSpeedGfx58                   build/pmd_red_modern/src/monster_gfx42.o
+  sDeoxysAttackGfx75                  build/pmd_red_modern/src/monster_gfx42.o
+
+size=512 count=2 waste=512
+  sMinunGfx39                         build/pmd_red_modern/src/monster_gfx34.o
+  sPlusleGfx39                        build/pmd_red_modern/src/monster_gfx34.o
+
+size=512 count=2 waste=512
+  sMinunGfx33                         build/pmd_red_modern/src/monster_gfx34.o
+  sPlusleGfx33                        build/pmd_red_modern/src/monster_gfx34.o
+
+size=512 count=2 waste=512
+  sMinunGfx32                         build/pmd_red_modern/src/monster_gfx34.o
+  sPlusleGfx32                        build/pmd_red_modern/src/monster_gfx34.o
+
+size=512 count=2 waste=512
+  sMinunGfx30                         build/pmd_red_modern/src/monster_gfx34.o
+  sPlusleGfx30                        build/pmd_red_modern/src/monster_gfx34.o
+
+size=256 count=3 waste=512
+  sMetagrossGfx25                     build/pmd_red_modern/src/monster_gfx41.o
+  sMetagrossGfx13                     build/pmd_red_modern/src/monster_gfx41.o
+  sMetagrossGfx1                      build/pmd_red_modern/src/monster_gfx41.o
+
+size=32 count=16 waste=480
+  sWeezingGfx49                       build/pmd_red_modern/src/monster_gfx11.o
+  sLickitungGfx22                     build/pmd_red_modern/src/monster_gfx11.o
+  sStarmieGfx29_3                     build/pmd_red_modern/src/monster_gfx13.o
+  sTotodileGfx26_3                    build/pmd_red_modern/src/monster_gfx16.o
+  sFlaaffyGfx29_3                     build/pmd_red_modern/src/monster_gfx18.o
+  sFlaaffyGfx28_3                     build/pmd_red_modern/src/monster_gfx18.o
+  sTreeckoGfx43_3                     build/pmd_red_modern/src/monster_gfx28.o
+  sTreeckoGfx38_3                     build/pmd_red_modern/src/monster_gfx28.o
+  sLugiaGfx80_1                       build/pmd_red_modern/src/monster_gfx28.o
+  sCastformRainyGfx20_3               build/pmd_red_modern/src/monster_gfx38.o
+  sCastformSnowyGfx35_3               build/pmd_red_modern/src/monster_gfx38.o
+  sClefairyGfx40_3                    build/pmd_red_modern/src/monster_gfx4.o
+  sClefairyGfx27_3                    build/pmd_red_modern/src/monster_gfx4.o
+  sBagonGfx35_4                       build/pmd_red_modern/src/monster_gfx40.o
+  sLatiosGfx49_1                      build/pmd_red_modern/src/monster_gfx41.o
+  sRayquazaGfx92_2                    build/pmd_red_modern/src/monster_gfx42.o
+
+size=480 count=2 waste=480
+  sRayquazaGfx217_2                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx217_2           build/pmd_red_modern/src/monster_gfx43.o
+
+size=480 count=2 waste=480
+  sRayquazaGfx196_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx196_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=480 count=2 waste=480
+  sRayquazaGfx98_4                    build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx98_4            build/pmd_red_modern/src/monster_gfx43.o
+
+size=64 count=8 waste=448
+  sOnixGfx27                          build/pmd_red_modern/src/monster_gfx10.o
+  sKoffingGfx46                       build/pmd_red_modern/src/monster_gfx11.o
+  sTangelaGfx19                       build/pmd_red_modern/src/monster_gfx12.o
+  sXatuGfx27                          build/pmd_red_modern/src/monster_gfx18.o
+  sXatuGfx25                          build/pmd_red_modern/src/monster_gfx18.o
+  sTeddiursaGfx49                     build/pmd_red_modern/src/monster_gfx25.o
+  sTeddiursaGfx45                     build/pmd_red_modern/src/monster_gfx25.o
+  sSpearowGfx16                       build/pmd_red_modern/src/monster_gfx3.o
+
+size=32 count=15 waste=448
+  sHorseaGfx29_3                      build/pmd_red_modern/src/monster_gfx12.o
+  sStarmieGfx18_3                     build/pmd_red_modern/src/monster_gfx13.o
+  sArticunoGfx49                      build/pmd_red_modern/src/monster_gfx15.o
+  sMareepGfx27_3                      build/pmd_red_modern/src/monster_gfx18.o
+  sPolitoedGfx32_4                    build/pmd_red_modern/src/monster_gfx19.o
+  sPolitoedGfx31_2                    build/pmd_red_modern/src/monster_gfx19.o
+  sCascoonGfx12_3                     build/pmd_red_modern/src/monster_gfx30.o
+  sCorphishGfx32_2                    build/pmd_red_modern/src/monster_gfx37.o
+  sCorphishGfx22_2                    build/pmd_red_modern/src/monster_gfx37.o
+  sCorphishGfx20_3                    build/pmd_red_modern/src/monster_gfx37.o
+  sCastformSunnyGfx24_3               build/pmd_red_modern/src/monster_gfx38.o
+  sBanetteGfx29_3                     build/pmd_red_modern/src/monster_gfx39.o
+  sJigglypuffGfx19_3                  build/pmd_red_modern/src/monster_gfx4.o
+  sGroudonGfx9_6                      build/pmd_red_modern/src/monster_gfx42.o
+  sGolemGfx23_3                       build/pmd_red_modern/src/monster_gfx8.o
+
+size=32 count=15 waste=448
+  sVaporeonGfx24                      build/pmd_red_modern/src/monster_gfx14.o
+  sPidgeotGfx19                       build/pmd_red_modern/src/monster_gfx2.o
+  sRemoraidGfx23                      build/pmd_red_modern/src/monster_gfx25.o
+  sSkarmoryGfx31                      build/pmd_red_modern/src/monster_gfx26.o
+  sSuicuneGfx74                       build/pmd_red_modern/src/monster_gfx27.o
+  sTaillowGfx21                       build/pmd_red_modern/src/monster_gfx31.o
+  sNinjaskGfx22                       build/pmd_red_modern/src/monster_gfx32.o
+  sVigorothGfx40                      build/pmd_red_modern/src/monster_gfx32.o
+  sNidoqueenGfx16                     build/pmd_red_modern/src/monster_gfx4.o
+  sHuntailGfx71                       build/pmd_red_modern/src/monster_gfx40.o
+  sRegiceGfx33                        build/pmd_red_modern/src/monster_gfx41.o
+  sMetangGfx32                        build/pmd_red_modern/src/monster_gfx41.o
+  sDeoxysAttackGfx10                  build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaGfx98_1                    build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx98_1            build/pmd_red_modern/src/monster_gfx43.o
+
+size=448 count=2 waste=448
+  sRayquazaGfx108                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx108             build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=14 waste=416
+  sVaporeonGfx46                      build/pmd_red_modern/src/monster_gfx14.o
+  sSkarmoryGfx76                      build/pmd_red_modern/src/monster_gfx26.o
+  sMarshtompGfx21                     build/pmd_red_modern/src/monster_gfx29.o
+  sSpearowGfx24                       build/pmd_red_modern/src/monster_gfx3.o
+  sNuzleafGfx19                       build/pmd_red_modern/src/monster_gfx30.o
+  sRoseliaGfx33                       build/pmd_red_modern/src/monster_gfx34.o
+  sSharpedoGfx47                      build/pmd_red_modern/src/monster_gfx35.o
+  sDeoxysAttackGfx15                  build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaGfx229                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaGfx221                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaGfx137                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx229             build/pmd_red_modern/src/monster_gfx43.o
+  sRayquazaCutsceneGfx137             build/pmd_red_modern/src/monster_gfx43.o
+  sParasGfx45                         build/pmd_red_modern/src/monster_gfx5.o
+
+size=416 count=2 waste=416
+  sRayquazaGfx202_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx202_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=416 count=2 waste=416
+  sRayquazaGfx116_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx116_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=416 count=2 waste=416
+  sRayquazaGfx106                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx106             build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=13 waste=384
+  sCharizardGfx40                     build/pmd_red_modern/src/monster_gfx1.o
+  sTaurosGfx30_2                      build/pmd_red_modern/src/monster_gfx13.o
+  sDragoniteGfx34                     build/pmd_red_modern/src/monster_gfx15.o
+  sArticunoGfx69_3                    build/pmd_red_modern/src/monster_gfx15.o
+  sPidgeyGfx21_3                      build/pmd_red_modern/src/monster_gfx2.o
+  sSneaselGfx94                       build/pmd_red_modern/src/monster_gfx24.o
+  sSkarmoryGfx13                      build/pmd_red_modern/src/monster_gfx26.o
+  sMantineGfx78                       build/pmd_red_modern/src/monster_gfx26.o
+  sHoOhGfx8_7                         build/pmd_red_modern/src/monster_gfx28.o
+  sSwabluGfx20                        build/pmd_red_modern/src/monster_gfx36.o
+  sSeviperGfx32                       build/pmd_red_modern/src/monster_gfx37.o
+  sCastformSunnyGfx22_3               build/pmd_red_modern/src/monster_gfx38.o
+  sFeebasGfx19_3                      build/pmd_red_modern/src/monster_gfx38.o
+
+size=128 count=4 waste=384
+  sExeggcuteGfx49                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx48                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx47                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx46                     build/pmd_red_modern/src/monster_gfx11.o
+
+size=128 count=4 waste=384
+  sExeggcuteGfx44                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx43                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx42                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx41                     build/pmd_red_modern/src/monster_gfx11.o
+
+size=128 count=4 waste=384
+  sExeggcuteGfx39                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx38                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx37                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx36                     build/pmd_red_modern/src/monster_gfx11.o
+
+size=128 count=4 waste=384
+  sExeggcuteGfx34                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx32                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx31                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx30                     build/pmd_red_modern/src/monster_gfx11.o
+
+size=128 count=4 waste=384
+  sExeggcuteGfx28                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx27                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx26                     build/pmd_red_modern/src/monster_gfx11.o
+  sExeggcuteGfx25                     build/pmd_red_modern/src/monster_gfx11.o
+
+size=32 count=13 waste=384
+  sChanseyGfx32_3                     build/pmd_red_modern/src/monster_gfx12.o
+  sLanturnGfx18_2                     build/pmd_red_modern/src/monster_gfx18.o
+  sWobbuffetGfx23_3                   build/pmd_red_modern/src/monster_gfx23.o
+  sPhanpyGfx19_3                      build/pmd_red_modern/src/monster_gfx26.o
+  sTreeckoGfx41_3                     build/pmd_red_modern/src/monster_gfx28.o
+  sTreeckoGfx36_3                     build/pmd_red_modern/src/monster_gfx28.o
+  sMasquerainGfx23_3                  build/pmd_red_modern/src/monster_gfx31.o
+  sWynautGfx24_3                      build/pmd_red_modern/src/monster_gfx39.o
+  sBagonGfx35_3                       build/pmd_red_modern/src/monster_gfx40.o
+  sJirachiGfx21_1                     build/pmd_red_modern/src/monster_gfx42.o
+  sGroudonGfx19_6                     build/pmd_red_modern/src/monster_gfx42.o
+  sOddishGfx20_2                      build/pmd_red_modern/src/monster_gfx5.o
+  sMukGfx28_2                         build/pmd_red_modern/src/monster_gfx9.o
+
+size=96 count=5 waste=384
+  sJumpluffGfx35                      build/pmd_red_modern/src/monster_gfx19.o
+  sJumpluffGfx34                      build/pmd_red_modern/src/monster_gfx19.o
+  sJumpluffGfx27                      build/pmd_red_modern/src/monster_gfx19.o
+  sJumpluffGfx26                      build/pmd_red_modern/src/monster_gfx19.o
+  sJumpluffGfx20                      build/pmd_red_modern/src/monster_gfx19.o
+
+size=384 count=2 waste=384
+  sRayquazaGfx212                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx212             build/pmd_red_modern/src/monster_gfx43.o
+
+size=384 count=2 waste=384
+  sRayquazaGfx105_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx105_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=12 waste=352
+  sKrabbyGfx24_3                      build/pmd_red_modern/src/monster_gfx10.o
+  sCuboneGfx25_3                      build/pmd_red_modern/src/monster_gfx11.o
+  sZapdosGfx149_1                     build/pmd_red_modern/src/monster_gfx15.o
+  sHoppipGfx22_3                      build/pmd_red_modern/src/monster_gfx19.o
+  sHoppipGfx20_3                      build/pmd_red_modern/src/monster_gfx19.o
+  sSeedotGfx27_1                      build/pmd_red_modern/src/monster_gfx30.o
+  sGardevoirGfx19_3                   build/pmd_red_modern/src/monster_gfx31.o
+  sShedinjaGfx25_3                    build/pmd_red_modern/src/monster_gfx32.o
+  sNinetalesGfx33_3                   build/pmd_red_modern/src/monster_gfx4.o
+  sNinetalesGfx32_3                   build/pmd_red_modern/src/monster_gfx4.o
+  sDeoxysNormalGfx39                  build/pmd_red_modern/src/monster_gfx42.o
+  sGloomGfx33_3                       build/pmd_red_modern/src/monster_gfx5.o
+
+size=32 count=12 waste=352
+  sHypnoGfx55                         build/pmd_red_modern/src/monster_gfx10.o
+  sCroconawGfx28                      build/pmd_red_modern/src/monster_gfx16.o
+  sMeganiumGfx17                      build/pmd_red_modern/src/monster_gfx16.o
+  sBayleefGfx29                       build/pmd_red_modern/src/monster_gfx16.o
+  sGirafarigGfx31                     build/pmd_red_modern/src/monster_gfx23.o
+  sRoseliaGfx29                       build/pmd_red_modern/src/monster_gfx34.o
+  sLatiosGfx88                        build/pmd_red_modern/src/monster_gfx41.o
+  sDeoxysAttackGfx116                 build/pmd_red_modern/src/monster_gfx42.o
+  sPrimeapeGfx41                      build/pmd_red_modern/src/monster_gfx6.o
+  sDewgongGfx24                       build/pmd_red_modern/src/monster_gfx9.o
+  sDodrioGfx20                        build/pmd_red_modern/src/monster_gfx9.o
+  sDodrioGfx20_1                      build/pmd_red_modern/src/monster_gfx9.o
+
+size=32 count=12 waste=352
+  sWeezingGfx73                       build/pmd_red_modern/src/monster_gfx11.o
+  sMarowakGfx63                       build/pmd_red_modern/src/monster_gfx11.o
+  sGoldeenGfx19                       build/pmd_red_modern/src/monster_gfx12.o
+  sTyphlosionGfx49                    build/pmd_red_modern/src/monster_gfx16.o
+  sFurretGfx3                         build/pmd_red_modern/src/monster_gfx17.o
+  sTeddiursaGfx40                     build/pmd_red_modern/src/monster_gfx25.o
+  sHariyamaGfx27                      build/pmd_red_modern/src/monster_gfx33.o
+  sMinunGfx18                         build/pmd_red_modern/src/monster_gfx34.o
+  sPlusleGfx18                        build/pmd_red_modern/src/monster_gfx34.o
+  sArmaldoGfx29                       build/pmd_red_modern/src/monster_gfx38.o
+  sDusclopsGfx97                      build/pmd_red_modern/src/monster_gfx39.o
+  sJirachiGfx19                       build/pmd_red_modern/src/monster_gfx42.o
+
+size=352 count=2 waste=352
+  sRayquazaGfx208_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx208_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=352 count=2 waste=352
+  sRayquazaGfx208_2                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx208_2           build/pmd_red_modern/src/monster_gfx43.o
+
+size=352 count=2 waste=352
+  sRayquazaGfx196_2                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx196_2           build/pmd_red_modern/src/monster_gfx43.o
+
+size=352 count=2 waste=352
+  sRayquazaGfx191_2                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx191_2           build/pmd_red_modern/src/monster_gfx43.o
+
+size=352 count=2 waste=352
+  sRayquazaGfx156_2                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx156_2           build/pmd_red_modern/src/monster_gfx43.o
+
+size=352 count=2 waste=352
+  sRayquazaGfx151_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx151_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=11 waste=320
+  sKinglerGfx81                       build/pmd_red_modern/src/monster_gfx10.o
+  sZapdosGfx62                        build/pmd_red_modern/src/monster_gfx15.o
+  sLanturnGfx18                       build/pmd_red_modern/src/monster_gfx18.o
+  sShuckleGfx33                       build/pmd_red_modern/src/monster_gfx24.o
+  sTyranitarGfx34                     build/pmd_red_modern/src/monster_gfx28.o
+  sNuzleafGfx23                       build/pmd_red_modern/src/monster_gfx30.o
+  sRoseliaGfx39                       build/pmd_red_modern/src/monster_gfx34.o
+  sRoseliaGfx35                       build/pmd_red_modern/src/monster_gfx34.o
+  sZangooseGfx41_1                    build/pmd_red_modern/src/monster_gfx36.o
+  sWynautGfx18                        build/pmd_red_modern/src/monster_gfx39.o
+  sNidoqueenGfx18                     build/pmd_red_modern/src/monster_gfx4.o
+
+size=32 count=11 waste=320
+  sDragonairGfx116                    build/pmd_red_modern/src/monster_gfx15.o
+  sSnorlaxGfx24                       build/pmd_red_modern/src/monster_gfx15.o
+  sChikoritaGfx37_3                   build/pmd_red_modern/src/monster_gfx16.o
+  sGulpinGfx31_3                      build/pmd_red_modern/src/monster_gfx35.o
+  sMiloticGfx41                       build/pmd_red_modern/src/monster_gfx38.o
+  sBanetteGfx52_3                     build/pmd_red_modern/src/monster_gfx39.o
+  sClefairyGfx26_3                    build/pmd_red_modern/src/monster_gfx4.o
+  sBagonGfx24_3                       build/pmd_red_modern/src/monster_gfx40.o
+  sMetangGfx17_2                      build/pmd_red_modern/src/monster_gfx41.o
+  sTentacruelGfx20_3                  build/pmd_red_modern/src/monster_gfx8.o
+  sTentacruelGfx19_3                  build/pmd_red_modern/src/monster_gfx8.o
+
+size=64 count=6 waste=320
+  sKabutopsGfx59                      build/pmd_red_modern/src/monster_gfx15.o
+  sPidgeotGfx28                       build/pmd_red_modern/src/monster_gfx2.o
+  sDonphanGfx30                       build/pmd_red_modern/src/monster_gfx26.o
+  sSpoinkGfx25                        build/pmd_red_modern/src/monster_gfx35.o
+  sTrapinchGfx24                      build/pmd_red_modern/src/monster_gfx36.o
+  sSphealGfx31                        build/pmd_red_modern/src/monster_gfx40.o
+
+size=320 count=2 waste=320
+  sRayquazaGfx183_1                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx183_1           build/pmd_red_modern/src/monster_gfx43.o
+
+size=320 count=2 waste=320
+  sRayquazaGfx137_2                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx137_2           build/pmd_red_modern/src/monster_gfx43.o
+
+size=320 count=2 waste=320
+  sRayquazaGfx128_4                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx128_4           build/pmd_red_modern/src/monster_gfx43.o
+
+size=320 count=2 waste=320
+  sRayquazaGfx101_3                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx101_3           build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=10 waste=288
+  sKoffingGfx30                       build/pmd_red_modern/src/monster_gfx11.o
+  sKoffingGfx26                       build/pmd_red_modern/src/monster_gfx11.o
+  sDragonairGfx117                    build/pmd_red_modern/src/monster_gfx15.o
+  sArticunoGfx15_1                    build/pmd_red_modern/src/monster_gfx15.o
+  sLugiaGfx15_1                       build/pmd_red_modern/src/monster_gfx28.o
+  sSharpedoGfx37                      build/pmd_red_modern/src/monster_gfx35.o
+  sTropiusGfx92                       build/pmd_red_modern/src/monster_gfx39.o
+  sLatiasGfx112                       build/pmd_red_modern/src/monster_gfx41.o
+  sMankeyGfx25                        build/pmd_red_modern/src/monster_gfx6.o
+  sDoduoGfx16                         build/pmd_red_modern/src/monster_gfx9.o
+
+size=32 count=10 waste=288
+  sStarmieGfx21_3                     build/pmd_red_modern/src/monster_gfx13.o
+  sZapdosGfx201                       build/pmd_red_modern/src/monster_gfx15.o
+  sZapdosGfx17                        build/pmd_red_modern/src/monster_gfx15.o
+  sFeraligatrGfx31                    build/pmd_red_modern/src/monster_gfx16.o
+  sSteelixGfx22_2                     build/pmd_red_modern/src/monster_gfx24.o
+  sLaironGfx20_2                      build/pmd_red_modern/src/monster_gfx33.o
+  sMinunGfx21_1                       build/pmd_red_modern/src/monster_gfx34.o
+  sPlusleGfx21_1                      build/pmd_red_modern/src/monster_gfx34.o
+  sSharpedoGfx40                      build/pmd_red_modern/src/monster_gfx35.o
+  sBaltoyGfx14_1                      build/pmd_red_modern/src/monster_gfx37.o
+
+size=32 count=9 waste=256
+  sCuboneGfx46_3                      build/pmd_red_modern/src/monster_gfx11.o
+  sGoldeenGfx19_2                     build/pmd_red_modern/src/monster_gfx12.o
+  sStarmieGfx32_2                     build/pmd_red_modern/src/monster_gfx13.o
+  sHoOhGfx18_1                        build/pmd_red_modern/src/monster_gfx28.o
+  sLugiaGfx60_6                       build/pmd_red_modern/src/monster_gfx28.o
+  sWailmerGfx24_2                     build/pmd_red_modern/src/monster_gfx35.o
+  sRayquazaGfx159                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx159             build/pmd_red_modern/src/monster_gfx43.o
+  sGloomGfx24_3                       build/pmd_red_modern/src/monster_gfx5.o
+
+size=32 count=9 waste=256
+  sGoldeenGfx22_3                     build/pmd_red_modern/src/monster_gfx12.o
+  sBlisseyGfx43                       build/pmd_red_modern/src/monster_gfx27.o
+  sBlisseyGfx35                       build/pmd_red_modern/src/monster_gfx27.o
+  sLugiaGfx85_1                       build/pmd_red_modern/src/monster_gfx28.o
+  sLombreGfx29_1                      build/pmd_red_modern/src/monster_gfx30.o
+  sSwellowGfx24_3                     build/pmd_red_modern/src/monster_gfx31.o
+  sSalamenceGfx8                      build/pmd_red_modern/src/monster_gfx41.o
+  sPrimeapeGfx42_1                    build/pmd_red_modern/src/monster_gfx6.o
+  sVictreebelGfx42_3                  build/pmd_red_modern/src/monster_gfx8.o
+
+size=64 count=5 waste=256
+  sChanseyGfx17                       build/pmd_red_modern/src/monster_gfx12.o
+  sRaticateGfx16                      build/pmd_red_modern/src/monster_gfx2.o
+  sGlalieGfx17                        build/pmd_red_modern/src/monster_gfx39.o
+  sSphealGfx29                        build/pmd_red_modern/src/monster_gfx40.o
+  sGloomGfx23                         build/pmd_red_modern/src/monster_gfx5.o
+
+size=256 count=2 waste=256
+  sMoltresGfx181                      build/pmd_red_modern/src/monster_gfx15.o
+  sMoltresGfx123                      build/pmd_red_modern/src/monster_gfx15.o
+
+size=32 count=9 waste=256
+  sZapdosGfx39                        build/pmd_red_modern/src/monster_gfx15.o
+  sMewGfx40                           build/pmd_red_modern/src/monster_gfx16.o
+  sFurretGfx61                        build/pmd_red_modern/src/monster_gfx17.o
+  sPolitoedGfx28                      build/pmd_red_modern/src/monster_gfx19.o
+  sWeedleGfx27                        build/pmd_red_modern/src/monster_gfx2.o
+  sHoOhGfx14                          build/pmd_red_modern/src/monster_gfx28.o
+  sVigorothGfx17                      build/pmd_red_modern/src/monster_gfx32.o
+  sRayquazaGfx204                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx204             build/pmd_red_modern/src/monster_gfx43.o
+
+size=32 count=9 waste=256
+  sFeraligatrGfx36                    build/pmd_red_modern/src/monster_gfx16.o
+  sStantlerGfx25                      build/pmd_red_modern/src/monster_gfx26.o
+  sStantlerGfx24                      build/pmd_red_modern/src/monster_gfx26.o
+  sHoOhGfx33                          build/pmd_red_modern/src/monster_gfx28.o
+  sMightyenaGfx20                     build/pmd_red_modern/src/monster_gfx29.o
+  sBlazikenGfx61                      build/pmd_red_modern/src/monster_gfx29.o
+  sSandslashGfx16                     build/pmd_red_modern/src/monster_gfx3.o
+  sDeoxysAttackGfx43                  build/pmd_red_modern/src/monster_gfx42.o
+  sGolduckGfx47                       build/pmd_red_modern/src/monster_gfx6.o
+
+size=32 count=9 waste=256
+  sHoppipGfx26_1                      build/pmd_red_modern/src/monster_gfx19.o
+  sPorygon2Gfx18_3                    build/pmd_red_modern/src/monster_gfx26.o
+  sNidoranFGfx29_3                    build/pmd_red_modern/src/monster_gfx3.o
+  sElectrikeGfx23_3                   build/pmd_red_modern/src/monster_gfx34.o
+  sGulpinGfx40_3                      build/pmd_red_modern/src/monster_gfx35.o
+  sDeoxysNormalGfx8                   build/pmd_red_modern/src/monster_gfx42.o
+  sGloomGfx26_3                       build/pmd_red_modern/src/monster_gfx5.o
+  sGrowlitheGfx18_1                   build/pmd_red_modern/src/monster_gfx6.o
+  sSeelGfx23_3                        build/pmd_red_modern/src/monster_gfx9.o
+
+size=64 count=5 waste=256
+  sSandshrewGfx16                     build/pmd_red_modern/src/monster_gfx3.o
+  sSwellowGfx28                       build/pmd_red_modern/src/monster_gfx31.o
+  sSphealGfx26                        build/pmd_red_modern/src/monster_gfx40.o
+  sDeoxysDefenseGfx33                 build/pmd_red_modern/src/monster_gfx42.o
+  sParasectGfx24                      build/pmd_red_modern/src/monster_gfx5.o
+
+size=256 count=2 waste=256
+  sVolbeatGfx41_1                     build/pmd_red_modern/src/monster_gfx34.o
+  sVolbeatGfx40_1                     build/pmd_red_modern/src/monster_gfx34.o
+
+size=256 count=2 waste=256
+  sMinunGfx35_1                       build/pmd_red_modern/src/monster_gfx34.o
+  sPlusleGfx35_1                      build/pmd_red_modern/src/monster_gfx34.o
+
+size=64 count=5 waste=256
+  sWailmerGfx16_1                     build/pmd_red_modern/src/monster_gfx35.o
+  sNinetalesGfx36_3                   build/pmd_red_modern/src/monster_gfx4.o
+  sRayquazaGfx142                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx142             build/pmd_red_modern/src/monster_gfx43.o
+  sWeepinbellGfx45_3                  build/pmd_red_modern/src/monster_gfx7.o
+
+size=256 count=2 waste=256
+  sLatiosGfx148                       build/pmd_red_modern/src/monster_gfx41.o
+  sLatiosGfx146                       build/pmd_red_modern/src/monster_gfx41.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx217_3                   build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx217_3           build/pmd_red_modern/src/monster_gfx43.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx213                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx213             build/pmd_red_modern/src/monster_gfx43.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx205                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx205             build/pmd_red_modern/src/monster_gfx43.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx203                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx203             build/pmd_red_modern/src/monster_gfx43.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx185                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx185             build/pmd_red_modern/src/monster_gfx43.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx181                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx181             build/pmd_red_modern/src/monster_gfx43.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx174                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx174             build/pmd_red_modern/src/monster_gfx43.o
+
+size=256 count=2 waste=256
+  sRayquazaGfx138                     build/pmd_red_modern/src/monster_gfx42.o
+  sRayquazaCutsceneGfx138             build/pmd_red_modern/src/monster_gfx43.o

@@ -1,0 +1,25 @@
+== ROM size ==
+67108864 pmd_red_modern.gba
+File size: 67,108,864 bytes
+32 MiB limit: 33,554,432 bytes
+Over 32 MiB by: 33,554,432 bytes
+Last non-00/FF byte offset: 0x20E5E4F (34,496,080 bytes)
+Rough padding check within 32 MiB: False
+
+== Generated KAO object sizes ==
+   text	   data	    bss	    dec	    hex	filename
+ 660516	      0	      0	 660516	  a1424	build/pmd_red_modern/data/generated_kao_runtime_sbin.o
+ 941648	      0	      0	 941648	  e5e50	build/pmd_red_modern/data/generated_kao_sbin.o
+   3392	      0	      0	   3392	    d40	build/pmd_red_modern/src/data/generated_kao_table.o
+   3392	      0	      0	   3392	    d40	build/pmd_red_modern/src/data/generated_portrait_table.o
+
+== Generated source asset folder size ==
+38M	total
+
+== Duplicate generated asset waste ==
+Duplicate groups: 1438
+Estimated duplicate waste: 984,931 bytes
+
+== Expression slot count in generated .inc files ==
+ 0 portrait slots: 1 files
+13 portrait slots: 710 files

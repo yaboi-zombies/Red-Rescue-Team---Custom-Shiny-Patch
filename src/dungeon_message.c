@@ -345,7 +345,8 @@ void DisplayDungeonMessage_Async(struct MonDialogueSpriteInfo *monSpriteInfo, co
     gDungeon->unk1BDD4.unk1C05F = 0;
 
     if (monPortrait.faceFile != NULL) {
-        CloseFile(monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(monPortrait.faceFile))
+            CloseFile(monPortrait.faceFile);
     }
 
     if (a2) {
@@ -407,7 +408,8 @@ void DisplayDungeonMessageStartDismiss_Async(struct MonDialogueSpriteInfo *monSp
     gDungeon->unk1BDD4.unk1C05F = 0;
 
     if (monPortrait.faceFile != NULL) {
-        CloseFile(monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(monPortrait.faceFile))
+            CloseFile(monPortrait.faceFile);
     }
 
     if (a2) {
@@ -533,7 +535,8 @@ void DisplayDungeonDialogue_Async(const struct DungeonDialogueStruct *dialogueIn
     PRINT_STRING_WAIT_PRESS_ASYNC(&chosenMenuIndex);
 
     if (monPortraitPtr != NULL) {
-        CloseFile(monPortraitPtr->faceFile);
+        if (!IsGeneratedDialogueSpriteFile(monPortraitPtr->faceFile))
+            CloseFile(monPortraitPtr->faceFile);
     }
 
     if (dialogueInfo->type != 1 && dialogueInfo->type != 3) {
@@ -580,7 +583,8 @@ bool32 DisplayDungeonYesNoMessage_Async(struct MonDialogueSpriteInfo *monSpriteI
     PRINT_STRING_WAIT_PRESS_ASYNC(&chosenMenuIndex);
 
     if (monPortrait.faceFile != NULL) {
-        CloseFile(monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(monPortrait.faceFile))
+            CloseFile(monPortrait.faceFile);
     }
 
     LoadDungeonMapPalette();
@@ -623,7 +627,8 @@ s32 DisplayDungeonMenuMessage(struct MonDialogueSpriteInfo *monSpriteInfo, const
     PRINT_STRING_WAIT_PRESS_ASYNC(&chosenMenuIndex);
 
     if (monPortrait.faceFile != NULL) {
-        CloseFile(monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(monPortrait.faceFile))
+            CloseFile(monPortrait.faceFile);
     }
 
     LoadDungeonMapPalette();

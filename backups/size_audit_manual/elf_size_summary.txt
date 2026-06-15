@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+32748736	   1116	 275102	33024954	1f7ebba	pmd_red_modern.elf

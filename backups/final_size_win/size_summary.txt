@@ -1,0 +1,8 @@
+After scaled ax_anim dedup:
+Baseline ROM used: 32,749,852 bytes
+Dedup ROM used:    30,515,984 bytes
+Savings:            2,233,868 bytes
+Free to 32MiB:      3,038,448 bytes
+
+EWRAM/IWRAM unchanged.
+Anims duplicate-waste reduced to 0.

@@ -46,6 +46,7 @@
 #include "pelipper_board.h"
 #include "personality_test1.h"
 #include "pokemon.h"
+#include "shiny.h"
 #include "portrait_placement.h"
 #include "post_office_guide1.h"
 #include "save.h"
@@ -142,11 +143,15 @@ typedef struct Textbox
 } Textbox;
 
 static IWRAM_INIT Textbox *sTextbox = { NULL };
+static EWRAM_DATA bool8 sTextboxPortraitIsShiny[MAX_TEXTBOX_PORTRAITS] = {0};
 
 EWRAM_DATA u16 gUnknown_20399DC = 0; // Some flags
 EWRAM_DATA u16 gUnknown_20399DE = 0; // Some flags (set but never read)
 
 #include "data/portrait_placements.h"
+
+
+
 
 static const MenuItem gUnknown_81160E8[] =
 {
@@ -369,6 +374,7 @@ static void ResetAllTextboxPortraits(void)
         ptr->unk0 = -1;
         ptr->speciesID = MONSTER_NONE;
         ptr->showPortrait = 0;
+        sTextboxPortraitIsShiny[i] = FALSE;
         ptr->unk5 = 0;
         ptr->spriteId = -1;
         ptr->placementId = 0;
@@ -389,6 +395,7 @@ void ResetTextboxPortrait(s16 id_)
     ptr->unk0 = -1;
     ptr->speciesID = MONSTER_NONE;
     ptr->showPortrait = 0;
+    sTextboxPortraitIsShiny[id] = FALSE;
     ptr->unk5 = 0;
     ptr->spriteId = -1;
     ptr->placementId = 0;
@@ -399,7 +406,32 @@ void ResetTextboxPortrait(s16 id_)
     ptr->monPortrait.spriteId = 0;
     strcpy(gFormatBuffer_Monsters[id_], sInvalidText);
     strcpy(gFormatBuffer_Names[id_], sInvalidText);
-    TRY_CLOSE_FILE_AND_SET_NULL(ptr->faceFile);
+    if (!IsGeneratedDialogueSpriteFile(ptr->faceFile)) {
+        TRY_CLOSE_FILE_AND_SET_NULL(ptr->faceFile);
+    }
+    else {
+        ptr->faceFile = NULL;
+    }
+}
+
+static bool8 IsTextboxPokemonShiny(Pokemon *pokemon)
+{
+    if (pokemon == NULL)
+        return FALSE;
+
+    return (pokemon->flags & POKEMON_FLAG_SHINY) != 0;
+}
+
+static Pokemon *GetTextboxSpecialSpeakerPokemon(s16 speakerId)
+{
+    switch (speakerId) {
+        case 33:
+            return GetLeaderMon2();
+        case 34:
+            return GetPartnerMon2();
+        default:
+            return NULL;
+    }
 }
 
 static bool8 sub_809A8B8(s32 param_1, s32 param_2)
@@ -411,12 +443,32 @@ static bool8 sub_809A8B8(s32 param_1, s32 param_2)
     TextboxPortrait *portraitPtr = &sTextbox->portraits[portraitId];
     bool8 showPortrait = TRUE;
     bool8 byte1 = FALSE;
+    bool8 isShiny = FALSE;
 
-    TRY_CLOSE_FILE_AND_SET_NULL(portraitPtr->faceFile);
+    if (!IsGeneratedDialogueSpriteFile(portraitPtr->faceFile)) {
+        TRY_CLOSE_FILE_AND_SET_NULL(portraitPtr->faceFile);
+    }
+    else {
+        portraitPtr->faceFile = NULL;
+    }
 
     sub_80A7DDC(&local_28, &speciesId);
+
+    {
+        Pokemon *specialSpeaker = GetTextboxSpecialSpeakerPokemon(local_28);
+
+        if (specialSpeaker != NULL) {
+            isShiny = IsTextboxPokemonShiny(specialSpeaker);
+        }
+    }
+
     if (local_28 >= 10 && local_28 <= 29) {
         Pokemon *pPVar6 = sub_80A8D54(local_28);
+
+        if (pPVar6 != NULL) {
+            isShiny = IsTextboxPokemonShiny(pPVar6);
+        }
+
         if (pPVar6 == NULL) {
             showPortrait = FALSE;
         }
@@ -492,6 +544,7 @@ static bool8 sub_809A8B8(s32 param_1, s32 param_2)
             strcpy(gFormatBuffer_Monsters[portraitId], sUndefineText);
             strcpy(gFormatBuffer_Names[portraitId], sUndefineText);
             portraitPtr->showPortrait = showPortrait;
+            sTextboxPortraitIsShiny[portraitId] = isShiny;
             portraitPtr->unk5 = byte1;
             portraitPtr->spriteId = -1;
             portraitPtr->placementId = 0;
@@ -503,11 +556,13 @@ static bool8 sub_809A8B8(s32 param_1, s32 param_2)
             ret = TRUE;
         }
         else if (speciesId != 0) {
+            isShiny = FALSE;
             portraitPtr->unk0 = local_28;
             portraitPtr->speciesID = speciesId;
             strcpy(gFormatBuffer_Monsters[portraitId], sUndefineText);
             strcpy(gFormatBuffer_Names[portraitId], sUndefineText);
             portraitPtr->showPortrait = showPortrait;
+            sTextboxPortraitIsShiny[portraitId] = isShiny;
             portraitPtr->unk5 = byte1;
             portraitPtr->spriteId = -1;
             portraitPtr->placementId = 0;
@@ -579,6 +634,73 @@ bool8 sub_809AC18(s32 a0_, s32 a1_)
     }
 }
 
+static Pokemon *GetTextboxSpeakerPokemonFromPortrait(TextboxPortrait *portraitPtr)
+{
+    s16 speakerId;
+    Pokemon *pokemon;
+
+    if (portraitPtr == NULL)
+        return NULL;
+
+    speakerId = portraitPtr->unk0;
+
+    if (speakerId >= 10 && speakerId <= 29)
+        return sub_80A8D54(speakerId);
+
+    switch (speakerId) {
+        /*
+         * These are speaker IDs used for player/partner style portraits.
+         * Resolve them to the actual speaking Pokémon object.
+         */
+        case 1:
+        case 6:
+        case 33:
+            pokemon = GetLeaderMon2();
+            if (pokemon == NULL)
+                pokemon = GetLeaderMon1();
+            return pokemon;
+
+        case 2:
+        case 7:
+        case 34:
+            pokemon = GetPartnerMon2();
+            if (pokemon == NULL)
+                pokemon = GetPartnerMon();
+            return pokemon;
+
+        default:
+            return NULL;
+    }
+}
+
+static bool8 IsTextboxPortraitSpeakerShiny(TextboxPortrait *portraitPtr)
+{
+    s32 liveId;
+    u32 liveFlags;
+
+    if (portraitPtr == NULL)
+        return FALSE;
+
+    /*
+     * Prefer the actual ground-live speaker state. This is the same visible
+     * speaking entity used by ground scripts, and ground_lives.c already keeps
+     * GROUND_LIVE_FLAG_SHINY in sync with the Pokémon/forced shiny state.
+     */
+    liveId = (s16) sub_80A7AE8(portraitPtr->unk0);
+
+    if (liveId >= 0) {
+        sub_80A8BD8(liveId, &liveFlags);
+
+        if (liveFlags & GROUND_LIVE_FLAG_SHINY)
+            return TRUE;
+    }
+
+    /*
+     * Fallback for speaker IDs that resolve directly to a recruited Pokémon.
+     */
+    return IsTextboxPokemonShiny(GetTextboxSpeakerPokemonFromPortrait(portraitPtr));
+}
+
 bool8 ScriptSetPortraitInfo(s32 portraitId_, s32 spriteId_, s32 placementId_)
 {
     s32 portraitId = (s16) portraitId_;
@@ -586,7 +708,12 @@ bool8 ScriptSetPortraitInfo(s32 portraitId_, s32 spriteId_, s32 placementId_)
     u8 placementId = (u8) placementId_;
     TextboxPortrait *portraitPtr = &sTextbox->portraits[portraitId];
 
-    TRY_CLOSE_FILE_AND_SET_NULL(portraitPtr->faceFile);
+    if (!IsGeneratedDialogueSpriteFile(portraitPtr->faceFile)) {
+        TRY_CLOSE_FILE_AND_SET_NULL(portraitPtr->faceFile);
+    }
+    else {
+        portraitPtr->faceFile = NULL;
+    }
 
     if (portraitPtr->speciesID >= 0 && spriteId != -1 && portraitPtr->speciesID != 0) {
         // Keep previous placementId if PLACEMENT_COUNT is passed.
@@ -608,11 +735,18 @@ bool8 ScriptSetPortraitInfo(s32 portraitId_, s32 spriteId_, s32 placementId_)
         }
 
         if (portraitPtr->showPortrait) {
-            portraitPtr->faceFile = OpenPokemonDialogueSpriteFile(portraitPtr->speciesID);
+            portraitPtr->faceFile = OpenPokemonDialogueSpriteFileForShiny(
+                portraitPtr->speciesID,
+                sTextboxPortraitIsShiny[portraitId] ||
+                    IsTextboxPortraitSpeakerShiny(portraitPtr)
+            );
             if (portraitPtr->faceFile != NULL) {
                 portraitPtr->spriteId = spriteId;
                 portraitPtr->monPortrait.faceFile = portraitPtr->faceFile;
-                GetFileDataPtr(portraitPtr->faceFile, 0);
+
+                if (!IsGeneratedDialogueSpriteFile(portraitPtr->faceFile)) {
+                    GetFileDataPtr(portraitPtr->faceFile, 0);
+                }
                 // first 4 bits are actually spriteId, there's also some 0x40 flag which isn't really used. I assume it marks that the spriteId was changed?
                 switch (portraitPtr->unk0) {
                     case 0x47:
@@ -646,6 +780,11 @@ bool8 ScriptSetPortraitInfo(s32 portraitId_, s32 spriteId_, s32 placementId_)
 
                 portraitPtr->monPortrait.faceData = (void *) portraitPtr->faceFile->data;
                 portraitPtr->monPortrait.spriteId = spriteId & 0xF;
+
+                if (IsGeneratedDialogueSpriteFile(portraitPtr->faceFile) &&
+                    portraitPtr->monPortrait.spriteId >= 13) {
+                    portraitPtr->monPortrait.spriteId = 0;
+                }
             }
             else {
                 portraitPtr->monPortrait.faceFile = NULL;

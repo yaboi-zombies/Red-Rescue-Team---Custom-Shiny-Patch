@@ -1,0 +1,23 @@
+src/titlemenu_sbin.c:37:extern const u8 gUnknown_83A2AF4[];
+src/titlemenu_sbin.c:62:    [21] = { "wmp2pal", gUnknown_83A2AF4},
+data/titlemenu_sbin.s:453:.global gUnknown_83A2AF4
+data/titlemenu_sbin.s:454:gUnknown_83A2AF4:
+data/unk_98589A4.s:5:.global gUnknown_98589A4
+data/unk_98589A4.s:6:gUnknown_98589A4:
+build/pmd_red_modern/data/titlemenu_sbin.i.s:457:.global gUnknown_83A2AF4
+build/pmd_red_modern/data/titlemenu_sbin.i.s:458:gUnknown_83A2AF4:
+build/pmd_red_modern/data/titlemenu_sbin.s:457:.global gUnknown_83A2AF4
+build/pmd_red_modern/data/titlemenu_sbin.s:458:gUnknown_83A2AF4:
+build/pmd_red_modern/data/unk_98589A4.d:1:build/pmd_red_modern/data/unk_98589A4.o: baserom.gba 
+build/pmd_red_modern/data/unk_98589A4.i.s:1:# 0 "data/unk_98589A4.s"
+build/pmd_red_modern/data/unk_98589A4.i.s:4:# 1 "data/unk_98589A4.s"
+build/pmd_red_modern/data/unk_98589A4.i.s:9:.global gUnknown_98589A4
+build/pmd_red_modern/data/unk_98589A4.i.s:10:gUnknown_98589A4:
+build/pmd_red_modern/data/unk_98589A4.s:1:# 0 "data/unk_98589A4.s"
+build/pmd_red_modern/data/unk_98589A4.s:4:# 1 "data/unk_98589A4.s"
+build/pmd_red_modern/data/unk_98589A4.s:9:.global gUnknown_98589A4
+build/pmd_red_modern/data/unk_98589A4.s:10:gUnknown_98589A4:
+build/pmd_red_modern/objects.rsp:727:data/unk_98589A4.o
+build/pmd_red_modern/src/titlemenu_sbin.i:1886:extern const u8 gUnknown_83A2AF4[];
+build/pmd_red_modern/src/titlemenu_sbin.i:1911:    [21] = { "wmp2pal", gUnknown_83A2AF4},
+build/pmd_red_modern/src/titlemenu_sbin.s:122:	.word	gUnknown_83A2AF4

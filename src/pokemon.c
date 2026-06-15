@@ -22,6 +22,7 @@
 #include "strings.h"
 #include "wigglytuff_config.h"
 
+#include "generated_kao_table.h"
 static EWRAM_DATA MonsterDataEntry *sMonsterParameters = {NULL}; // B=02135090
 static EWRAM_DATA OpenedFile *sMonsterParametersFile = {NULL};
 static EWRAM_DATA SpriteOAM sShadowSprites[3] = {0};
@@ -988,38 +989,137 @@ u8 GetPokemonOverworldPalette(s16 index, bool32 recolorShopKecleon)
     }
 }
 
+
+static bool8 IsValidGeneratedPortraitSpecies(s32 species)
+{
+    return species >= 0 && species < MONSTER_MAX;
+}
+
+
+static bool8 HasAnyGeneratedDialoguePortraitById(s32 id)
+{
+    if (!IsValidGeneratedPortraitSpecies(id))
+        return FALSE;
+
+    return gGeneratedKaoShinyPortraitData[id] != NULL ||
+           gGeneratedKaoPortraitData[id] != NULL;
+}
+
+const u8 *GetGeneratedDialogueSpriteDataPtr(s32 index, bool8 isShiny)
+{
+    s32 id = index;
+
+    if (!IsValidGeneratedPortraitSpecies(id))
+        return NULL;
+
+    if (isShiny && gGeneratedKaoShinyPortraitData[id] != NULL)
+        return gGeneratedKaoShinyPortraitData[id];
+
+    if (!isShiny && gGeneratedKaoPortraitData[id] != NULL)
+        return gGeneratedKaoPortraitData[id];
+
+    return NULL;
+}
+
+static EWRAM_DATA OpenedFile sGeneratedDialogueSpriteFile = {0};
+
+bool8 IsGeneratedDialogueSpriteFile(OpenedFile *file)
+{
+    return file == &sGeneratedDialogueSpriteFile;
+}
+
+static OpenedFile *OpenGeneratedDialogueSpriteFileForPortrait(s16 index, bool8 isShiny)
+{
+    const u8 *generatedFaceData;
+
+    if (!IsValidGeneratedPortraitSpecies(index))
+        return NULL;
+
+    generatedFaceData = GetGeneratedDialogueSpriteDataPtr(index, isShiny);
+
+    if (generatedFaceData != NULL) {
+        sGeneratedDialogueSpriteFile.data = (void *) generatedFaceData;
+        return &sGeneratedDialogueSpriteFile;
+    }
+
+    return NULL;
+}
+
+OpenedFile *OpenPokemonDialogueSpriteFileForShiny(s16 index, bool8 isShiny)
+{
+    char buffer[0xC];
+    OpenedFile *generatedFile;
+
+    /*
+     * Shiny-aware compromise behavior:
+     *
+     * 1. If this individual is shiny and generated shiny data exists, use it.
+     * 2. Otherwise preserve vanilla dialogue portraits when they exist.
+     * 3. If vanilla has no dialogue portrait, use generated normal data.
+     *
+     * This keeps non-shiny Pokémon from accidentally displaying shiny portraits,
+     * while still allowing shiny individuals to override vanilla with shiny art.
+     */
+    if (isShiny) {
+        generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(index, TRUE);
+
+        if (generatedFile != NULL)
+            return generatedFile;
+    }
+
+    if (sMonsterParameters[index].dialogueSprites != 0) {
+        sprintf(buffer, "kao%03d", index);
+        return OpenFile(buffer, &gMonsterFileArchive);
+    }
+
+    return OpenGeneratedDialogueSpriteFileForPortrait(index, FALSE);
+}
+
 OpenedFile *OpenPokemonDialogueSpriteFile(s16 index)
 {
-    // Looks like this loads the dialogue sprite for the pokemon
-
-    char buffer[0xC];
-    if(sMonsterParameters[index].dialogueSprites == 0)
-    {
-        return NULL;
-    }
-    sprintf(buffer, "kao%03d", index);
-    return OpenFile(buffer, &gMonsterFileArchive);
+    return OpenPokemonDialogueSpriteFileForShiny(index, FALSE);
 }
 
 // arm9.bin::0205AC60
-OpenedFile *GetDialogueSpriteDataPtr(s32 index)
+OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny)
 {
-    // Looks like this loads the dialogue sprite for the pokemon
     char buffer[0xC];
     s16 id = SpeciesId(index);
+    OpenedFile *generatedFile;
 
-    if(sMonsterParameters[id].dialogueSprites == 0)
-    {
-        return NULL;
+    /*
+     * Shiny-aware compromise behavior matching OpenPokemonDialogueSpriteFileForShiny().
+     */
+    if (isShiny) {
+        generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(id, TRUE);
+
+        if (generatedFile != NULL)
+            return generatedFile;
     }
-    sprintf(buffer, "kao%03d", id);
-    return OpenFileAndGetFileDataPtr(buffer, &gMonsterFileArchive);
+
+    if (sMonsterParameters[id].dialogueSprites != 0) {
+        sprintf(buffer, "kao%03d", id);
+        return OpenFileAndGetFileDataPtr(buffer, &gMonsterFileArchive);
+    }
+
+    return OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
+}
+
+OpenedFile *GetDialogueSpriteDataPtr(s32 index)
+{
+    return GetDialogueSpriteDataPtrForShiny(index, FALSE);
 }
 
 bool8 IsPokemonDialogueSpriteAvail(s16 index, s32 spriteId)
 {
-    // checking to see if dialogue sprite is available??
-    return (sMonsterParameters[index].dialogueSprites >> spriteId) & 1;
+    if (sMonsterParameters[index].dialogueSprites != 0)
+        return (sMonsterParameters[index].dialogueSprites >> spriteId) & 1;
+
+    if (GetGeneratedDialogueSpriteDataPtr(index, FALSE) != NULL ||
+        GetGeneratedDialogueSpriteDataPtr(index, TRUE) != NULL)
+        return TRUE;
+
+    return FALSE;
 }
 
 void RecruitedPokemonToDungeonMon(DungeonMon *dst, u32 recruitedPokemonId)

@@ -1,0 +1,439 @@
+DEVKITARM ?= C:/devkitPro/devkitARM
+TOOLCHAIN := $(DEVKITARM)
+
+ifeq ($(CC),)
+HOSTCC := gcc
+else
+HOSTCC := $(CC)
+endif
+
+ifeq ($(CXX),)
+HOSTCXX := g++
+else
+HOSTCXX := $(CXX)
+endif
+
+# don't use dkP's base_tools anymore
+# because the redefinition of $(CC) conflicts
+# with when we want to use $(CC) to preprocess files
+# thus, manually create the variables for the bin
+# files, or use arm-none-eabi binaries on the system
+# if dkP is not installed on this system
+
+ifneq (,$(TOOLCHAIN))
+ifneq ($(wildcard $(TOOLCHAIN)/bin),)
+export PATH := $(TOOLCHAIN)/bin:$(PATH)
+endif
+endif
+
+# Builds the ROM using a modern compiler
+MODERN      ?= 0
+ifeq (modern,$(MAKECMDGOALS))
+  MODERN := 1
+endif
+
+# Enable dev-only code paths
+DEV ?= 0
+
+PREFIX := arm-none-eabi-
+OBJDUMP := $(PREFIX)objdump
+AS := $(PREFIX)as
+CC := C:/devkitPro/devkitARM/bin/arm-none-eabi-gcc.exe
+AS := C:/devkitPro/devkitARM/bin/arm-none-eabi-as.exe
+AR := C:/devkitPro/devkitARM/bin/arm-none-eabi-ar.exe
+LD := C:/devkitPro/devkitARM/bin/arm-none-eabi-ld.exe
+RANLIB := C:/devkitPro/devkitARM/bin/arm-none-eabi-ranlib.exe
+OBJCOPY := C:/devkitPro/devkitARM/bin/arm-none-eabi-objcopy.exe
+
+# use arm-none-eabi-cpp for macOS
+# as macOS's default compiler is clang
+# and clang's preprocessor will warn on \u
+# when preprocessing asm files, expecting a unicode literal
+# we can't unconditionally use arm-none-eabi-cpp
+# as installations which install binutils-arm-none-eabi
+# don't come with it
+ifneq ($(MODERN),1)
+  ifeq ($(shell uname -s),Darwin)
+    CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
+  else
+    CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
+  endif
+else
+  CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
+endif
+
+EXE := .exe
+
+
+TITLE       := POKE DUNGEON
+GAME_CODE   := B24E
+MAKER_CODE  := 01
+REVISION    := 0
+
+
+#### Tools ####
+
+SHELL     := /bin/bash -o pipefail
+SHA1SUM   := sha1sum -c
+GBAGFX    := tools/gbagfx/gbagfx$(EXE)
+GBAFIX    := tools/gbafix/gbafix$(EXE)
+AIF2PCM   := tools/aif2pcm/aif2pcm$(EXE)
+MID2AGB   := tools/mid2agb/mid2agb$(EXE)
+PREPROC   := tools/preproc/preproc$(EXE)
+PYTHON    := py -3
+SCANINC   := tools/scaninc/scaninc$(EXE)
+RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
+DUNGEONJSON := tools/dungeonjson/dungeonjson$(EXE)
+
+SPRITECOLLAB_PORTRAITS := SpriteCollab/portrait
+GENERATED_KAO_DIR := data/kao_generated
+GEN_SPRITECOLLAB_PORTRAITS := tools/gen_spritecollab_portraits.py
+DOPX := tools/dopx/ppmd_dopx$(EXE)
+
+GENERATED_MONSTER_FILE_DECLS := include/generated_monster_file_decls.h
+GENERATED_MONSTER_FILE_ENTRIES := include/generated_monster_file_entries.h
+GENERATED_PORTRAIT_TABLE_HEADER := include/generated_portrait_table.h
+GENERATED_PORTRAIT_TABLE_SRC := src/data/generated_portrait_table.c
+GENERATED_KAO_INCLUDES := $(GENERATED_KAO_DIR)/includes.inc
+
+GENERATED_PORTRAIT_OUTPUTS := \
+	$(GENERATED_MONSTER_FILE_DECLS) \
+	$(GENERATED_MONSTER_FILE_ENTRIES) \
+	$(GENERATED_PORTRAIT_TABLE_HEADER) \
+	$(GENERATED_PORTRAIT_TABLE_SRC) \
+	$(GENERATED_KAO_INCLUDES)
+
+PERL := perl
+
+# tools/dopx is intentionally excluded because it is a prebuilt external utility,
+# not a source-built tool directory with this repo's standard tool Makefile layout.
+TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/dopx,$(shell find tools -mindepth 1 -maxdepth 1 -type d))
+TOOLBASE = $(TOOLDIRS:tools/%=%)
+TOOLS = $(foreach tool,$(TOOLBASE),tools/$(tool)/$(tool)$(EXE))
+
+
+ASFLAGS         := -mcpu=arm7tdmi --defsym MODERN=$(MODERN)
+
+ifeq ($(MODERN),0)
+  CC1       := tools/agbcc/bin/agbcc
+  override CC1FLAGS += -mthumb-interwork -Wimplicit -Wparentheses -Wunused -Werror -O2 -fhex-asm -g
+  ifeq ($(OS),Windows_NT)
+    LIB := ../../tools/agbcc/lib/libc.a ../../tools/agbcc/lib/libgcc.a ../../libagbsyscall/libagbsyscall.a
+  else
+    LIB := -L ../../tools/agbcc/lib -lc -lgcc -L ../../libagbsyscall -lagbsyscall
+  endif
+  INCLUDE_PATHS   := -I include -I tools/agbcc/include
+  CPPFLAGS        := -iquote include -I tools/agbcc/include -nostdinc -undef
+else
+  MODERNCC := C:/devkitPro/devkitARM/bin/arm-none-eabi-gcc.exe
+  PATH_MODERNCC := $(MODERNCC)
+  CC1 := $(shell $(PATH_MODERNCC) --print-prog-name=cc1) -quiet
+  LIBPATH := -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libnosys.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libc.a))"
+  LIB := $(LIBPATH) -lc -lnosys -lgcc -L../../libagbsyscall -lagbsyscall
+  override CC1FLAGS += -mthumb -mthumb-interwork -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -Wimplicit -Wparentheses -Wunused -Wno-incompatible-pointer-types -O2
+  INCLUDE_DIRS := include
+  INCLUDE_CPP_ARGS := $(INCLUDE_DIRS:%=-iquote %)
+  INCLUDE_PATHS := $(INCLUDE_DIRS:%=-I %)
+  CPPFLAGS := $(INCLUDE_CPP_ARGS) -Wno-trigraphs -DMODERN=$(MODERN)
+endif
+
+ifeq ($(DEV),1)
+  CPPFLAGS += -DDEV
+endif
+
+#### Files ####
+BUILD_NAME_NORMAL = red
+BUILD_NAME_MODERN = red_modern
+BUILD_DIR_NORMAL := build/pmd_$(BUILD_NAME_NORMAL)
+BUILD_DIR_MODERN := build/pmd_$(BUILD_NAME_MODERN)
+ifeq ($(MODERN),0)
+  BUILD_NAME = $(BUILD_NAME_NORMAL)
+else
+  BUILD_NAME = $(BUILD_NAME_MODERN)
+endif
+BUILD_DIR := build/pmd_$(BUILD_NAME)
+
+ROM := pmd_$(BUILD_NAME).gba
+ELF := $(ROM:%.gba=%.elf)
+MAP := $(ROM:%.gba=%.map)
+SYM := $(ROM:%.gba=%.sym)
+
+# Emulator-only expanded ROM padding target.
+# 0x08000000 + 64 MB = 0x0C000000.
+ROM_PAD_TO := 0x0C000000
+
+C_SUBDIR = src
+ASM_SUBDIR = asm
+DATA_SRC_SUBDIR = src/data
+DATA_ASM_SUBDIR = data
+SONG_SUBDIR = sound/songs
+MID_SUBDIR = sound/songs/midi
+SAMPLE_SUBDIR = sound/direct_sound_samples
+
+C_BUILDDIR = $(BUILD_DIR)/$(C_SUBDIR)
+ASM_BUILDDIR = $(BUILD_DIR)/$(ASM_SUBDIR)
+DATA_ASM_BUILDDIR = $(BUILD_DIR)/$(DATA_ASM_SUBDIR)
+SONG_BUILDDIR = $(BUILD_DIR)/$(SONG_SUBDIR)
+MID_BUILDDIR = $(BUILD_DIR)/$(MID_SUBDIR)
+
+C_SRCS_IN := $(wildcard $(C_SUBDIR)/*.c $(C_SUBDIR)/*/*.c $(C_SUBDIR)/*/*/*.c)
+C_SOURCES := $(foreach src,$(C_SRCS_IN),$(if $(findstring .inc.c,$(src)),,$(src)))
+C_SOURCES += $(filter-out $(C_SOURCES),$(GENERATED_PORTRAIT_TABLE_SRC))
+ASM_SOURCES := $(wildcard asm/*.s data/*.s)
+C_ASM_SOURCES := $(wildcard src/*.s)
+SONG_SRCS := $(wildcard sound/songs/*.s)
+
+C_OBJECTS := $(patsubst $(C_SUBDIR)/%.c,$(C_BUILDDIR)/%.o,$(C_SOURCES))
+ASM_OBJECTS  := $(addprefix $(BUILD_DIR)/, $(ASM_SOURCES:%.s=%.o))
+C_ASM_OBJECTS := $(addprefix $(BUILD_DIR)/, $(C_ASM_SOURCES:%.s=%.o))
+SONG_OBJS := $(addprefix $(BUILD_DIR)/, $(SONG_SRCS:%.s=%.o))
+
+ALL_OBJECTS := $(C_OBJECTS) $(ASM_OBJECTS) $(C_ASM_OBJECTS) $(SONG_OBJS)
+OBJS_REL := $(patsubst $(BUILD_DIR)/%,%,$(ALL_OBJECTS))
+
+SUBDIRS := $(sort $(dir $(ALL_OBJECTS)))
+
+.DEFAULT_GOAL := all
+
+SHINY_PALETTE_CSV := rogue_files/shiny_palette.csv
+SHINY_PALETTE_TABLE_SRC := src/data/shiny_palette_table.c
+SHINY_PALETTE_TABLE_GENERATOR := rogue_files/shiny_processing/00_gen_shiny_palette_table.py
+
+.PHONY: FORCE_SHINY_PALETTE_TABLE
+FORCE_SHINY_PALETTE_TABLE:
+
+$(SHINY_PALETTE_TABLE_SRC): FORCE_SHINY_PALETTE_TABLE $(SHINY_PALETTE_CSV) $(SHINY_PALETTE_TABLE_GENERATOR)
+	@tmp="$@.tmp"; \
+	$(PYTHON) $(SHINY_PALETTE_TABLE_GENERATOR) --mode table --input $(SHINY_PALETTE_CSV) --output "$$tmp"; \
+	if [ ! -f "$@" ] || ! cmp -s "$$tmp" "$@"; then \
+		mv "$$tmp" "$@"; \
+	else \
+		rm -f "$$tmp"; \
+	fi
+
+# Special configurations required for lib files
+ifeq ($(MODERN),0)
+  $(C_BUILDDIR)/agb_flash.o   : CC1FLAGS := -O -mthumb-interwork
+  $(C_BUILDDIR)/agb_flash_1m.o: CC1FLAGS := -O -mthumb-interwork
+  $(C_BUILDDIR)/agb_flash_mx.o: CC1FLAGS := -O -mthumb-interwork
+  $(C_BUILDDIR)/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
+else
+  $(C_BUILDDIR)/agb_flash.o: override CC1FLAGS += -fno-toplevel-reorder
+endif
+
+#### Main Rules ####
+
+
+ALL_BUILDS := red
+
+# Available targets
+.PHONY: all modern clean compare tidy libagbsyscall tools clean-tools spritecollab_portraits clean_spritecollab_portraits clean_graphics_intermediates $(TOOLDIRS)
+
+# Pretend rules that are actually flags defer to `make all`
+modern: all
+
+MAKEFLAGS += --no-print-directory
+
+# Secondary expansion is required for dependency variables in object rules.
+.SECONDEXPANSION:
+# Clear the default suffixes
+.SUFFIXES:
+# Don't delete intermediate files
+.SECONDARY:
+# Delete files that weren't built properly
+.DELETE_ON_ERROR:
+
+infoshell = $(foreach line, $(shell $1 | sed "s/ /__SPACE__/g"), $(info $(subst __SPACE__, ,$(line))))
+
+# Build tools when building the rom.
+# Skip this for clean-style targets so they do not waste time rebuilding tools.
+ifeq (,$(filter clean tidy clean-tools tools clean_spritecollab_portraits clean_graphics_intermediates spritecollab_portraits,$(MAKECMDGOALS)))
+$(call infoshell, $(MAKE) -f make_tools.mk)
+endif
+
+.PRECIOUS: %.1bpp %.4bpp %.8bpp %.gbapal %.lz %.rl %.pcm %.bin %.at4px
+
+
+# Create build subdirectories
+
+$(shell mkdir -p $(SUBDIRS))
+
+all: $(ROM)
+
+tools: $(TOOLDIRS)
+
+syms: $(SYM)
+
+clean: tidy
+
+include dungeon_pokemon.mk
+include dungeon_floor.mk
+include dungeon_trap.mk
+include dungeon_item.mk
+include data_monster.mk
+include data_item.mk
+include data_move.mk
+include data_dungeon.mk
+include graphics.mk
+
+$(TOOLDIRS):
+	@$(MAKE) -C $@ CC=$(HOSTCC) CXX=$(HOSTCXX)
+
+compare: $(ROM)
+	@$(SHA1SUM) $(BUILD_NAME).sha1
+
+spritecollab_portraits: $(GENERATED_PORTRAIT_OUTPUTS)
+
+$(GENERATED_PORTRAIT_OUTPUTS): $(GEN_SPRITECOLLAB_PORTRAITS)
+	@test -d "$(SPRITECOLLAB_PORTRAITS)" || { echo "Missing SpriteCollab portraits directory: $(SPRITECOLLAB_PORTRAITS)"; exit 1; }
+	@test -f "$(GEN_SPRITECOLLAB_PORTRAITS)" || { echo "Missing portrait generator script: $(GEN_SPRITECOLLAB_PORTRAITS)"; exit 1; }
+	@test -f "$(GBAGFX)" || { echo "Missing gbagfx tool: $(GBAGFX)"; exit 1; }
+	@test -f "$(DOPX)" || { echo "Missing DoPX tool: $(DOPX)"; echo "Expected ppmd_dopx at tools/dopx/ppmd_dopx$(EXE). Update DOPX in the Makefile if your executable has a different name/path."; exit 1; }
+	$(PYTHON) $(GEN_SPRITECOLLAB_PORTRAITS) \
+		--input "$(SPRITECOLLAB_PORTRAITS)" \
+		--output "$(GENERATED_KAO_DIR)" \
+		--gbagfx "$(GBAGFX)" \
+		--dopx "$(DOPX)"
+
+# This is the only target that intentionally removes the generated SpriteCollab
+# portrait cache. Normal "make clean" preserves it so the cache is not rebuilt
+# every build cycle.
+clean_spritecollab_portraits:
+	$(RM) -rf $(GENERATED_KAO_DIR)
+	$(RM) -f $(GENERATED_MONSTER_FILE_DECLS)
+	$(RM) -f $(GENERATED_MONSTER_FILE_ENTRIES)
+	$(RM) -f $(GENERATED_PORTRAIT_TABLE_HEADER)
+	$(RM) -f $(GENERATED_PORTRAIT_TABLE_SRC)
+
+# Manually remove generated graphics intermediates.
+# Normal "make clean" preserves these so routine clean builds do not regenerate
+# every .1bpp/.4bpp/.8bpp/.gbapal/.lz/.at4px file.
+clean_graphics_intermediates:
+	find . \
+		-path './$(GENERATED_KAO_DIR)' -prune -o \
+		\( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' -o -iname '*.at4px' \) \
+		-exec rm {} +
+
+tidy:
+	$(RM) -f $(ROM) $(ELF) $(MAP) $(SYM)
+	$(RM) -r $(BUILD_DIR_NORMAL)
+	$(RM) -r $(BUILD_DIR_MODERN)
+	$(RM) -f $(ITEM_DATA)
+	$(RM) -f $(MOVE_DATA)
+	$(RM) -f $(MONSTER_DATA)
+	$(RM) -f $(LEARNSET_DATA)
+	$(RM) -f $(LEARNSET_PTRS)
+	$(RM) -f $(DUNGEON_DATA)
+	$(RM) -f $(DUNGEON_FLOOR)
+	$(RM) -f $(DUNGEON_POKEMON)
+	$(RM) -f $(DUNGEON_TRAP)
+	$(RM) -f $(DUNGEON_ITEM)
+	@$(MAKE) clean -C libagbsyscall
+
+define scaninc
+	( paths="$$($(SCANINC) $1 $< | tr -d '\r' | tr '\n' ' ')"; \
+		echo "$(@:.d=.o): $$paths" > $@; \
+		for path in $$paths; do echo "$$path:" >> $@; done; )
+endef
+
+# These source files include generated portrait headers/tables.
+$(C_BUILDDIR)/pokemon.o: $(GENERATED_PORTRAIT_TABLE_HEADER)
+$(C_BUILDDIR)/monster_files_table.o: $(GENERATED_MONSTER_FILE_DECLS) $(GENERATED_MONSTER_FILE_ENTRIES)
+$(C_BUILDDIR)/data/generated_portrait_table.o: $(GENERATED_PORTRAIT_TABLE_SRC) $(GENERATED_PORTRAIT_TABLE_HEADER)
+
+$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.c
+	@$(CPP) $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.i
+	@$(PREPROC) $(C_BUILDDIR)/$*.i charmap.txt | $(CC1) $(CC1FLAGS) -o $(C_BUILDDIR)/$*.s
+	@echo -e ".text\n\t.align\t2, 0\n" >> $(C_BUILDDIR)/$*.s
+	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
+
+$(C_BUILDDIR)/%.d: $(C_SUBDIR)/%.c
+	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
+
+# Regenerate SpriteCollab portrait includes before assembling generated portrait data.
+$(DATA_ASM_BUILDDIR)/generated_kao_sbin.o: $(GENERATED_KAO_INCLUDES)
+
+$(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s dungeon_pokemon dungeon_floor dungeon_trap dungeon_item data_monster data_item data_move data_learnset data_learnset_ptrs data_dungeon
+	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(DATA_ASM_BUILDDIR)/$*.i.s
+	@$(PREPROC) $(DATA_ASM_BUILDDIR)/$*.i.s charmap.txt > $(DATA_ASM_BUILDDIR)/$*.s
+	$(AS) $(ASFLAGS) -o $@ $(DATA_ASM_BUILDDIR)/$*.s
+
+$(DATA_ASM_BUILDDIR)/%.d: $(DATA_ASM_SUBDIR)/%.s
+	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
+
+$(ASM_BUILDDIR)/%.o: $(ASM_SUBDIR)/%.s
+	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(ASM_BUILDDIR)/$*.s
+	$(AS) $(ASFLAGS) -o $@ $(ASM_BUILDDIR)/$*.s
+
+$(ASM_BUILDDIR)/%.d: $(ASM_SUBDIR)/%.s
+	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
+	
+$(SONG_BUILDDIR)/%.o: $(SONG_SUBDIR)/%.s
+	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(SONG_BUILDDIR)/$*.s
+	$(AS) $(ASFLAGS) -o $@ $(SONG_BUILDDIR)/$*.s
+
+$(SONG_BUILDDIR)/%.d: $(SONG_SUBDIR)/%.s
+	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
+	
+$(C_BUILDDIR)/%.o: $(C_SUBDIR)/%.s
+	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(C_BUILDDIR)/$*.s
+	$(AS) $(ASFLAGS) -o $@ $(C_BUILDDIR)/$*.s
+	
+$(C_BUILDDIR)/%.d: $(C_SUBDIR)/%.s
+	@$(call scaninc,$(INCLUDE_PATHS))
+	@sed -i 's/\r//g' $@
+
+libagbsyscall:
+	@$(MAKE) -C libagbsyscall TOOLCHAIN=$(TOOLCHAIN) AS="$(AS)" AR="$(AR)" RANLIB="$(RANLIB)"
+
+$(BUILD_DIR)/sym_ewram.ld: sym_ewram.txt
+	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
+
+$(BUILD_DIR)/sym_iwram.ld: sym_iwram.txt
+	$(RAMSCRGEN) iwram_data $< ENGLISH > $@
+
+$(BUILD_DIR)/sym_ewram_init.ld: sym_ewram_init.txt
+	$(RAMSCRGEN) ewram_init $< ENGLISH > $@
+
+$(BUILD_DIR)/sym_iwram_init.ld: sym_iwram_init.txt
+	$(RAMSCRGEN) iwram_init $< ENGLISH > $@
+    
+ifeq ($(MODERN),0)
+  LD_SCRIPT := ld_script.ld
+  LD_SCRIPT_DEPS := $(BUILD_DIR)/sym_ewram.ld $(BUILD_DIR)/sym_iwram.ld $(BUILD_DIR)/sym_ewram_init.ld $(BUILD_DIR)/sym_iwram_init.ld
+else
+  LD_SCRIPT := ld_script_modern.ld
+  LD_SCRIPT_DEPS :=
+endif
+
+empty :=
+space := $(empty) $(empty)
+define newline
+
+
+endef
+
+# Elf from object files
+LDFLAGS = -Map ../../$(MAP)
+$(ELF): $(LD_SCRIPT) $(LD_SCRIPT_DEPS) $(ALL_OBJECTS) libagbsyscall
+	$(file >$(BUILD_DIR)/objects.rsp,$(subst $(space),$(newline),$(strip $(OBJS_REL))))
+	@cd $(BUILD_DIR) && $(LD) $(LDFLAGS) -T ../../$< --print-memory-usage -o ../../$@ @objects.rsp $(LIB) | cat
+	@echo "cd $(BUILD_DIR) && $(LD) $(LDFLAGS) -T ../../$< --print-memory-usage -o ../../$@ @objects.rsp <libs> | cat"
+	$(GBAFIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
+
+# Builds the rom from the elf file
+$(ROM): %.gba: $(ELF)
+	$(OBJCOPY) -O binary --gap-fill 0xFF --pad-to $(ROM_PAD_TO) $< $@
+	$(GBAFIX) $@ -p --silent
+
+ifeq (,$(filter clean,$(MAKECMDGOALS)))
+-include $(ALL_OBJECTS:.o=.d)
+endif
+
+# Symbol file (`make syms`)
+$(SYM): $(ELF)
+	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@

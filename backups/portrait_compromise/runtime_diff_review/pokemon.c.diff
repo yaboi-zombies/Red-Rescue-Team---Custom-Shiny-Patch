@@ -1,0 +1,156 @@
+diff --git a/src/pokemon.c b/backups/portrait_compromise/recovered_runtime_sources/pokemon.c
+index e2e080a9b..753bc705a 100644
+--- a/src/pokemon.c
++++ b/backups/portrait_compromise/recovered_runtime_sources/pokemon.c
+@@ -12,6 +12,8 @@
+ #include "exclusive_pokemon.h"
+ #include "file_system.h"
+ #include "friend_area.h"
++#include "generated_portrait_table.h"
++#include "generated_kao_table.h"
+ #include "moves.h"
+ #include "pokemon_3.h"
+ #include "random.h"
+@@ -988,19 +990,84 @@ u8 GetPokemonOverworldPalette(s16 index, bool32 recolorShopKecleon)
+     }
+ }
+ 
+-OpenedFile *OpenPokemonDialogueSpriteFile(s16 index)
++static bool8 IsValidPortraitSpecies(s16 species)
+ {
+-    // Looks like this loads the dialogue sprite for the pokemon
++    return species > MONSTER_NONE && species < MONSTER_MAX;
++}
++
++static bool8 HasGeneratedDialoguePortrait(s16 species)
++{
++    species = SpeciesId(species);
++
++    if (!IsValidPortraitSpecies(species))
++        return FALSE;
++
++    return gGeneratedPortraitBits[species] != 0;
++}
++
++static bool8 HasGeneratedShinyDialoguePortrait(s16 species)
++{
++    species = SpeciesId(species);
++
++    if (!IsValidPortraitSpecies(species))
++        return FALSE;
++
++    return gGeneratedShinyPortraitBits[species] != 0;
++}
++
++const u8 *GetGeneratedDialogueSpriteDataPtr(s32 index, bool8 isShiny)
++{
++    s16 id = SpeciesId(index);
+ 
++    if (id <= MONSTER_NONE || id >= MONSTER_MAX) {
++        return NULL;
++    }
++
++    if (isShiny && gGeneratedKaoShinyPortraitData[id] != NULL) {
++        return gGeneratedKaoShinyPortraitData[id];
++    }
++
++    if (!isShiny && gGeneratedKaoPortraitData[id] != NULL) {
++        return gGeneratedKaoPortraitData[id];
++    }
++
++    return NULL;
++}
++
++static EWRAM_DATA OpenedFile sGeneratedDialogueSpriteFile = {0};
++
++OpenedFile *OpenPokemonDialogueSpriteFile(s16 index)
++{
++    const u8 *generatedFaceData;
+     char buffer[0xC];
+-    if(sMonsterParameters[index].dialogueSprites == 0)
+-    {
++    s16 id = SpeciesId(index);
++
++    if (!IsValidPortraitSpecies(id))
++        return NULL;
++
++
++    // TEMP TEST: force generated shiny portrait data for generic textbox portraits.
++    generatedFaceData = GetGeneratedDialogueSpriteDataPtr(id, TRUE);
++
++    if (sMonsterParameters[id].dialogueSprites == 0 && generatedFaceData == NULL) {
+         return NULL;
+     }
+-    sprintf(buffer, "kao%03d", index);
++
++    if (generatedFaceData != NULL) {
++        sGeneratedDialogueSpriteFile.data = generatedFaceData;
++        return &sGeneratedDialogueSpriteFile;
++    }
++
++    sprintf(buffer, "kao%03d", id);
+     return OpenFile(buffer, &gMonsterFileArchive);
+ }
+ 
++bool8 IsGeneratedDialogueSpriteFile(OpenedFile *file)
++{
++    return file == &sGeneratedDialogueSpriteFile;
++}
++
++
+ // arm9.bin::0205AC60
+ OpenedFile *GetDialogueSpriteDataPtr(s32 index)
+ {
+@@ -1008,18 +1075,48 @@ OpenedFile *GetDialogueSpriteDataPtr(s32 index)
+     char buffer[0xC];
+     s16 id = SpeciesId(index);
+ 
+-    if(sMonsterParameters[id].dialogueSprites == 0)
+-    {
++    if (!IsValidPortraitSpecies(id))
++        return NULL;
++
++    if (sMonsterParameters[id].dialogueSprites == 0 && !HasGeneratedDialoguePortrait(id)) {
+         return NULL;
+     }
++
+     sprintf(buffer, "kao%03d", id);
+     return OpenFileAndGetFileDataPtr(buffer, &gMonsterFileArchive);
+ }
+ 
++OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny)
++{
++    char buffer[0xC];
++    s16 id = SpeciesId(index);
++
++    if (!IsValidPortraitSpecies(id))
++        return NULL;
++
++    if (isShiny && HasGeneratedShinyDialoguePortrait(id)) {
++        sprintf(buffer, "kas%03d", id);
++        return OpenFileAndGetFileDataPtr(buffer, &gMonsterFileArchive);
++    }
++
++    return GetDialogueSpriteDataPtr(id);
++}
++
+ bool8 IsPokemonDialogueSpriteAvail(s16 index, s32 spriteId)
+ {
+-    // checking to see if dialogue sprite is available??
+-    return (sMonsterParameters[index].dialogueSprites >> spriteId) & 1;
++    s16 id = SpeciesId(index);
++
++    if (!IsValidPortraitSpecies(id))
++        return FALSE;
++
++    // TEMP TEST: allow generated shiny portraits even if vanilla has no portrait flags.
++    if (GetGeneratedDialogueSpriteDataPtr(id, TRUE) != NULL)
++        return TRUE;
++
++    if (sMonsterParameters[id].dialogueSprites == 0)
++        return FALSE;
++
++    return (sMonsterParameters[id].dialogueSprites & (1 << spriteId)) != 0;
+ }
+ 
+ void RecruitedPokemonToDungeonMon(DungeonMon *dst, u32 recruitedPokemonId)

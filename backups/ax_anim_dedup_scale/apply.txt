@@ -1,0 +1,310 @@
+Duplicate ax_anim groups:       2,906
+Duplicate ax_anim arrays:       22,632
+Projected ROM savings:          2,233,260 bytes
+
+Top duplicate groups:
+   1. size=  204 count=  53 savings= 10,608
+      sAggronAnims_10_3                   src/data/ax/aggron.h
+      sAmpharosAnims_10_3                 src/data/ax/ampharos.h
+      sAronAnims_10_3                     src/data/ax/aron.h
+      sAzurillAnims_10_3                  src/data/ax/azurill.h
+      sCameruptAnims_10_3                 src/data/ax/camerupt.h
+      sChanseyAnims_10_3                  src/data/ax/chansey.h
+      sClefableAnims_10_3                 src/data/ax/clefable.h
+      sClefairyAnims_10_3                 src/data/ax/clefairy.h
+      ... 45 more
+   2. size=  204 count=  50 savings=  9,996
+      sAggronAnims_10_2                   src/data/ax/aggron.h
+      sAmpharosAnims_10_2                 src/data/ax/ampharos.h
+      sAronAnims_10_2                     src/data/ax/aron.h
+      sAzurillAnims_10_2                  src/data/ax/azurill.h
+      sCameruptAnims_10_2                 src/data/ax/camerupt.h
+      sChanseyAnims_10_2                  src/data/ax/chansey.h
+      sClefableAnims_10_2                 src/data/ax/clefable.h
+      sClefairyAnims_10_2                 src/data/ax/clefairy.h
+      ... 42 more
+   3. size=  204 count=  50 savings=  9,996
+      sAggronAnims_10_4                   src/data/ax/aggron.h
+      sAmpharosAnims_10_4                 src/data/ax/ampharos.h
+      sAronAnims_10_4                     src/data/ax/aron.h
+      sAzurillAnims_10_4                  src/data/ax/azurill.h
+      sCameruptAnims_10_4                 src/data/ax/camerupt.h
+      sChanseyAnims_10_4                  src/data/ax/chansey.h
+      sClefableAnims_10_4                 src/data/ax/clefable.h
+      sClefairyAnims_10_4                 src/data/ax/clefairy.h
+      ... 42 more
+   4. size=  204 count=  50 savings=  9,996
+      sAggronAnims_10_5                   src/data/ax/aggron.h
+      sAmpharosAnims_10_5                 src/data/ax/ampharos.h
+      sAronAnims_10_5                     src/data/ax/aron.h
+      sAzurillAnims_10_5                  src/data/ax/azurill.h
+      sCameruptAnims_10_5                 src/data/ax/camerupt.h
+      sChanseyAnims_10_5                  src/data/ax/chansey.h
+      sClefableAnims_10_5                 src/data/ax/clefable.h
+      sClefairyAnims_10_5                 src/data/ax/clefairy.h
+      ... 42 more
+   5. size=  204 count=  50 savings=  9,996
+      sAggronAnims_10_7                   src/data/ax/aggron.h
+      sAmpharosAnims_10_7                 src/data/ax/ampharos.h
+      sAronAnims_10_7                     src/data/ax/aron.h
+      sAzurillAnims_10_7                  src/data/ax/azurill.h
+      sCameruptAnims_10_7                 src/data/ax/camerupt.h
+      sChanseyAnims_10_7                  src/data/ax/chansey.h
+      sClefableAnims_10_7                 src/data/ax/clefable.h
+      sClefairyAnims_10_7                 src/data/ax/clefairy.h
+      ... 42 more
+   6. size=  204 count=  49 savings=  9,792
+      sAggronAnims_10_1                   src/data/ax/aggron.h
+      sAmpharosAnims_10_1                 src/data/ax/ampharos.h
+      sAronAnims_10_1                     src/data/ax/aron.h
+      sAzurillAnims_10_1                  src/data/ax/azurill.h
+      sCameruptAnims_10_1                 src/data/ax/camerupt.h
+      sClefableAnims_10_1                 src/data/ax/clefable.h
+      sClefairyAnims_10_1                 src/data/ax/clefairy.h
+      sCombuskenAnims_10_1                src/data/ax/combusken.h
+      ... 41 more
+   7. size=  204 count=  49 savings=  9,792
+      sAriadosAnims_10_5                  src/data/ax/ariados.h
+      sBellossomAnims_10_5                src/data/ax/bellossom.h
+      sBellsproutAnims_10_5               src/data/ax/bellsprout.h
+      sBreloomAnims_10_5                  src/data/ax/breloom.h
+      sCharizardAnims_10_5                src/data/ax/charizard.h
+      sCharmeleonAnims_10_5               src/data/ax/charmeleon.h
+      sClamperlAnims_10_5                 src/data/ax/clamperl.h
+      sCloysterAnims_10_5                 src/data/ax/cloyster.h
+      ... 41 more
+   8. size=  204 count=  49 savings=  9,792
+      sAriadosAnims_10_6                  src/data/ax/ariados.h
+      sBellossomAnims_10_6                src/data/ax/bellossom.h
+      sBellsproutAnims_10_6               src/data/ax/bellsprout.h
+      sBreloomAnims_10_6                  src/data/ax/breloom.h
+      sCharizardAnims_10_6                src/data/ax/charizard.h
+      sCharmeleonAnims_10_6               src/data/ax/charmeleon.h
+      sClamperlAnims_10_6                 src/data/ax/clamperl.h
+      sCloysterAnims_10_6                 src/data/ax/cloyster.h
+      ... 41 more
+   9. size=  204 count=  49 savings=  9,792
+      sAriadosAnims_10_7                  src/data/ax/ariados.h
+      sBellossomAnims_10_7                src/data/ax/bellossom.h
+      sBellsproutAnims_10_7               src/data/ax/bellsprout.h
+      sBreloomAnims_10_7                  src/data/ax/breloom.h
+      sCharizardAnims_10_7                src/data/ax/charizard.h
+      sCharmeleonAnims_10_7               src/data/ax/charmeleon.h
+      sClamperlAnims_10_7                 src/data/ax/clamperl.h
+      sCloysterAnims_10_7                 src/data/ax/cloyster.h
+      ... 41 more
+  10. size=  204 count=  49 savings=  9,792
+      sAriadosAnims_10_8                  src/data/ax/ariados.h
+      sBellossomAnims_10_8                src/data/ax/bellossom.h
+      sBellsproutAnims_10_8               src/data/ax/bellsprout.h
+      sBreloomAnims_10_8                  src/data/ax/breloom.h
+      sCharizardAnims_10_8                src/data/ax/charizard.h
+      sCharmeleonAnims_10_8               src/data/ax/charmeleon.h
+      sClamperlAnims_10_8                 src/data/ax/clamperl.h
+      sCloysterAnims_10_8                 src/data/ax/cloyster.h
+      ... 41 more
+  11. size=  204 count=  47 savings=  9,384
+      sAggronAnims_10_6                   src/data/ax/aggron.h
+      sAmpharosAnims_10_6                 src/data/ax/ampharos.h
+      sAronAnims_10_6                     src/data/ax/aron.h
+      sAzurillAnims_10_6                  src/data/ax/azurill.h
+      sCameruptAnims_10_6                 src/data/ax/camerupt.h
+      sChanseyAnims_10_6                  src/data/ax/chansey.h
+      sClefableAnims_10_6                 src/data/ax/clefable.h
+      sClefairyAnims_10_6                 src/data/ax/clefairy.h
+      ... 39 more
+  12. size=  204 count=  47 savings=  9,384
+      sAggronAnims_10_8                   src/data/ax/aggron.h
+      sAmpharosAnims_10_8                 src/data/ax/ampharos.h
+      sAronAnims_10_8                     src/data/ax/aron.h
+      sAzurillAnims_10_8                  src/data/ax/azurill.h
+      sCameruptAnims_10_8                 src/data/ax/camerupt.h
+      sChanseyAnims_10_8                  src/data/ax/chansey.h
+      sClefableAnims_10_8                 src/data/ax/clefable.h
+      sClefairyAnims_10_8                 src/data/ax/clefairy.h
+      ... 39 more
+  13. size=  204 count=  47 savings=  9,384
+      sAriadosAnims_10_1                  src/data/ax/ariados.h
+      sBellossomAnims_10_1                src/data/ax/bellossom.h
+      sBellsproutAnims_10_1               src/data/ax/bellsprout.h
+      sBreloomAnims_10_1                  src/data/ax/breloom.h
+      sCharizardAnims_10_1                src/data/ax/charizard.h
+      sCharmeleonAnims_10_1               src/data/ax/charmeleon.h
+      sClamperlAnims_10_1                 src/data/ax/clamperl.h
+      sCloysterAnims_10_1                 src/data/ax/cloyster.h
+      ... 39 more
+  14. size=  204 count=  47 savings=  9,384
+      sAriadosAnims_10_2                  src/data/ax/ariados.h
+      sBellossomAnims_10_2                src/data/ax/bellossom.h
+      sBellsproutAnims_10_2               src/data/ax/bellsprout.h
+      sBreloomAnims_10_2                  src/data/ax/breloom.h
+      sCharizardAnims_10_2                src/data/ax/charizard.h
+      sCharmeleonAnims_10_2               src/data/ax/charmeleon.h
+      sClamperlAnims_10_2                 src/data/ax/clamperl.h
+      sCloysterAnims_10_2                 src/data/ax/cloyster.h
+      ... 39 more
+  15. size=  204 count=  47 savings=  9,384
+      sAriadosAnims_10_3                  src/data/ax/ariados.h
+      sBellossomAnims_10_3                src/data/ax/bellossom.h
+      sBellsproutAnims_10_3               src/data/ax/bellsprout.h
+      sBreloomAnims_10_3                  src/data/ax/breloom.h
+      sCharizardAnims_10_3                src/data/ax/charizard.h
+      sCharmeleonAnims_10_3               src/data/ax/charmeleon.h
+      sClamperlAnims_10_3                 src/data/ax/clamperl.h
+      sCloysterAnims_10_3                 src/data/ax/cloyster.h
+      ... 39 more
+  16. size=  204 count=  47 savings=  9,384
+      sAriadosAnims_10_4                  src/data/ax/ariados.h
+      sBellossomAnims_10_4                src/data/ax/bellossom.h
+      sBellsproutAnims_10_4               src/data/ax/bellsprout.h
+      sBreloomAnims_10_4                  src/data/ax/breloom.h
+      sCharizardAnims_10_4                src/data/ax/charizard.h
+      sCharmeleonAnims_10_4               src/data/ax/charmeleon.h
+      sClamperlAnims_10_4                 src/data/ax/clamperl.h
+      sCloysterAnims_10_4                 src/data/ax/cloyster.h
+      ... 39 more
+  17. size=  204 count=  37 savings=  7,344
+      sAlakazamAnims_10_5                 src/data/ax/alakazam.h
+      sBayleefAnims_10_5                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_5                src/data/ax/beautifly.h
+      sCelebiAnims_10_5                   src/data/ax/celebi.h
+      sChikoritaAnims_10_5                src/data/ax/chikorita.h
+      sCrobatAnims_10_5                   src/data/ax/crobat.h
+      sCuboneAnims_10_5                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_5                src/data/ax/cyndaquil.h
+      ... 29 more
+  18. size=  204 count=  37 savings=  7,344
+      sAlakazamAnims_10_6                 src/data/ax/alakazam.h
+      sBayleefAnims_10_6                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_6                src/data/ax/beautifly.h
+      sCelebiAnims_10_6                   src/data/ax/celebi.h
+      sChikoritaAnims_10_6                src/data/ax/chikorita.h
+      sCrobatAnims_10_6                   src/data/ax/crobat.h
+      sCuboneAnims_10_6                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_6                src/data/ax/cyndaquil.h
+      ... 29 more
+  19. size=  204 count=  37 savings=  7,344
+      sAlakazamAnims_10_7                 src/data/ax/alakazam.h
+      sBayleefAnims_10_7                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_7                src/data/ax/beautifly.h
+      sCelebiAnims_10_7                   src/data/ax/celebi.h
+      sChikoritaAnims_10_7                src/data/ax/chikorita.h
+      sCrobatAnims_10_7                   src/data/ax/crobat.h
+      sCuboneAnims_10_7                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_7                src/data/ax/cyndaquil.h
+      ... 29 more
+  20. size=  204 count=  37 savings=  7,344
+      sAlakazamAnims_10_8                 src/data/ax/alakazam.h
+      sBayleefAnims_10_8                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_8                src/data/ax/beautifly.h
+      sCelebiAnims_10_8                   src/data/ax/celebi.h
+      sChikoritaAnims_10_8                src/data/ax/chikorita.h
+      sCrobatAnims_10_8                   src/data/ax/crobat.h
+      sCuboneAnims_10_8                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_8                src/data/ax/cyndaquil.h
+      ... 29 more
+  21. size=  204 count=  36 savings=  7,140
+      sAbsolAnims_10_1                    src/data/ax/absol.h
+      sAerodactylAnims_10_1               src/data/ax/aerodactyl.h
+      sAltariaAnims_10_1                  src/data/ax/altaria.h
+      sArticunoAnims_10_1                 src/data/ax/articuno.h
+      sBarboachAnims_10_1                 src/data/ax/barboach.h
+      sDelcattyAnims_10_1                 src/data/ax/delcatty.h
+      sDeoxysNormalAnims_10_1             src/data/ax/deoxysnormal.h
+      sDeoxysSpeedAnims_10_1              src/data/ax/deoxysspeed.h
+      ... 28 more
+  22. size=  204 count=  36 savings=  7,140
+      sAbsolAnims_10_2                    src/data/ax/absol.h
+      sAerodactylAnims_10_2               src/data/ax/aerodactyl.h
+      sAltariaAnims_10_2                  src/data/ax/altaria.h
+      sArticunoAnims_10_2                 src/data/ax/articuno.h
+      sBarboachAnims_10_2                 src/data/ax/barboach.h
+      sDelcattyAnims_10_2                 src/data/ax/delcatty.h
+      sDeoxysNormalAnims_10_2             src/data/ax/deoxysnormal.h
+      sDeoxysSpeedAnims_10_2              src/data/ax/deoxysspeed.h
+      ... 28 more
+  23. size=  204 count=  36 savings=  7,140
+      sAbsolAnims_10_3                    src/data/ax/absol.h
+      sAerodactylAnims_10_3               src/data/ax/aerodactyl.h
+      sAltariaAnims_10_3                  src/data/ax/altaria.h
+      sArticunoAnims_10_3                 src/data/ax/articuno.h
+      sBarboachAnims_10_3                 src/data/ax/barboach.h
+      sDelcattyAnims_10_3                 src/data/ax/delcatty.h
+      sDeoxysNormalAnims_10_3             src/data/ax/deoxysnormal.h
+      sDeoxysSpeedAnims_10_3              src/data/ax/deoxysspeed.h
+      ... 28 more
+  24. size=  204 count=  36 savings=  7,140
+      sAbsolAnims_10_4                    src/data/ax/absol.h
+      sAerodactylAnims_10_4               src/data/ax/aerodactyl.h
+      sAltariaAnims_10_4                  src/data/ax/altaria.h
+      sArticunoAnims_10_4                 src/data/ax/articuno.h
+      sBarboachAnims_10_4                 src/data/ax/barboach.h
+      sDelcattyAnims_10_4                 src/data/ax/delcatty.h
+      sDeoxysNormalAnims_10_4             src/data/ax/deoxysnormal.h
+      sDeoxysSpeedAnims_10_4              src/data/ax/deoxysspeed.h
+      ... 28 more
+  25. size=  204 count=  36 savings=  7,140
+      sAlakazamAnims_10_1                 src/data/ax/alakazam.h
+      sBayleefAnims_10_1                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_1                src/data/ax/beautifly.h
+      sCelebiAnims_10_1                   src/data/ax/celebi.h
+      sChikoritaAnims_10_1                src/data/ax/chikorita.h
+      sCrobatAnims_10_1                   src/data/ax/crobat.h
+      sCuboneAnims_10_1                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_1                src/data/ax/cyndaquil.h
+      ... 28 more
+  26. size=  204 count=  36 savings=  7,140
+      sAlakazamAnims_10_2                 src/data/ax/alakazam.h
+      sBayleefAnims_10_2                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_2                src/data/ax/beautifly.h
+      sCelebiAnims_10_2                   src/data/ax/celebi.h
+      sChikoritaAnims_10_2                src/data/ax/chikorita.h
+      sCrobatAnims_10_2                   src/data/ax/crobat.h
+      sCuboneAnims_10_2                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_2                src/data/ax/cyndaquil.h
+      ... 28 more
+  27. size=  204 count=  36 savings=  7,140
+      sAlakazamAnims_10_3                 src/data/ax/alakazam.h
+      sBayleefAnims_10_3                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_3                src/data/ax/beautifly.h
+      sCelebiAnims_10_3                   src/data/ax/celebi.h
+      sChikoritaAnims_10_3                src/data/ax/chikorita.h
+      sCrobatAnims_10_3                   src/data/ax/crobat.h
+      sCuboneAnims_10_3                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_3                src/data/ax/cyndaquil.h
+      ... 28 more
+  28. size=  204 count=  36 savings=  7,140
+      sAlakazamAnims_10_4                 src/data/ax/alakazam.h
+      sBayleefAnims_10_4                  src/data/ax/bayleef.h
+      sBeautiflyAnims_10_4                src/data/ax/beautifly.h
+      sCelebiAnims_10_4                   src/data/ax/celebi.h
+      sChikoritaAnims_10_4                src/data/ax/chikorita.h
+      sCrobatAnims_10_4                   src/data/ax/crobat.h
+      sCuboneAnims_10_4                   src/data/ax/cubone.h
+      sCyndaquilAnims_10_4                src/data/ax/cyndaquil.h
+      ... 28 more
+  29. size=  204 count=  35 savings=  6,936
+      sAbsolAnims_10_5                    src/data/ax/absol.h
+      sAerodactylAnims_10_5               src/data/ax/aerodactyl.h
+      sAltariaAnims_10_5                  src/data/ax/altaria.h
+      sArmaldoAnims_10_1                  src/data/ax/armaldo.h
+      sArticunoAnims_10_5                 src/data/ax/articuno.h
+      sBarboachAnims_10_5                 src/data/ax/barboach.h
+      sDelcattyAnims_10_5                 src/data/ax/delcatty.h
+      sDeoxysNormalAnims_10_5             src/data/ax/deoxysnormal.h
+      ... 27 more
+  30. size=  204 count=  35 savings=  6,936
+      sAbsolAnims_10_6                    src/data/ax/absol.h
+      sAerodactylAnims_10_6               src/data/ax/aerodactyl.h
+      sAltariaAnims_10_6                  src/data/ax/altaria.h
+      sArmaldoAnims_10_2                  src/data/ax/armaldo.h
+      sArticunoAnims_10_6                 src/data/ax/articuno.h
+      sBarboachAnims_10_6                 src/data/ax/barboach.h
+      sDelcattyAnims_10_6                 src/data/ax/delcatty.h
+      sDeoxysNormalAnims_10_6             src/data/ax/deoxysnormal.h
+      ... 27 more
+
+Applied scaled ax_anim dedup.
+Backup dir: backups/ax_anim_dedup_scale/20260613_230155
+Manifest:   backups/ax_anim_dedup_scale/manifest.tsv
+Summary:    backups/ax_anim_dedup_scale/summary.txt

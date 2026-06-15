@@ -1,0 +1,39 @@
+
+pmd_red_modern.elf:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 ewram         0003bdd8  02000000  02000000  00001000  2**2
+                  ALLOC
+  1 iwram         0000543e  03000000  03000000  00001000  2**2
+                  ALLOC
+  2 .text         000a3f00  08000000  08000000  00001000  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  3 .rodata       01e2cf38  080a3f00  080a3f00  000a4f00  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 ewram_init    0000045c  0203bdd8  09ed0e38  01ed2dd8  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 iwram_init    0000051c  03005440  09ed1294  01ed3440  2**2
+                  CONTENTS, ALLOC, LOAD, CODE
+  6 iwram_lib     00002090  0300595c  09ed17b0  01ed395c  2**2
+                  ALLOC
+  7 sound_data    0006bd74  09ed17b0  09ed17b0  01ed47b0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  8 .generated_kao_low 00000000  09f3d524  09f3d524  020c7e50  2**2
+                  CONTENTS
+  9 .generated_kao_runtime 000a1424  09f3d524  09f3d524  01f40524  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 10 .generated_kao 000e5e50  0a000000  0a000000  01fe2000  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 11 .debug_aranges 000000a0  00000000  00000000  020c7e50  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 12 .debug_info   0000011e  00000000  00000000  020c7ef0  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 13 .debug_abbrev 000000c6  00000000  00000000  020c800e  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 14 .debug_line   000001dd  00000000  00000000  020c80d4  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 15 .debug_frame  000000c0  00000000  00000000  020c82b4  2**2
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 16 .debug_str    0000013e  00000000  00000000  020c8374  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
