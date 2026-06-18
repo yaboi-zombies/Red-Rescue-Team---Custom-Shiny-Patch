@@ -62,6 +62,13 @@ ALIGNED(4) static const u8 sSayFarewellConfirm[] = _(
          "like it to join your team.\n"
          "Will you release it anyway?");
 
+ALIGNED(4) static const u8 sSayFarewellConfirmTwins[] = _(
+         "If you say farewell to this\n"
+         "Pokémon, it will be gone.{EXTRA_MSG}"
+         "You will not be able to get another one\n"
+         "unless its twin is also released.\n"
+         "Will you release it anyway?");
+
 ALIGNED(4) static const u8 sReturnedToToolbox[] = _(
          "{CENTER_ALIGN}The {COLOR GREEN}{MOVE_ITEM_0}{RESET} was\n"
          "{CENTER_ALIGN}returned to the Toolbox.");

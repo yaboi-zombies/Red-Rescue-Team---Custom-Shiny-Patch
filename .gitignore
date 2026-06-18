@@ -58,7 +58,9 @@ gen/
 
 SpriteCollab/
 data/kao_generated
+data/kao_generated_runtime
 scripts/
 *.at4px
 *.indexed.png
 backups/
+*.bps

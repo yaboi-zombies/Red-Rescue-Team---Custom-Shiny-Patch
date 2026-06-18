@@ -1,6 +1,7 @@
 #include "global.h"
 #include "globaldata.h"
 #include "constants/dungeon.h"
+#include "constants/monster.h"
 #include "code_801B3C0.h"
 #include "code_801EE10.h"
 #include "code_801EE10_mid.h"
@@ -55,6 +56,27 @@ u8 sub_8027E4C(Pokemon *r0);
 void sub_8027EB8(void);
 
 #include "data/friend_area_action_menu.h"
+
+static inline bool8 IsLatiosLatiasFarewellTarget(void)
+{
+    s16 species = GetBaseSpecies(sUnknown_203B2BC->pokeStruct->speciesNum);
+
+    return species == MONSTER_LATIOS || species == MONSTER_LATIAS;
+}
+
+static inline bool8 ShouldShowExtraFarewellConfirm(void)
+{
+    if (IsLatiosLatiasFarewellTarget()) {
+        return TRUE;
+    }
+
+    if (sUnknown_203B2BC->pokeStruct->dungeonLocation.id == DUNGEON_HOWLING_FOREST_2
+        || sUnknown_203B2BC->pokeStruct->dungeonLocation.id == DUNGEON_POKEMON_SQUARE) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
 
 u32 sub_8027074(void)
 {
@@ -215,7 +237,12 @@ void sub_8027274(void)
             break;
         case FRIEND_AREA_ACTION_MENU_SAY_FAREWELL_CONFIRM:
             sub_8027794();
-            CreateMenuDialogueBoxAndPortrait(sSayFarewellConfirm,0,3,sUnknown_203B2BC->menuItems,0,4,0,0,0x101);
+            if (IsLatiosLatiasFarewellTarget()) {
+                CreateMenuDialogueBoxAndPortrait(sSayFarewellConfirmTwins, 0, 3, sUnknown_203B2BC->menuItems, 0, 4, 0, 0, 0x101);
+            }
+            else {
+                CreateMenuDialogueBoxAndPortrait(sSayFarewellConfirm, 0, 3, sUnknown_203B2BC->menuItems, 0, 4, 0, 0, 0x101);
+            }
             break;
         case 0x10:
             GetLinkedSequence(sUnknown_203B2BC->moveIndex,sUnknown_203B2BC->moves,sUnknown_203B2BC->moveIDs);
@@ -506,14 +533,6 @@ void sub_8027A5C(void)
             break;
     }
 }
-
-static inline bool8 sub_8027A78_sub(void) {
-    if (sUnknown_203B2BC->pokeStruct->dungeonLocation.id == DUNGEON_HOWLING_FOREST_2 || sUnknown_203B2BC->pokeStruct->dungeonLocation.id == DUNGEON_POKEMON_SQUARE)
-        return TRUE;
-    else
-        return FALSE;
-}
-
 void sub_8027A78(void)
 {
     s32 menuAction;
@@ -526,10 +545,10 @@ void sub_8027A78(void)
                 SetFriendAreaActionMenuState(FRIEND_AREA_ACTION_MENU_MAIN_2);
                 break;
             case FRIEND_AREA_ACTION_MENU_ACTION_YES:
-                if (sub_8027A78_sub())
+                if (ShouldShowExtraFarewellConfirm()) {
                     SetFriendAreaActionMenuState(FRIEND_AREA_ACTION_MENU_SAY_FAREWELL_CONFIRM);
-                else
-                {
+                }
+                else {
                     sub_8027EB8();
                     TryResetPokemonFlags(sUnknown_203B2BC->pokeStruct);
                 }

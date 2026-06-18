@@ -57,6 +57,15 @@ ALIGNED(4) static const u8 sUnknown_80DD420[] = _(
 	"like it to join your team.\n"
 	"Will you release it anyway?");
 
+
+ALIGNED(4) static const u8 sPartyMenuSayFarewellConfirmTwins[] = _(
+    "If you say farewell to this\n"
+    "Pokémon, it will be gone forever.{EXTRA_MSG}"
+    "Its twin will remain connected to it.\n"
+    "You will need to release both twins\n"
+    "before they can rejoin you.\n"
+    "Will you release it anyway?");
+
 ALIGNED(4) static const u8 sUnknown_80DD4C4[] = _(
 	"{CENTER_ALIGN}{POKEMON_1} joined the\n"
 	"{CENTER_ALIGN}rescue team for adventures!");

@@ -1,6 +1,7 @@
 #include "global.h"
 #include "globaldata.h"
 #include "constants/dungeon.h"
+#include "constants/monster.h"
 #include "code_800D090.h"
 #include "code_801B3C0.h"
 #include "code_801EE10.h"
@@ -59,6 +60,27 @@ typedef struct unkStruct_203B2B8
 static EWRAM_INIT unkStruct_203B2B8 *sUnknown_203B2B8 = {NULL};
 
 #include "data/party_list_menu.h"
+
+static bool8 PartyListMenu_IsLatiosLatiasFarewellTarget(void)
+{
+    s16 species = GetBaseSpecies(sUnknown_203B2B8->pokeStruct->speciesNum);
+
+    return species == MONSTER_LATIOS || species == MONSTER_LATIAS;
+}
+
+static bool8 PartyListMenu_ShouldShowExtraFarewellConfirm(void)
+{
+    if (PartyListMenu_IsLatiosLatiasFarewellTarget()) {
+        return TRUE;
+    }
+
+    if (sUnknown_203B2B8->pokeStruct->dungeonLocation.id == DUNGEON_HOWLING_FOREST_2
+        || sUnknown_203B2B8->pokeStruct->dungeonLocation.id == DUNGEON_POKEMON_SQUARE) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
 
 static u32 sub_8026F04(Pokemon *);
 static bool8 CanTakePokemonHeldItem(Pokemon *r0);
@@ -315,7 +337,12 @@ static void HandlePartyListMenuCallback(void)
             break;
         case PARTY_LIST_STATE_CONFIRM_SAY_FAREWELL:
             PartyListMenu_BuildYesNoMenu();
-            CreateMenuDialogueBoxAndPortrait(sUnknown_80DD420,0,3,sUnknown_203B2B8->unk1BC,0,4,0,0,0x101);
+            if (PartyListMenu_IsLatiosLatiasFarewellTarget()) {
+                CreateMenuDialogueBoxAndPortrait(sPartyMenuSayFarewellConfirmTwins, 0, 3, sUnknown_203B2B8->unk1BC, 0, 4, 0, 0, 0x101);
+            }
+            else {
+                CreateMenuDialogueBoxAndPortrait(sUnknown_80DD420, 0, 3, sUnknown_203B2B8->unk1BC, 0, 4, 0, 0, 0x101);
+            }
             break;
         case 0x18:
             GetLinkedSequence(sUnknown_203B2B8->moveIndex, sUnknown_203B2B8->moves,sUnknown_203B2B8->moveIDs);
@@ -649,7 +676,7 @@ static void sub_8026AB0(void)
                 SetPartyListMenuState(PARTY_LIST_STATE_MAIN_MENU_1);
                 break;
             case 2:
-                if (sub_8026AB0_sub())
+                if (PartyListMenu_ShouldShowExtraFarewellConfirm())
                     SetPartyListMenuState(PARTY_LIST_STATE_CONFIRM_SAY_FAREWELL);
                 else
                     SetPartyListMenuState(PARTY_LIST_STATE_POKEMON_FAREWELL);

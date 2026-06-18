@@ -2423,6 +2423,33 @@ const struct DungeonDialogueStruct gLatiosReFightDialogue_1 = {
     .str = _(" You're back?{EXTRA_MSG} But!{EXTRA_MSG} It doesn't matter how often\nyou come!{WAIT_PRESS}\nNobody can stop me!"),
 };
 
+const struct DungeonDialogueStruct gLatiosNorthernRangePostStoryPreFightDialogue_1 = {
+    .type = 0,
+    .spriteId = 0,
+    .spritePlacementId = 13,
+    .speciesId = MONSTER_LATIOS,
+    .allowType = DIALOGUE_ALLOW_ALL,
+    .str = _(" You're back?{EXTRA_MSG} But!{EXTRA_MSG} I thought you did not\nneed our help?"),
+};
+
+const struct DungeonDialogueStruct gLatiosNorthernRangePostStoryPreFightDialogue_2 = {
+    .type = 0,
+    .spriteId = 0,
+    .spritePlacementId = 13,
+    .speciesId = MONSTER_LATIOS,
+    .allowType = DIALOGUE_ALLOW_ALL,
+    .str = _(" If you really want our\naid..."),
+};
+
+const struct DungeonDialogueStruct gLatiosNorthernRangePostStoryPreFightDialogue_3 = {
+    .type = 0,
+    .spriteId = 0,
+    .spritePlacementId = 13,
+    .speciesId = MONSTER_LATIOS,
+    .allowType = DIALOGUE_ALLOW_ALL,
+    .str = _(" You'll have to prove\nyourselves!"),
+};
+
 const struct DungeonDialogueStruct gUnknown_8104FC8 = {
     .type = 4,
     .spriteId = 0,

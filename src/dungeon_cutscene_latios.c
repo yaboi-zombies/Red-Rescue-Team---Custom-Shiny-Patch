@@ -34,6 +34,11 @@
 
 static void LatiosScreenFlash(void);
 
+static bool8 ShouldRunLatiosLatiasNorthernRangeRematch(void)
+{
+    return !HasRecruitedMon(MONSTER_LATIOS) && !HasRecruitedMon(MONSTER_LATIAS);
+}
+
 void sub_808A9E4(void)
 {
   Entity * leaderEntity;
@@ -68,19 +73,28 @@ void sub_808AA3C(void)
 
 void sub_808AA94(void)
 {
-  Entity * leaderEntity;
-  Entity * LatiosEntity;
+    Entity *leaderEntity;
+    Entity *LatiosEntity;
 
-  leaderEntity = CutsceneGetLeader();
-  LatiosEntity = GetEntityFromMonsterBehavior(BEHAVIOR_LATIOS);
-  DungeonStartNewBGM(MUS_IN_THE_DEPTHS_OF_THE_PIT);
-  sub_80854D4();
-  sub_8085930(DIRECTION_NORTH);
-  sub_80855E4(sub_8086A3C);
-  HandleFaint_Async(LatiosEntity,DUNGEON_EXIT_DELETED_FOR_EVENT,0);
-  sub_8085860(leaderEntity->pos.x,leaderEntity->pos.y - 3);
-  CopyMonsterNameToBuffer(gFormatBuffer_Monsters[2], MONSTER_LATIOS);
+    leaderEntity = CutsceneGetLeader();
+    LatiosEntity = GetEntityFromMonsterBehavior(BEHAVIOR_LATIOS);
+
+    DungeonStartNewBGM(MUS_IN_THE_DEPTHS_OF_THE_PIT);
+    sub_80854D4();
+    sub_8085930(DIRECTION_NORTH);
+    sub_80855E4(sub_8086A3C);
+
+    if (ShouldRunLatiosLatiasNorthernRangeRematch()) {
+        SetFacingDirection(LatiosEntity, DIRECTION_NORTH);
+    }
+    else {
+        HandleFaint_Async(LatiosEntity, DUNGEON_EXIT_DELETED_FOR_EVENT, 0);
+    }
+
+    sub_8085860(leaderEntity->pos.x, leaderEntity->pos.y - 3);
+    CopyMonsterNameToBuffer(gFormatBuffer_Monsters[2], MONSTER_LATIOS);
 }
+
 
 void HandleLatiosBossFaint(u8 monsterBehavior, u8 cutscene)
 {
@@ -144,10 +158,33 @@ void LatiosReFightDialogue(void)
 
 void sub_808AC3C(void)
 {
+    Entity *leaderEntity;
+    Entity *LatiosEntity;
+
+    if (!ShouldRunLatiosLatiasNorthernRangeRematch()) {
+        sub_8086448();
+        // There appears to be no one here
+        sub_80866C4(&gUnknown_8104FC8);
+        return;
+    }
+
+    leaderEntity = CutsceneGetLeader();
+    LatiosEntity = GetEntityFromMonsterBehavior(BEHAVIOR_LATIOS);
+
     sub_8086448();
-    // There appears to be no one here
-    sub_80866C4(&gUnknown_8104FC8);
+    sub_808692C();
+
+    DisplayDungeonDialogue_Async(&gLatiosNorthernRangePostStoryPreFightDialogue_1);
+    LatiosScreenFlash();
+    DisplayDungeonDialogue_Async(&gLatiosNorthernRangePostStoryPreFightDialogue_2);
+    LatiosScreenFlash();
+    DisplayDungeonDialogue_Async(&gLatiosNorthernRangePostStoryPreFightDialogue_3);
+
+    DungeonWaitFrames_Async(10, 70);
+    SetupBossFightHP(LatiosEntity, 600, MUS_BOSS_BATTLE);
+    ShiftCameraToPosition(&leaderEntity->pixelPos, 0x10);
 }
+
 
 static void LatiosScreenFlash(void)
 {

@@ -54,6 +54,15 @@ static bool8 RollShinySpawn(s16 species)
     return DungeonRandInt(denom) < SHINY_SPAWN_CHANCE;
 }
 
+static bool8 IsNorthernRangeLatiosRematchShinyRoll(s16 species)
+{
+    return GetBaseSpecies(species) == MONSTER_LATIOS
+        && gDungeon->fixedRoomNumber == FIXED_ROOM_NORTHERN_RANGE_LATIOS
+        && GetCutsceneFlag(CUTSCENE_FLAG_NORTHERN_RANGE_COMPLETE)
+        && !HasRecruitedMon(MONSTER_LATIOS)
+        && !HasRecruitedMon(MONSTER_LATIAS);
+}
+
 static bool8 IsLegendaryOrMythical(s16 species)
 {
     switch (species) {
@@ -147,6 +156,10 @@ static bool8 IsForcedPersistentShiny(s16 species)
 {
     s16 baseSpecies = GetBaseSpecies(species);
 
+    if (IsNorthernRangeLatiosRematchShinyRoll(species)) {
+        return FALSE;
+    }
+
     if (baseSpecies == MONSTER_LATIOS) {
         return GetCutsceneFlag(CUTSCENE_FLAG_LATIOS_SHINY);
     }
@@ -159,6 +172,10 @@ static bool8 IsForcedPersistentShiny(s16 species)
 
 static void StorePersistentShinyRoll(s16 species, bool8 isShiny)
 {
+    if (IsNorthernRangeLatiosRematchShinyRoll(species)) {
+        return;
+    }
+
     if (GetBaseSpecies(species) == MONSTER_LATIOS && isShiny) {
         SetCutsceneFlag(CUTSCENE_FLAG_LATIOS_SHINY);
         SetCutsceneFlag(CUTSCENE_FLAG_LATIAS_SHINY);

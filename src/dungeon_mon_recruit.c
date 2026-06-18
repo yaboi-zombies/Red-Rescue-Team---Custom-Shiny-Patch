@@ -3,6 +3,9 @@
 #include "dungeon_mon_recruit.h"
 #include "constants/dungeon_exit.h"
 #include "constants/fixed_rooms.h"
+#include "constants/move_id.h"
+#include "constants/item.h"
+#include "constants/dungeon.h"
 #include "constants/type.h"
 #include "structs/str_pokemon.h"
 #include "dungeon_main.h"
@@ -36,6 +39,73 @@
 static void nullsub_96(Entity *pokemon,Entity *target);
 static void sub_806F910(void);
 static bool8 IsMonsterRecruitableInternal(s32 species, bool8 bypassStoryRestrictions);
+static bool8 IsNorthernRangeLatiosRematchRecruitable(s32 species);
+static void TryRecruitLatiasForNorthernRangeLatiosRematch(Entity *leaderEntity, bool8 isShiny);
+
+static bool8 IsNorthernRangeLatiosRematchRecruitable(s32 species)
+{
+    s32 id = (s16) species;
+
+    return id == MONSTER_LATIOS
+        && gDungeon->fixedRoomNumber == FIXED_ROOM_NORTHERN_RANGE_LATIOS
+        && MonCutsceneCompleted(MONSTER_LATIOS)
+        && !HasRecruitedMon(MONSTER_LATIOS)
+        && !HasRecruitedMon(MONSTER_LATIAS);
+}
+
+static void TryRecruitLatiasForNorthernRangeLatiosRematch(Entity *leaderEntity, bool8 isShiny)
+{
+    Pokemon latiasMon;
+    Pokemon *recruitPtr;
+    u8 latiasName[POKEMON_NAME_LENGTH];
+    struct StoryMonData latiasData;
+
+    if (HasRecruitedMon(MONSTER_LATIAS)) {
+        return;
+    }
+
+    CopyMonsterNameToBuffer(gFormatBuffer_Monsters[0], MONSTER_LATIAS);
+    BoundedCopyStringtoBuffer(latiasName, gFormatBuffer_Monsters[0], POKEMON_NAME_LENGTH);
+
+    latiasData.name = latiasName;
+    latiasData.speciesNum = MONSTER_LATIAS;
+    latiasData.itemID = ITEM_NOTHING;
+    latiasData.dungeonLocation.id = DUNGEON_POKEMON_SQUARE;
+    latiasData.dungeonLocation.floor = 0;
+    latiasData.moveID[0] = MOVE_PSYWAVE;
+    latiasData.moveID[1] = MOVE_WISH;
+    latiasData.moveID[2] = MOVE_HELPING_HAND;
+    latiasData.moveID[3] = MOVE_SAFEGUARD;
+    latiasData.pokeHP = 120;
+    latiasData.level = 28;
+    latiasData.IQ = 1;
+    latiasData.offenseAtk[0] = 58;
+    latiasData.offenseAtk[1] = 57;
+    latiasData.offenseDef[0] = 40;
+    latiasData.offenseDef[1] = 43;
+    latiasData.currExp = 245400;
+
+    if (!GetFriendAreaStatus(GetFriendArea(MONSTER_LATIOS))) {
+        UnlockFriendArea(GetFriendArea(MONSTER_LATIOS));
+    }
+
+    ConvertStoryMonToPokemon(&latiasMon, &latiasData);
+
+    if (isShiny) {
+        latiasMon.flags |= POKEMON_FLAG_SHINY;
+    }
+    else {
+        latiasMon.flags &= ~POKEMON_FLAG_SHINY;
+    }
+
+    recruitPtr = TryAddPokemonToRecruited(&latiasMon);
+    if (recruitPtr == NULL) {
+        return;
+    }
+
+    IncrementAdventureNumJoined();
+    LogMessageByIdWithPopupCheckUser_Async(leaderEntity, gText_Pokemon0JoinedToGoOnAdventures);
+}
 
 bool8 TryRecruitMonster(Entity *attacker, Entity *target)
 {
@@ -44,12 +114,14 @@ bool8 TryRecruitMonster(Entity *attacker, Entity *target)
     s32 recruitRate;
     bool8 bypassStoryRestrictions;
     bool8 isShiny;
+    bool8 isNorthernRangeLatiosRematch;
     EntityInfo *attackerInfo = GetEntInfo(attacker);
     EntityInfo *targetInfo = GetEntInfo(target);
     s32 foundIndex = -1;
     s32 size = GetBodySize(targetInfo->apparentID);
     isShiny = (targetInfo->visualFlags & VISUAL_FLAG_SHINY) != 0;
-    bypassStoryRestrictions = isShiny;
+    isNorthernRangeLatiosRematch = IsNorthernRangeLatiosRematchRecruitable(targetInfo->id);
+    bypassStoryRestrictions = isShiny || isNorthernRangeLatiosRematch;
 
     if (!isShiny && !gCustomGameOptions.recruitNonShiny) {
         return FALSE;
@@ -61,7 +133,8 @@ bool8 TryRecruitMonster(Entity *attacker, Entity *target)
     }
 #endif
 
-    if (gDungeon->fixedRoomNumber != FIXED_ROOM_FROSTY_GROTTO_ARTICUNO
+    if (!isNorthernRangeLatiosRematch
+        && gDungeon->fixedRoomNumber != FIXED_ROOM_FROSTY_GROTTO_ARTICUNO
         && gDungeon->fixedRoomNumber != FIXED_ROOM_MT_BLAZE_PEAK_MOLTRES
         && gDungeon->fixedRoomNumber != FIXED_ROOM_WESTERN_CAVE_MEWTWO
         && gDungeon->fixedRoomNumber != FIXED_ROOM_MT_FARAWAY_HO_OH) {
@@ -81,7 +154,7 @@ bool8 TryRecruitMonster(Entity *attacker, Entity *target)
         }
     }
 
-    if (gDungeon->unk644.unk19 != 0 && !isShiny)
+    if (gDungeon->unk644.unk19 != 0 && !isShiny && !isNorthernRangeLatiosRematch)
         return FALSE;
 
     // Legendaries can only be recruited once.
@@ -117,6 +190,9 @@ bool8 TryRecruitMonster(Entity *attacker, Entity *target)
     sub_806F910();
     rand = DungeonRandInt(1000);
     recruitRate = GetRecruitRate(targetInfo->id);
+    if (isNorthernRangeLatiosRematch) {
+        recruitRate = 1000;
+    }
     if (!isShiny && recruitRate == -999)
         return FALSE;
 
@@ -206,7 +282,7 @@ bool8 IsMonsterRecruitable(s32 species)
 static bool8 IsMonsterRecruitableInternal(s32 species, bool8 bypassStoryRestrictions)
 {
     s32 id = (s16) species;
-    if (!gDungeon->unk644.canRecruit) {
+    if (!gDungeon->unk644.canRecruit && !IsNorthernRangeLatiosRematchRecruitable(id)) {
         return FALSE;
     }
     else if (!bypassStoryRestrictions && !MonCutsceneCompleted(id)) {
@@ -218,7 +294,7 @@ static bool8 IsMonsterRecruitableInternal(s32 species, bool8 bypassStoryRestrict
     else if (!bypassStoryRestrictions && id == MONSTER_LATIAS) {
         return FALSE;
     }
-    else if (id == MONSTER_LATIOS) {
+    else if (id == MONSTER_LATIOS && !IsNorthernRangeLatiosRematchRecruitable(id)) {
         return FALSE;
     }
     else if (id == MONSTER_DEOXYS_ATTACK) {
@@ -252,6 +328,8 @@ bool8 MonsterJoinSequence_Async(Entity *entity1, Entity *entity2, struct unkStru
 
     s32 direction = GetDirectionTowardsPosition(&entity2->pos,&entity1->pos);
     bool8 unlockedFriendArea = FALSE;
+    bool8 recruitLatiasWithLatios = IsNorthernRangeLatiosRematchRecruitable(param_3->id);
+    bool8 rematchLatiosWasShiny = FALSE;
     u8 friendArea = GetFriendArea(param_3->id);
 
     entity2->unk22 = 0;
@@ -279,6 +357,10 @@ bool8 MonsterJoinSequence_Async(Entity *entity1, Entity *entity2, struct unkStru
     if (GetFriendAreaStatus(friendArea) == 0) {
         UnlockFriendArea(friendArea);
         unlockedFriendArea = TRUE;
+    }
+    if (recruitLatiasWithLatios) {
+        rematchLatiosWasShiny = ((GetEntInfo(entity2)->visualFlags & VISUAL_FLAG_SHINY) != 0);
+        param_3->isShiny = rematchLatiosWasShiny;
     }
     HandleFaint_Async(entity2,DUNGEON_EXIT_TRANSFORMED_INTO_FRIEND,entity1);
     dungeonMon = &gRecruitedPokemonRef->dungeonTeam[pokeIndex];
@@ -328,6 +410,9 @@ bool8 MonsterJoinSequence_Async(Entity *entity1, Entity *entity2, struct unkStru
         }
         sub_808D9DC(gFormatBuffer_Monsters[0],dungeonMon,0);
         LogMessageByIdWithPopupCheckUser_Async(entity1,gText_Pokemon0JoinedToGoOnAdventures);
+        if (recruitLatiasWithLatios) {
+            TryRecruitLatiasForNorthernRangeLatiosRematch(entity1, rematchLatiosWasShiny);
+        }
         if (unlockedFriendArea) {
             Entity *leader = CutsceneGetLeader();
             SubstitutePlaceholderStringTags(gFormatBuffer_Monsters[0],leader,0);
