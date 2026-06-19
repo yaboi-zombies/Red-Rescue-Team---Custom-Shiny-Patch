@@ -67,3 +67,4 @@ backups/
 *.py
 *.bgrpal
 *.bak
+.vs/

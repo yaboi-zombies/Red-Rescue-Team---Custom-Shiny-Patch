@@ -3,32 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\friend_area_action_menu.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\friend_area_action_menu.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\shiny_version.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:include\\shiny_version.h||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\data\\friend_area_action_menu.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\data\\friend_area_action_menu.h||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\event_flag.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\event_flag.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_strings.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\dungeon_strings.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_move_util.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\dungeon_move_util.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_misc.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\dungeon_misc.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_list_menu.c||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\dungeon_list_menu.c||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\dungeon_items.h||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -111,110 +91,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "friend_area_action_menu.c",
-              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\friend_area_action_menu.c",
-              "RelativeDocumentMoniker": "src\\friend_area_action_menu.c",
-              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\friend_area_action_menu.c",
-              "RelativeToolTip": "src\\friend_area_action_menu.c",
-              "ViewState": "AgIAABADAAAAAAAAAAAuwDQDAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:42:30.998Z",
+              "Title": "shiny_version.h",
+              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\shiny_version.h",
+              "RelativeDocumentMoniker": "include\\shiny_version.h",
+              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\shiny_version.h",
+              "RelativeToolTip": "include\\shiny_version.h",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-06-19T05:55:13.046Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "friend_area_action_menu.h",
-              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\data\\friend_area_action_menu.h",
-              "RelativeDocumentMoniker": "src\\data\\friend_area_action_menu.h",
-              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\data\\friend_area_action_menu.h",
-              "RelativeToolTip": "src\\data\\friend_area_action_menu.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-06-17T23:42:11.54Z",
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAAAIAAADUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-19T05:55:09.91Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "event_flag.c",
-              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\event_flag.c",
-              "RelativeDocumentMoniker": "src\\event_flag.c",
-              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\event_flag.c",
-              "RelativeToolTip": "src\\event_flag.c",
-              "ViewState": "AgIAAFoDAAAAAAAAAAAcwGwDAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:42:07.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "dungeon_strings.c",
-              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_strings.c",
-              "RelativeDocumentMoniker": "src\\dungeon_strings.c",
-              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_strings.c",
-              "RelativeToolTip": "src\\dungeon_strings.c",
-              "ViewState": "AgIAAHkDAAAAAAAAAAAAAHkDAABQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:42:05.578Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "dungeon_move_util.c",
-              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_move_util.c",
-              "RelativeDocumentMoniker": "src\\dungeon_move_util.c",
-              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_move_util.c",
-              "RelativeToolTip": "src\\dungeon_move_util.c",
-              "ViewState": "AgIAAEwEAAAAAAAAAAAAAEwEAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:42:04.729Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "dungeon_misc.c",
-              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_misc.c",
-              "RelativeDocumentMoniker": "src\\dungeon_misc.c",
-              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_misc.c",
-              "RelativeToolTip": "src\\dungeon_misc.c",
-              "ViewState": "AgIAAIMBAAAAAAAAAAAAAIMBAACEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:42:02.652Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "dungeon_list_menu.c",
-              "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_list_menu.c",
-              "RelativeDocumentMoniker": "src\\dungeon_list_menu.c",
-              "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_list_menu.c",
-              "RelativeToolTip": "src\\dungeon_list_menu.c",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAAB0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:42:01.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "dungeon_items.h",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\dungeon_items.h",
               "RelativeDocumentMoniker": "include\\dungeon_items.h",
               "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\dungeon_items.h",
               "RelativeToolTip": "include\\dungeon_items.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAwAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABAAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-06-17T23:41:59.774Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
               "Title": "dungeon_generation.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_generation.c",
               "RelativeDocumentMoniker": "src\\dungeon_generation.c",
@@ -222,12 +137,11 @@
               "RelativeToolTip": "src\\dungeon_generation.c",
               "ViewState": "AgIAALsVAAAAAAAAAAAcwM0VAAB1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:41:48.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:48.514Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
               "Title": "dungeon_damage.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_damage.c",
               "RelativeDocumentMoniker": "src\\dungeon_damage.c",
@@ -235,12 +149,11 @@
               "RelativeToolTip": "src\\dungeon_damage.c",
               "ViewState": "AgIAAHACAAAAAAAAAAAAAHACAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:41:46.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:46.032Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
               "Title": "dungeon_ai_movement.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_ai_movement.c",
               "RelativeDocumentMoniker": "src\\dungeon_ai_movement.c",
@@ -248,12 +161,11 @@
               "RelativeToolTip": "src\\dungeon_ai_movement.c",
               "ViewState": "AgIAAN0AAAAAAAAAAAAcwO8AAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:41:41.551Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:41.551Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
               "Title": "dungeon_ai_items.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_ai_items.c",
               "RelativeDocumentMoniker": "src\\dungeon_ai_items.c",
@@ -261,12 +173,11 @@
               "RelativeToolTip": "src\\dungeon_ai_items.c",
               "ViewState": "AgIAAIsAAAAAAAAAAAAAAIsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:41:39.341Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:39.341Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 7,
               "Title": "dungeon_ai_attack.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_ai_attack.c",
               "RelativeDocumentMoniker": "src\\dungeon_ai_attack.c",
@@ -274,12 +185,11 @@
               "RelativeToolTip": "src\\dungeon_ai_attack.c",
               "ViewState": "AgIAAOMAAAAAAAAAAAAAAOMAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:41:38.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:38.405Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 8,
               "Title": "dump_effect_sbin.py",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\dump_effect_sbin.py",
               "RelativeDocumentMoniker": "dump_effect_sbin.py",
@@ -287,12 +197,11 @@
               "RelativeToolTip": "dump_effect_sbin.py",
               "ViewState": "AgIAAOQAAAAAAAAAAAAAAOQAAAAQAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAfKSURBVFhHzZhbbNvVHcc/x5d/Ysd2nLRNSQxxKMmcFQNNKe0aygsVG2hIVEOiaBMvoMH2sovEuGgP0yRUaQ90G4uE9jJFsPVtqFxUtiJ1El1FCdBCWzukS2jaJUucix3b8eV/Oefs4e\u002B0jUsyZ0LavtJXts85/p\u002BPf5fztw3/T9Ja1w/9zyXqB1a0devW\u002B3bv3n2ofnyDMoFPSqXS4RMnTmTqJ79MawLF4/EDjz/\u002B\u002BBsPP/xw/VRDOnfuHGNjY4VgMHhxZmbm5OXLl3916tSpedu2102Lt35gRdFotH/37t0HH330UTo7Ozfsubk5TNNkYGDAXywWNxmG0eH3\u002B9PZbLa8HpSnfuCrVDQabdqxY0fb4ODg5i1btjySTCafSCaTN4fD4TUDseZENBrtHxgYODg4OAhAPp\u002BnXC5TqVTWtN/vRwiBEIKJiQmWl5fZtWuXr6urK6i1LmWz2Tuj0WjZsqyZYrFYtCzrhkg1HKFMJsP09PS6tiyr/m0ABINB//3339\u002BzZ88eb1tb29M7d\u002B480N3d3Vm/jo0A9fb2sn379nUdCAQQ4lqf2LbN8vIyxWKRcrns2bt3b29fX583EAj8ANi/aoOa1u2yJ5988o1nn30WNnBmrQAdP36cY8eO4fF4VkFKKZXWmg8\u002B\u002BOAnqVRq6Lq3wkaARkdHMU2zftkq9fX1EQwGEUJQKBTI5/P1SwA4evQor7/\u002B\u002Bo9TqdTv6ucaTlksFiMej6/rpqamq\u002BtDoRCxWOyqu7q6rjoQCKy69vVqGCgcDtPa2rquDcPA5/NhKcFSRTNTcJjOW8yXHMqOwG8YVztxLTXc9rOzs\u002BTzeYrF4g0ulUr4/X5mlyUfTy4x8sUiZyZznP9njgtTOdJTOUanlpjM5Gk2fCwtZjj32ad/mZqaGqnft\u002BEIOY6DZVlfatu2QQjeH1vg48ksqek8IxNznLgwzd8uTHP80ysc/XCCP71/kbdGvqCtM05XLFa/BWwEKBaL0dPT86Xu7u6muSXMmctZNoeauLunnc5oM0oq10qhlKRYrvLXM5cg0M7ee/eJRCJxQ\u002B4aBjJNc01XqyYlU2LbkmLZolAyqVgOWiu0kmjlQmklqZg2poRnnvmh/6mnnvLX79Mw0Pj4OKlUilQqRTqdJp1Ok0qlOX8hRSr9OaZl4xFwcnSGdz65zORsHo/QgEI5DkpKpFJo5YDWoGXQMLzRSCQUjkTCLaFQyMdGziHbtlcdjl6vl7KtmcxWKZQs8AiWyhaOI0ErlNIsFCp8dmmOz6cWUVLWUujw88fu4oE7g1WfzJlVy1vB33l2eqb4m2Qy\u002BV7DQCswQgikFpybKvL2p9PM5is4tkQpB\u002BlIt15q0bBtm3LVomKaNRiJUpJfHLyNBxJTBLgE\u002BBT\u002BW8p280OjY\u002BOzTzScskuXLjE2Nsbs7CwX/5Xjw4ksYzN5Mrkyc/kyC0tl5gsV5vNlFgoVFgollpYrVE0LLd2iVkqipUJgIXQJZB6cOQ/mRIvfSfUlk8nvNAwUiUSIRqOEw2EyRZvxTIGq5dbG9UWraxtf666aa699XkGz18InTFC2a5kTVNPNwP6Ggdrb2\u002Bno6KC1tZWSpZkrVNBSomqd5AJda/Frz1VtjcLweRj8egexSBaPWgRtgbLAWQbrig8tkw0DLS0tsbi4iGVZVCyHUsVyIWp1oZQiGvCzsyfI/u0BvnlHM9\u002B6I8CDdwV58K4WHhoI8ciuIN/ba9MduYLHmQdpgTJBVsDOedH2loaLenx8HMuyiMfjvDu6xJFTE0hHIqVEK4cmr5f9yQAP3e4Qb69ieJ26KyoMUYLqRZA5NzLKAW27j55W6H6l8XNo27ZtJBIJ9ybqEzR5BVJKpJKgNb03hfjuriy3t31ESJ3CsD/EsE67Nk9hVE9CaQTseZBVNzLarIHZgEfjabIaBqLW8lprWgM\u002BNoWMa10jNPsSbYTEOOiCu1hr18pxN11Jj15JkwWOBdIE4QEjZiN84w0DjY6OcvbsWSYmJmgzoGdLCK0UWktQilCA2sm8Iu2mQ1vXrOwa2MpYrdMIQHBXFXivYaBbb72V/v5\u002BOjs76b9lM/f138T2m6MINEpJPGiEALRavbGsRUPWALQFsjYvbRAhCA5IwvtywGsNF/X1EkJQMiXTuTL5sglovtYh2CSH8akMKOlCCT94NoFvswuq3dsKRi8Ym91bqTDK\u002BLZcWCiGXvv\u002B00//oeEIXS\u002BtNS1NXhKdEfb0dvCNvq1sbWvBJ1StSGvFKsvgZMGaBisD9iJYU\u002BDvgJZ7jhHe9\u002BKZi76f/ei5X7/03PPP//nNN9\u002Bs/ldA1KCUUkgpcRzH/bTXp0pZIJddmOoX4A2D0Q3mFZA5tFYnR0ZGhg4fPvz7oaGhd4aHhzP8p6\u002BwiUTiYDgcZmZmZl1nMnO0RiL4nfMIZ9Gtm5UiVjYIL7TcDUYcqpPI5h3zZ1LZt377ytBHR44cWfX7as0a2sjfMc3NzeLQoUOBeFu611cZacGa8iALoCpupPCCrwuMTrSvXdnhb7/90xeGXn711Vf/Xn\u002BtNYE2olAoJE6fPr2tr\u002B\u002B2l/3OxXtY/ihCJW1gz/lQVRABhXGLQ/ieqhO4N5ctyJdeeOHFo8PDw9n6a32lOn/\u002BfFhr/ZjW\u002Bo9a639orStaa1trvaC1Pqm1/qXWOnHgwIEbvrqu6N/eVuwJoASyNgAAAABJRU5ErkJggg==",
-              "WhenOpened": "2026-06-17T23:41:36.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:36.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 9,
               "Title": "cpu.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\cpu.c",
               "RelativeDocumentMoniker": "src\\cpu.c",
@@ -300,12 +209,11 @@
               "RelativeToolTip": "src\\cpu.c",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAAAgAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:41:34.128Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:34.128Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 10,
               "Title": "code_800558C.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\code_800558C.c",
               "RelativeDocumentMoniker": "src\\code_800558C.c",
@@ -313,12 +221,11 @@
               "RelativeToolTip": "src\\code_800558C.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T23:41:31.578Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:31.578Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 12,
               "Title": "dungeon_mon_spawn.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_mon_spawn.c",
               "RelativeDocumentMoniker": "src\\dungeon_mon_spawn.c",
@@ -326,12 +233,11 @@
               "RelativeToolTip": "src\\dungeon_mon_spawn.c",
               "ViewState": "AgIAAJ4AAAAAAAAAAAAcwKIAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T21:08:50.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T21:08:50.618Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 13,
               "Title": "dungeon_mon_recruit.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_mon_recruit.c",
               "RelativeDocumentMoniker": "src\\dungeon_mon_recruit.c",
@@ -339,12 +245,11 @@
               "RelativeToolTip": "src\\dungeon_mon_recruit.c",
               "ViewState": "AgIAAAUCAAAAAAAAAAAswCUCAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T21:05:53.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T21:05:53.557Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 15,
               "Title": "dungeon_cutscene_meanies.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_cutscene_meanies.c",
               "RelativeDocumentMoniker": "src\\dungeon_cutscene_meanies.c",
@@ -352,12 +257,11 @@
               "RelativeToolTip": "src\\dungeon_cutscene_meanies.c",
               "ViewState": "AgIAAHAAAAAAAAAAAAAcwHwAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T18:33:04.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T18:33:04.745Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 11,
               "Title": "dungeon_boss_dialogue.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_boss_dialogue.c",
               "RelativeDocumentMoniker": "src\\dungeon_boss_dialogue.c",
@@ -365,12 +269,11 @@
               "RelativeToolTip": "src\\dungeon_boss_dialogue.c",
               "ViewState": "AgIAALQHAAAAAAAAAAAcwMYHAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T18:31:58.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T18:31:58.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 16,
               "Title": "dungeon_cutscene.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\dungeon_cutscene.c",
               "RelativeDocumentMoniker": "src\\dungeon_cutscene.c",
@@ -378,12 +281,11 @@
               "RelativeToolTip": "src\\dungeon_cutscene.c",
               "ViewState": "AgIAAGYBAAAAAAAAAAAAAHsBAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T18:34:34.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T18:34:34.022Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 14,
               "Title": "dungeon_boss_dialogue.h",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\dungeon_boss_dialogue.h",
               "RelativeDocumentMoniker": "include\\dungeon_boss_dialogue.h",
@@ -391,12 +293,11 @@
               "RelativeToolTip": "include\\dungeon_boss_dialogue.h",
               "ViewState": "AgIAAAsAAAAAAAAAAAAcwBkAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-06-17T18:33:01.212Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T18:33:01.212Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 17,
               "Title": "dungeon_cutscenes.h",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\dungeon_cutscenes.h",
               "RelativeDocumentMoniker": "include\\dungeon_cutscenes.h",
@@ -404,12 +305,11 @@
               "RelativeToolTip": "include\\dungeon_cutscenes.h",
               "ViewState": "AgIAADIAAAAAAAAAAAAAADIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-06-17T18:34:51.573Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T18:34:51.573Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 18,
               "Title": "adventure_info.c",
               "DocumentMoniker": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\src\\adventure_info.c",
               "RelativeDocumentMoniker": "src\\adventure_info.c",
@@ -417,8 +317,7 @@
               "RelativeToolTip": "src\\adventure_info.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2026-06-17T18:31:52.216Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T18:31:52.216Z"
             }
           ]
         }
