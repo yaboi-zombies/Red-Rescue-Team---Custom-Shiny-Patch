@@ -111,7 +111,8 @@ void CleanHelperPelipper(void)
 {
     if (sPostOfficeHelper != NULL) {
         if (sPostOfficeHelper->monPortrait.faceFile != NULL)
-            CloseFile(sPostOfficeHelper->monPortrait.faceFile);
+            if (!IsGeneratedDialogueSpriteFile(sPostOfficeHelper->monPortrait.faceFile))
+                CloseFile(sPostOfficeHelper->monPortrait.faceFile);
         FREE_AND_SET_NULL(sPostOfficeHelper);
     }
 }

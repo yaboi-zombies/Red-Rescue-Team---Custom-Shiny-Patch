@@ -1023,6 +1023,30 @@ const u8 *GetGeneratedDialogueSpriteDataPtr(s32 index, bool8 isShiny)
 
 static EWRAM_DATA OpenedFile sGeneratedDialogueSpriteFile = {0};
 
+extern const u8 gPortraitsRuntimeGenerated352PurpleKECLEON[];
+extern const u8 gKaoKecleon[];
+OpenedFile *GetDialogueSpriteDataPtr(s32 index);
+
+OpenedFile *GetPurpleKecleonDialogueSpriteDataPtr(void)
+{
+    OpenedFile *file;
+
+    /*
+     * Purple Kecleon is a special Kecleon Bros portrait variant, not shiny
+     * Kecleon. Open normal generated Kecleon through the already-working public
+     * path first, then swap only the portrait table pointer to purple.
+     */
+    file = GetDialogueSpriteDataPtr(MONSTER_KECLEON);
+
+    if (file == NULL)
+        return NULL;
+
+    file->data = (void *) gPortraitsRuntimeGenerated352PurpleKECLEON;
+    return file;
+}
+
+
+
 bool8 IsGeneratedDialogueSpriteFile(OpenedFile *file)
 {
     return file == &sGeneratedDialogueSpriteFile;
@@ -1051,14 +1075,15 @@ OpenedFile *OpenPokemonDialogueSpriteFileForShiny(s16 index, bool8 isShiny)
     OpenedFile *generatedFile;
 
     /*
-     * Shiny-aware compromise behavior:
+     * Generated portrait behavior:
      *
      * 1. If this individual is shiny and generated shiny data exists, use it.
-     * 2. Otherwise preserve vanilla dialogue portraits when they exist.
-     * 3. If vanilla has no dialogue portrait, use generated normal data.
+     * 2. If generated normal data exists, use it before vanilla KAO.
+     * 3. Otherwise preserve vanilla dialogue portraits as a fallback.
      *
-     * This keeps non-shiny Pokémon from accidentally displaying shiny portraits,
-     * while still allowing shiny individuals to override vanilla with shiny art.
+     * This allows reclaimed base KAO files to be safely replaced by generated
+     * runtime portraits while still preserving vanilla fallback behavior for
+     * any species not generated.
      */
     if (isShiny) {
         generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(index, TRUE);
@@ -1067,12 +1092,17 @@ OpenedFile *OpenPokemonDialogueSpriteFileForShiny(s16 index, bool8 isShiny)
             return generatedFile;
     }
 
+    generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(index, FALSE);
+
+    if (generatedFile != NULL)
+        return generatedFile;
+
     if (sMonsterParameters[index].dialogueSprites != 0) {
         sprintf(buffer, "kao%03d", index);
         return OpenFile(buffer, &gMonsterFileArchive);
     }
 
-    return OpenGeneratedDialogueSpriteFileForPortrait(index, FALSE);
+    return NULL;
 }
 
 OpenedFile *OpenPokemonDialogueSpriteFile(s16 index)
@@ -1081,6 +1111,17 @@ OpenedFile *OpenPokemonDialogueSpriteFile(s16 index)
 }
 
 // arm9.bin::0205AC60
+OpenedFile *GetKecleonShopVanillaDialogueSpriteDataPtr(void)
+{
+    return OpenFileAndGetFileDataPtr("kao380", &gMonsterFileArchive);
+}
+
+OpenedFile *GetKecleonPurpleDialogueSpriteDataPtr(void)
+{
+    sGeneratedDialogueSpriteFile.data = (void *) gPortraitsRuntimeGenerated352PurpleKECLEON;
+    return &sGeneratedDialogueSpriteFile;
+}
+
 OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny)
 {
     char buffer[0xC];
@@ -1088,10 +1129,25 @@ OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny)
     OpenedFile *generatedFile;
 
     /*
-     * Shiny-aware compromise behavior matching OpenPokemonDialogueSpriteFileForShiny().
+     * Prefer generated portraits when available, but always preserve the
+     * original vanilla KAO fallback. This is required for special vanilla-only
+     * cases such as the Kecleon Bros, where normal MONSTER_KECLEON is now
+     * intentionally NULL in gGeneratedKaoPortraitData so the vanilla KAO file
+     * supplies the green/purple shop portraits.
+     *
+     * Force normal Kecleon through vanilla KAO. Shiny Kecleon still uses the
+     * generated shiny table through the normal shiny branch below.
      */
-    if (isShiny) {
-        generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(id, TRUE);
+
+    if (IsValidGeneratedPortraitSpecies(id)) {
+        if (isShiny) {
+            generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(id, TRUE);
+
+            if (generatedFile != NULL)
+                return generatedFile;
+        }
+
+        generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
 
         if (generatedFile != NULL)
             return generatedFile;
@@ -1102,13 +1158,15 @@ OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny)
         return OpenFileAndGetFileDataPtr(buffer, &gMonsterFileArchive);
     }
 
-    return OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
+    return NULL;
 }
 
 OpenedFile *GetDialogueSpriteDataPtr(s32 index)
 {
     return GetDialogueSpriteDataPtrForShiny(index, FALSE);
 }
+
+
 
 bool8 IsPokemonDialogueSpriteAvail(s16 index, s32 spriteId)
 {

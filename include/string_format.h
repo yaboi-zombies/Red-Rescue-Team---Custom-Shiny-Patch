@@ -44,3 +44,6 @@ void PrintFormattedStringOnWindow2(s32 x, s32 y, const u8 *str, u32 windowId, u3
 #define STR_FORMAT_FLAG_x200 0x200
 
 #endif // GUARD_STRING_FORMAT_H
+
+void CreateKecleonShopDialogueBoxAndPortrait(const u8 *text, void *param_2, MonPortraitMsg *monPortraitPtr, u16 flags);
+void CreateKecleonShopMenuDialogueBoxAndPortrait(const u8 *text, void *a1, u32 r9, const MenuItem *menuItems, void *arg_0, u32 a5, u32 unknownUnused, MonPortraitMsg *monPortraitPtr, u16 flags);

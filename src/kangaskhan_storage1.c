@@ -129,7 +129,8 @@ u32 KangaskhanStorageCallback(void)
 void DeleteKangaskhanStorage(void)
 {
     if (gKangaskhanStorageWork != NULL) {
-        CloseFile(gKangaskhanStorageWork->monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(gKangaskhanStorageWork->monPortrait.faceFile))
+            CloseFile(gKangaskhanStorageWork->monPortrait.faceFile);
         FREE_AND_SET_NULL(gKangaskhanStorageWork);
     }
 }

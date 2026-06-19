@@ -103,6 +103,8 @@ const u8 *GetGeneratedDialogueSpriteDataPtr(s32 index, bool8 isShiny);
 OpenedFile *OpenPokemonDialogueSpriteFile(s16 index);
 OpenedFile *OpenPokemonDialogueSpriteFileForShiny(s16 index, bool8 isShiny);
 OpenedFile *GetDialogueSpriteDataPtr(s32 index);
+OpenedFile *GetKecleonShopVanillaDialogueSpriteDataPtr(void);
+OpenedFile *GetKecleonPurpleDialogueSpriteDataPtr(void);
 OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny);
 bool8 IsGeneratedDialogueSpriteFile(OpenedFile *file);
 bool8 IsPokemonDialogueSpriteAvail(s16 index, s32 spriteId);

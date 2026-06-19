@@ -74,7 +74,8 @@ void sub_802DC00(void)
 {
     if (sUnknown_203B2FC != NULL) {
         if (sUnknown_203B2FC->monPortrait.faceFile != NULL)
-            CloseFile(sUnknown_203B2FC->monPortrait.faceFile);
+            if (!IsGeneratedDialogueSpriteFile(sUnknown_203B2FC->monPortrait.faceFile))
+                CloseFile(sUnknown_203B2FC->monPortrait.faceFile);
         FREE_AND_SET_NULL(sUnknown_203B2FC);
     }
 }

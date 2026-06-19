@@ -94,7 +94,8 @@ bool8 GulpinIsNextMoveLinked(void)
 void DestroyGulpinShop(void)
 {
     if (sGulpinShopWork != NULL) {
-        CloseFile(sGulpinShopWork->monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(sGulpinShopWork->monPortrait.faceFile))
+            CloseFile(sGulpinShopWork->monPortrait.faceFile);
         FREE_AND_SET_NULL(sGulpinShopWork);
     }
 }

@@ -135,7 +135,8 @@ s16 sub_802FED0(void)
 void MakuhitaDojo_Delete(void)
 {
     if (sMakuhitaDojoWork1 != NULL) {
-        CloseFile(sMakuhitaDojoWork1->monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(sMakuhitaDojoWork1->monPortrait.faceFile))
+            CloseFile(sMakuhitaDojoWork1->monPortrait.faceFile);
         FREE_AND_SET_NULL(sMakuhitaDojoWork1);
     }
 }

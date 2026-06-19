@@ -1,3 +1,6 @@
+/* Export gfx labels for generated shiny runtime portraits. */
+.global sMankeyAngryGfx
+.global sMankeyNormalGfx
 .global gKaoMankey
 gKaoMankey:
 kao_siro sPortraitsMankey

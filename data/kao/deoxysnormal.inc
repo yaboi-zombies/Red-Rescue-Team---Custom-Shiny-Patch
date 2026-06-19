@@ -1,3 +1,5 @@
+/* Export gfx labels for generated shiny runtime portraits. */
+.global sDeoxysNormalNormalGfx
 .global gKaoDeoxysNormal
 gKaoDeoxysNormal:
 kao_siro sPortraitsDeoxysNormal

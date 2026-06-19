@@ -115,7 +115,8 @@ u32 FelicityBankCallback(void)
 void DestroyFelicityBank(void)
 {
     if (sFelicityBankWork != NULL) {
-        CloseFile(sFelicityBankWork->monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(sFelicityBankWork->monPortrait.faceFile))
+            CloseFile(sFelicityBankWork->monPortrait.faceFile);
         FREE_AND_SET_NULL(sFelicityBankWork);
     }
 }

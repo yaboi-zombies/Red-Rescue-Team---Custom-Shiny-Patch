@@ -132,7 +132,8 @@ void FinishWriteSavePak(void)
 {
     if (sSavePakWrite != NULL) {
         if (sSavePakWrite->monPortrait.faceFile != NULL)
-            CloseFile(sSavePakWrite->monPortrait.faceFile);
+            if (!IsGeneratedDialogueSpriteFile(sSavePakWrite->monPortrait.faceFile))
+                CloseFile(sSavePakWrite->monPortrait.faceFile);
         FREE_AND_SET_NULL(sSavePakWrite);
     }
     sub_80993E4();

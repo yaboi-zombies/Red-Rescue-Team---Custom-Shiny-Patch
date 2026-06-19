@@ -137,7 +137,8 @@ u32 sub_8021C5C(void)
 void CleanWigglytuffShop(void)
 {
     if (sWigglytuffShop3Work) {
-        CloseFile(sWigglytuffShop3Work->monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(sWigglytuffShop3Work->monPortrait.faceFile))
+            CloseFile(sWigglytuffShop3Work->monPortrait.faceFile);
         FREE_AND_SET_NULL(sWigglytuffShop3Work);
     }
 }

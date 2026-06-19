@@ -177,7 +177,8 @@ u32 sub_801FC40(void)
 void sub_801FD7C(void)
 {
     if (gUnknown_203B27C) {
-        CloseFile(gUnknown_203B27C->monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(gUnknown_203B27C->monPortrait.faceFile))
+            CloseFile(gUnknown_203B27C->monPortrait.faceFile);
         FREE_AND_SET_NULL(gUnknown_203B27C);
     }
 }

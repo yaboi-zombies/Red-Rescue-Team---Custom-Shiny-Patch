@@ -87,7 +87,7 @@ RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 DUNGEONJSON := tools/dungeonjson/dungeonjson$(EXE)
 
 SPRITECOLLAB_PORTRAITS := SpriteCollab/portrait
-GEN_SPRITECOLLAB_RUNTIME_PORTRAITS := tools/gen_spritecollab_runtime_portraits.py
+GEN_SPRITECOLLAB_RUNTIME_PORTRAITS := tools/gen_spritecollab_runtime_portraits_full_expr.py
 GENERATED_KAO_RUNTIME_ASM := data/generated_kao_runtime_sbin.s
 GENERATED_KAO_TABLE_HEADER := include/generated_kao_table.h
 GENERATED_KAO_TABLE_SRC := src/data/generated_kao_table.c
@@ -308,9 +308,10 @@ tidy:
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
 	@$(MAKE) clean -C libagbsyscall
 
-# Generated SpriteCollab portrait outputs.
-$(GENERATED_PORTRAIT_OUTPUTS): $(GEN_SPRITECOLLAB_PORTRAITS)
-	$(PYTHON) $(GEN_SPRITECOLLAB_PORTRAITS) --input $(SPRITECOLLAB_PORTRAITS) --output $(GENERATED_KAO_DIR) --gbagfx $(GBAGFX) --dopx $(DOPX)
+# Legacy generated SpriteCollab KAO portrait archive outputs.
+# Disabled: full-expression runtime palette-swap portraits now provide generated dialogue portraits.
+$(GENERATED_PORTRAIT_OUTPUTS):
+	@: 
 
 # These source files include generated portrait headers/tables.
 $(C_BUILDDIR)/pokemon.o: $(GENERATED_PORTRAIT_TABLE_HEADER)
@@ -318,11 +319,11 @@ $(C_BUILDDIR)/monster_files_table.o: $(GENERATED_MONSTER_FILE_DECLS) $(GENERATED
 $(C_BUILDDIR)/data/generated_portrait_table.o: $(GENERATED_PORTRAIT_TABLE_SRC) $(GENERATED_PORTRAIT_TABLE_HEADER)
 
 # Regenerate SpriteCollab portrait includes before assembling generated portrait data.
-$(DATA_ASM_BUILDDIR)/generated_kao_sbin.o: $(GENERATED_KAO_INCLUDES)
+# Legacy generated_kao_sbin.o dependency disabled with legacy KAO archive path.
 
 # Runtime generated SpriteCollab dialogue portrait data.
 $(GENERATED_KAO_RUNTIME_OUTPUTS): $(GEN_SPRITECOLLAB_RUNTIME_PORTRAITS)
-	py -3 $(GEN_SPRITECOLLAB_RUNTIME_PORTRAITS) --input-root $(SPRITECOLLAB_PORTRAITS) --output-root data/kao_generated_runtime --asm-path $(GENERATED_KAO_RUNTIME_ASM) --include-dir include --src-data-dir src/data --gbagfx $(GBAGFX) --dopx $(DOPX)
+	py -3 $(GEN_SPRITECOLLAB_RUNTIME_PORTRAITS) --input-root $(SPRITECOLLAB_PORTRAITS) --output-root data/kao_generated_runtime --asm-path $(GENERATED_KAO_RUNTIME_ASM) --include-dir include --src-data-dir src/data --gbagfx $(GBAGFX) --dopx $(DOPX) --replace-vanilla-normal
 
 $(DATA_ASM_BUILDDIR)/generated_kao_runtime_sbin.o: $(GENERATED_KAO_RUNTIME_ASM)
 $(C_BUILDDIR)/data/generated_kao_table.o: $(GENERATED_KAO_TABLE_SRC) $(GENERATED_KAO_TABLE_HEADER)

@@ -19,6 +19,8 @@ gUnknown_96B92C8:
 .incbin "baserom.gba", 0x16B92C8, 0x40
 gUnknown_96B9308:
 .incbin "baserom.gba", 0x16B9308, 0x2E8
+.balign 4
+.global sPortraitsKecleon
 sPortraitsKecleon:
 kao_portrait sKecleonNormalPal, sKecleonNormalGfx
 kao_portrait sKecleon1Pal, sKecleon1Gfx

@@ -1,0 +1,6 @@
+/* Legacy generated portrait bit table disabled.
+ * Runtime generated portraits are described by generated_kao_table.c.
+ */
+#include "generated_portrait_table.h"
+const u32 gGeneratedPortraitBits[MONSTER_MAX] = {0};
+const u32 gGeneratedShinyPortraitBits[MONSTER_MAX] = {0};

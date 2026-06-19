@@ -377,7 +377,8 @@ s32 sub_80282DC(u8 *r0)
 void sub_80282FC(void)
 {
     if (sUnknown_203B2C0 != NULL) {
-        CloseFile(sUnknown_203B2C0->monPortrait.faceFile);
+        if (!IsGeneratedDialogueSpriteFile(sUnknown_203B2C0->monPortrait.faceFile))
+            CloseFile(sUnknown_203B2C0->monPortrait.faceFile);
         FREE_AND_SET_NULL(sUnknown_203B2C0);
         sub_8031E10();
         FriendList_Free();

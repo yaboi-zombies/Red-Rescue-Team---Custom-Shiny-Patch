@@ -64,3 +64,6 @@ scripts/
 *.indexed.png
 backups/
 *.bps
+*.py
+*.bgrpal
+*.bak

@@ -15,6 +15,90 @@
 #include "text_1.h"
 #include "text_2.h"
 #include "text_3.h"
+/*
+ * Generated runtime portraits store palettes in a compact 30-byte BGR555 format
+ * to save ROM space. Generated runtime palettes are compact BGR555; vanilla/base KAO and non-KAO palettes remain RGB_Struct[16] / 64 bytes.
+ *
+ * The generated runtime ASM defines these symbols around the generated runtime
+ * data. Any portrait palette pointer inside this range is treated as compact.
+ */
+extern const u8 gGeneratedKaoRuntimeCompactStart[];
+extern const u8 gGeneratedKaoRuntimeCompactEnd[];
+
+static bool8 IsGeneratedKaoRuntimeCompactPalette(const RGB_Struct *pal)
+{
+    u32 ptr = (u32) pal;
+    u32 start = (u32) gGeneratedKaoRuntimeCompactStart;
+    u32 end = (u32) gGeneratedKaoRuntimeCompactEnd;
+
+    return (ptr >= start && ptr < end);
+}
+
+static void SetPortraitPaletteBufferColorMaybeCompact(s32 bgPaletteIndex, const RGB_Struct *pal, s32 colorIndex)
+{
+    if (IsGeneratedKaoRuntimeCompactPalette(pal)) {
+        const u16 *compactPal = (const u16 *) pal;
+        RGB_Struct expanded;
+
+        /*
+         * Compact runtime KAO palettes store only colors 1..15.
+         * Color 0 is implicit transparent/black and is not stored.
+         *
+         * The source .rgbpal files are PMD RGB_Struct[16]:
+         *   R, G, B, 0x80
+         *
+         * Each nonzero channel was originally expanded by gbagfx as:
+         *   channel8 = (channel5 << 3) | 7
+         *
+         * So restore that exact form before calling SetBGPaletteBufferColorArray.
+         */
+        if (colorIndex == 0) {
+            ((u8 *) &expanded)[0] = 0;
+            ((u8 *) &expanded)[1] = 0;
+            ((u8 *) &expanded)[2] = 0;
+            ((u8 *) &expanded)[3] = 0x80;
+        }
+        else {
+            u16 color = compactPal[colorIndex - 1];
+            u8 r5 = color & 0x1F;
+            u8 g5 = (color >> 5) & 0x1F;
+            u8 b5 = (color >> 10) & 0x1F;
+
+            ((u8 *) &expanded)[0] = r5 ? ((r5 << 3) | 7) : 0;
+            ((u8 *) &expanded)[1] = g5 ? ((g5 << 3) | 7) : 0;
+            ((u8 *) &expanded)[2] = b5 ? ((b5 << 3) | 7) : 0;
+            ((u8 *) &expanded)[3] = 0x80;
+        }
+
+        SetBGPaletteBufferColorArray(bgPaletteIndex, &expanded);
+    }
+    else {
+        SetBGPaletteBufferColorArray(bgPaletteIndex, &pal[colorIndex]);
+    }
+}
+
+
+/*
+ * Kecleon-shop-only vanilla portrait palette loader.
+ *
+ * This is only used by CreateKecleonShopMenuDialogueBoxAndPortrait().
+ * It is intentionally separate from the normal generated portrait renderer.
+ */
+static void SetKecleonShopPortraitPaletteBufferColor(s32 bgPaletteIndex, const MonPortraitMsg *monPortraitPtr, s32 colorIndex)
+{
+    const RGB_Struct *pal = monPortraitPtr->faceData->sprites[monPortraitPtr->spriteId].pal;
+
+    /*
+     * All vanilla Kecleon shop palettes are RGB_Struct[16] / 0x40-byte
+     * palettes in the original KAO data.
+     *
+     * Do not treat green slots 0/1 as raw BGR555. That was causing the
+     * item-shop Kecleon to render with wrong colors.
+     */
+    SetBGPaletteBufferColorArray(bgPaletteIndex, &pal[colorIndex]);
+}
+
+
 
 static const MenuItem sYesNoMenuItems[] = {
         { _("*Yes"), 1 },
@@ -227,7 +311,7 @@ void CreateMenuDialogueBoxAndPortrait(const u8 *text, void *a1, u32 r9, const Me
         sDialogueBoxWinTemplates.id[1].totalHeight = 5;
 
         for (i = 0; i < 16; i++) {
-            SetBGPaletteBufferColorArray(224 + i, &monPortraitPtr->faceData->sprites[monPortraitPtr->spriteId].pal[i]);
+            SetPortraitPaletteBufferColorMaybeCompact(224 + i, monPortraitPtr->faceData->sprites[monPortraitPtr->spriteId].pal, i);
         }
         portraitOn = TRUE;
         if (monPortraitPtr->unkE) {
@@ -280,6 +364,100 @@ void CreateMenuDialogueBoxAndPortrait(const u8 *text, void *a1, u32 r9, const Me
         sub_80073E0(1);
     }
 }
+
+void CreateKecleonShopMenuDialogueBoxAndPortrait(const u8 *text, void *a1, u32 r9, const MenuItem *menuItems, void *arg_0, u32 a5, u32 unknownUnused, MonPortraitMsg *monPortraitPtr, u16 flags)
+{
+    bool8 portraitOn = FALSE;
+
+    FormatString(text, sDialogueTextBuffer, sDialogueTextBuffer + DIALOGUE_TEXT_BUFFER_SIZE - 1, flags);
+    sCurrStr = sDialogueTextBuffer;
+    sTextPrintStruct.unk24 = a1;
+    gUnknown_202EC10 = a5;
+    sDialogueMenuItems = menuItems;
+    gUnknown_202EC18 = arg_0;
+    gUnknown_202EC1C = r9;
+    ResetTouchScreenMenuInput(&sDialogueMenuTouchScreenInput);
+    if (flags & STR_FORMAT_FLAG_ONLY_TEXT) {
+        sDialogueBoxWinTemplates.id[0] = sOnlyTextDialogueBoxWindowTemplate;
+    }
+    else {
+        sDialogueBoxWinTemplates.id[0] = sDialogueBoxWindowTemplate;
+    }
+
+    sDialogueBoxWinTemplates.id[1].width = 0;
+    sDialogueBoxWinTemplates.id[1].height = 0;
+    sDialogueBoxWinTemplates.id[1].totalHeight = 0;
+    sDialogueBoxWinTemplates.id[1].flags = WINTEMPLATE_FLAG_x40;
+
+    if (monPortraitPtr != NULL && monPortraitPtr->faceData != NULL && monPortraitPtr->faceData->sprites[monPortraitPtr->spriteId].gfx != 0) {
+        s32 i;
+
+        sDialogueBoxWinTemplates.id[1].pos.x = monPortraitPtr->pos.x;
+        sDialogueBoxWinTemplates.id[1].pos.y = monPortraitPtr->pos.y;
+        sDialogueBoxWinTemplates.id[1].width = 5;
+        sDialogueBoxWinTemplates.id[1].height = 5;
+        sDialogueBoxWinTemplates.id[1].totalHeight = 5;
+
+        for (i = 0; i < 16; i++) {
+            SetKecleonShopPortraitPaletteBufferColor(224 + i, monPortraitPtr, i);
+        }
+        portraitOn = TRUE;
+        if (monPortraitPtr->unkE) {
+            sDialogueBoxWinTemplates.id[1].type = WINDOW_TYPE_7;
+        }
+        else {
+            sDialogueBoxWinTemplates.id[1].type = WINDOW_TYPE_FILL_TRANSPARENT;
+        }
+    }
+
+    sDialogueBoxWinTemplates.id[2] = sWinTemplateDummy;
+    sDialogueBoxWinTemplates.id[3] = sWinTemplateDummy;
+    ResetUnusedInputStruct();
+    ShowWindows(&sDialogueBoxWinTemplates, TRUE, TRUE);
+    sTextPrintStruct.x = 4;
+    sTextPrintStruct.y = 4;
+    sTextPrintStruct.arrowSpritePosX = 112;
+    sTextPrintStruct.arrowSpritePosY = (gWindows[0].y * 8) + TEXTBOX_HEIGHT;
+    sTextPrintStruct.unk10 = 7;
+    sTextPrintStruct.unk1C = 0;
+    sTextPrintStruct.waitButtonPress = 0;
+    SetCharacterMask((flags & STR_FORMAT_FLAG_ONLY_TEXT) ? 8 : 3);
+    sPrintStringState = 1;
+    sStringFormatFlags = flags;
+    if (flags & STR_FORMAT_FLAG_INSTANT_TEXT) {
+        sInstantText = TRUE;
+    }
+    else {
+        sInstantText = FALSE;
+    }
+
+    if (flags & 0x400) {
+        SetWindowBGColor();
+    }
+    sTextPrintSpeed = 1;
+    sFramesBetweenCharPrints = 1;
+    UnpressButtons();
+    sArrowFrames = 0;
+    sDialoguePrintFrames = 0;
+    if (portraitOn) {
+        const u8 *data = monPortraitPtr->faceData->sprites[monPortraitPtr->spriteId].gfx;
+
+        sub_80073B8(1);
+        if (!monPortraitPtr->flip) {
+            DisplayMonPortraitSprite(1, data, 14);
+        }
+        else {
+            DisplayMonPortraitSpriteFlipped(1, data, 14);
+        }
+        sub_80073E0(1);
+    }
+}
+
+void CreateKecleonShopDialogueBoxAndPortrait(const u8 *text, void *param_2, MonPortraitMsg *monPortraitPtr, u16 flags)
+{
+    CreateKecleonShopMenuDialogueBoxAndPortrait(text, param_2, -1, NULL, NULL, 3, 0, monPortraitPtr, flags);
+}
+
 
 void sub_8014490(void)
 {
