@@ -94,6 +94,17 @@ GENERATED_KAO_TABLE_SRC := src/data/generated_kao_table.c
 GBAGFX := tools/gbagfx/gbagfx$(EXE)
 DOPX := tools/dopx/ppmd_dopx$(EXE)
 
+COMPACT_RUNTIME_KAO_PALETTES := tools/compact_runtime_kao_palettes.py
+PRUNE_UNUSED_RUNTIME_KAO_ASSETS := tools/prune_unused_runtime_kao_assets.py
+POSTCOMPACT_DEDUPE_RUNTIME_KAO_ASSETS := tools/postcompact_dedupe_runtime_kao_assets.py
+FIX_RUNTIME_KECLEON_SPECIAL_LABELS := tools/fix_runtime_kecleon_special_labels.py
+EXCLUDE_UNOWN_RUNTIME_KAO := tools/exclude_unown_runtime_kao.py
+DEDUPE_RUNTIME_KAO_GFX_AGAINST_DATA := tools/dedupe_generated_runtime_gfx_against_data.py
+PRUNE_GENERATED_NORMALS_FOR_VANILLA_KAO := tools/prune_generated_normals_for_vanilla_kao.py
+REPOINT_GENERATED_SHINY_EXACT_VANILLA_SPECIES_TO_VANILLA_GFX := tools/repoint_generated_shiny_exact_vanilla_species_to_vanilla_gfx.py
+REINDEX_GENERATED_SHINY_PALETTES_FOR_VANILLA_GFX := tools/reindex_generated_shiny_palettes_for_vanilla_gfx.py
+VALIDATE_GENERATED_KAO_RUNTIME_INCBINS := tools/validate_generated_kao_runtime_incbins.py
+
 GENERATED_KAO_RUNTIME_OUTPUTS := \
         $(GENERATED_KAO_RUNTIME_ASM) \
         $(GENERATED_KAO_TABLE_HEADER) \
@@ -186,9 +197,13 @@ DATA_ASM_BUILDDIR = $(BUILD_DIR)/$(DATA_ASM_SUBDIR)
 SONG_BUILDDIR = $(BUILD_DIR)/$(SONG_SUBDIR)
 MID_BUILDDIR = $(BUILD_DIR)/$(MID_SUBDIR)
 
-C_SRCS_IN := $(wildcard $(C_SUBDIR)/*.c $(C_SUBDIR)/*/*.c $(C_SUBDIR)/*/*/*.c)
+C_SRCS_IN := \
+        $(filter-out $(GENERATED_KAO_TABLE_SRC),$(wildcard $(C_SUBDIR)/*.c $(C_SUBDIR)/*/*.c $(C_SUBDIR)/*/*/*.c)) \
+        $(GENERATED_KAO_TABLE_SRC)
 C_SOURCES := $(foreach src,$(C_SRCS_IN),$(if $(findstring .inc.c,$(src)),,$(src)))
-ASM_SOURCES := $(wildcard asm/*.s data/*.s)
+ASM_SOURCES := \
+        $(filter-out $(GENERATED_KAO_RUNTIME_ASM),$(wildcard asm/*.s data/*.s)) \
+        $(GENERATED_KAO_RUNTIME_ASM)
 C_ASM_SOURCES := $(wildcard src/*.s)
 SONG_SRCS := $(wildcard sound/songs/*.s)
 
@@ -208,7 +223,7 @@ SHINY_PALETTE_CSV := rogue_files/shiny_palette.csv
 SHINY_PALETTE_TABLE_SRC := src/data/shiny_palette_table.c
 SHINY_PALETTE_TABLE_GENERATOR := rogue_files/shiny_processing/00_gen_shiny_palette_table.py
 
-.PHONY: FORCE_SHINY_PALETTE_TABLE
+.PHONY: FORCE_SHINY_PALETTE_TABLE regen-runtime-kao
 FORCE_SHINY_PALETTE_TABLE:
 
 $(SHINY_PALETTE_TABLE_SRC): FORCE_SHINY_PALETTE_TABLE $(SHINY_PALETTE_CSV) $(SHINY_PALETTE_TABLE_GENERATOR)
@@ -314,7 +329,7 @@ $(GENERATED_PORTRAIT_OUTPUTS):
 	@: 
 
 # These source files include generated portrait headers/tables.
-$(C_BUILDDIR)/pokemon.o: $(GENERATED_PORTRAIT_TABLE_HEADER)
+$(C_BUILDDIR)/pokemon.o: $(GENERATED_PORTRAIT_TABLE_HEADER) $(GENERATED_KAO_TABLE_HEADER)
 $(C_BUILDDIR)/monster_files_table.o: $(GENERATED_MONSTER_FILE_DECLS) $(GENERATED_MONSTER_FILE_ENTRIES)
 $(C_BUILDDIR)/data/generated_portrait_table.o: $(GENERATED_PORTRAIT_TABLE_SRC) $(GENERATED_PORTRAIT_TABLE_HEADER)
 
@@ -322,8 +337,59 @@ $(C_BUILDDIR)/data/generated_portrait_table.o: $(GENERATED_PORTRAIT_TABLE_SRC) $
 # Legacy generated_kao_sbin.o dependency disabled with legacy KAO archive path.
 
 # Runtime generated SpriteCollab dialogue portrait data.
-$(GENERATED_KAO_RUNTIME_OUTPUTS): $(GEN_SPRITECOLLAB_RUNTIME_PORTRAITS)
+#
+# Normal builds DO NOT regenerate these files.
+# Use:
+#   make regen-runtime-kao
+# when you intentionally want to rebuild data/kao_generated_runtime and the
+# generated runtime KAO source/table files.
+#
+# This keeps `make modern` fast and prevents portrait assets from changing
+# just because Makefile or one of the generator/postprocess scripts changed.
+$(GENERATED_KAO_RUNTIME_OUTPUTS):
+	@echo "Missing generated runtime KAO file: $@"
+	@echo "Run this explicitly when you want to regenerate KAO:"
+	@echo "  make regen-runtime-kao"
+	@exit 1
+
+.PHONY: regen-runtime-kao postprocess-runtime-kao verify-true-vanilla-kao
+
+verify-true-vanilla-kao:
+	@if grep -RIn "kao_compact_palettes\|Export gfx labels\|\.bgrpal" data/kao >/tmp/runtime_kao_bad_vanilla_check.txt; then \
+		echo "ERROR: data/kao is not true vanilla-format KAO data."; \
+		echo "Found compact/hybrid markers:"; \
+		cat /tmp/runtime_kao_bad_vanilla_check.txt; \
+		echo "Restore true vanilla KAO first, for example:"; \
+		echo "  git checkout a33c82f649a0b69d56e0fcf5aa33193e5cf2a768 -- data/kao"; \
+		exit 1; \
+	fi
+
+regen-runtime-kao: verify-true-vanilla-kao
+	rm -rf data/kao_generated_runtime
+	rm -rf data/kao_generated_runtime_vanilla_shiny_palettes
+	rm -f $(GENERATED_KAO_RUNTIME_ASM) $(GENERATED_KAO_TABLE_HEADER) $(GENERATED_KAO_TABLE_SRC)
 	py -3 $(GEN_SPRITECOLLAB_RUNTIME_PORTRAITS) --input-root $(SPRITECOLLAB_PORTRAITS) --output-root data/kao_generated_runtime --asm-path $(GENERATED_KAO_RUNTIME_ASM) --include-dir include --src-data-dir src/data --gbagfx $(GBAGFX) --dopx $(DOPX) --replace-vanilla-normal
+	$(MAKE) postprocess-runtime-kao
+
+postprocess-runtime-kao: verify-true-vanilla-kao
+	@test -f $(GENERATED_KAO_RUNTIME_ASM)
+	@test -f $(GENERATED_KAO_TABLE_HEADER)
+	@test -f $(GENERATED_KAO_TABLE_SRC)
+	py -3 $(EXCLUDE_UNOWN_RUNTIME_KAO) $(GENERATED_KAO_RUNTIME_ASM)
+	py -3 $(COMPACT_RUNTIME_KAO_PALETTES) $(GENERATED_KAO_RUNTIME_ASM)
+	py -3 $(FIX_RUNTIME_KECLEON_SPECIAL_LABELS) $(GENERATED_KAO_RUNTIME_ASM)
+	py -3 $(DEDUPE_RUNTIME_KAO_GFX_AGAINST_DATA)
+	py -3 $(PRUNE_GENERATED_NORMALS_FOR_VANILLA_KAO)
+	py -3 $(REPOINT_GENERATED_SHINY_EXACT_VANILLA_SPECIES_TO_VANILLA_GFX)
+	py -3 $(REINDEX_GENERATED_SHINY_PALETTES_FOR_VANILLA_GFX)
+	@if grep -n "kao_portrait .*kao_portrait" $(GENERATED_KAO_RUNTIME_ASM); then \
+		echo "ERROR: malformed generated KAO ASM: concatenated kao_portrait lines found."; \
+		exit 1; \
+	fi
+	py -3 $(PRUNE_UNUSED_RUNTIME_KAO_ASSETS) $(GENERATED_KAO_RUNTIME_ASM)
+	py -3 $(POSTCOMPACT_DEDUPE_RUNTIME_KAO_ASSETS) $(GENERATED_KAO_RUNTIME_ASM)
+	@if [ -f "$(VALIDATE_GENERATED_KAO_RUNTIME_INCBINS)" ]; then py -3 $(VALIDATE_GENERATED_KAO_RUNTIME_INCBINS); fi
+	@echo "Runtime KAO postprocess pipeline complete."
 
 $(DATA_ASM_BUILDDIR)/generated_kao_runtime_sbin.o: $(GENERATED_KAO_RUNTIME_ASM)
 $(C_BUILDDIR)/data/generated_kao_table.o: $(GENERATED_KAO_TABLE_SRC) $(GENERATED_KAO_TABLE_HEADER)
@@ -345,8 +411,11 @@ $(C_BUILDDIR)/%.d: $(C_SUBDIR)/%.c
 	@sed -i 's/\r//g' $@
 
 $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s dungeon_pokemon dungeon_floor dungeon_trap dungeon_item data_monster data_item data_move data_learnset data_learnset_ptrs data_dungeon
+	@echo "CPP data ASM: $<"
 	@$(CPP) -x assembler-with-cpp $(CPPFLAGS) $< -o $(DATA_ASM_BUILDDIR)/$*.i.s
+	@echo "PREPROC data ASM: $(DATA_ASM_BUILDDIR)/$*.i.s"
 	@$(PREPROC) $(DATA_ASM_BUILDDIR)/$*.i.s charmap.txt > $(DATA_ASM_BUILDDIR)/$*.s
+	@echo "AS data ASM: $@"
 	$(AS) $(ASFLAGS) -o $@ $(DATA_ASM_BUILDDIR)/$*.s
 
 $(DATA_ASM_BUILDDIR)/%.d: $(DATA_ASM_SUBDIR)/%.s
