@@ -37,6 +37,43 @@ EWRAM_INIT bool8 gUnknown_203B434 = TRUE;
 static bool8 sub_8052DC0(Entity *);
 static void DisplayMessageAddToLog_Async(Entity *pokemon, const u8 *str, bool8 r2);
 
+static bool8 IsDungeonDialogueSpeciesCurrentlyShiny(s16 species)
+{
+    s32 i;
+
+    if (gDungeon == NULL)
+        return FALSE;
+
+    if (species == MONSTER_NONE)
+        return FALSE;
+
+    /*
+     * Dungeon cutscene/dialogue portraits are usually opened from species IDs,
+     * not Pokemon structs. Mirror the already-spawned dungeon entity shiny
+     * state instead of rolling shininess again.
+     */
+    for (i = 0; i < DUNGEON_MAX_POKEMON; i++) {
+        Entity *entity = gDungeon->activePokemon[i];
+
+        if (EntityIsValid(entity)) {
+            EntityInfo *entityInfo = GetEntInfo(entity);
+
+            if ((entityInfo->visualFlags & VISUAL_FLAG_SHINY)
+                && (entityInfo->apparentID == species || entityInfo->id == species)) {
+                return TRUE;
+            }
+        }
+    }
+
+    return FALSE;
+}
+
+static OpenedFile *GetDungeonDialogueSpriteDataPtrForCurrentShinyState(s16 species)
+{
+    return GetDialogueSpriteDataPtrForShiny(species, IsDungeonDialogueSpeciesCurrentlyShiny(species));
+}
+
+
 void sub_80521D0(void)
 {
     s32 i;
@@ -329,7 +366,7 @@ void DisplayDungeonMessage_Async(struct MonDialogueSpriteInfo *monSpriteInfo, co
         && monSpriteInfo != NULL
         && IsPokemonDialogueSpriteAvail(monSpriteInfo->species, monSpriteInfo->spriteId))
     {
-        monPortrait.faceFile = GetDialogueSpriteDataPtr(monSpriteInfo->species);
+        monPortrait.faceFile = GetDungeonDialogueSpriteDataPtrForCurrentShinyState(monSpriteInfo->species);
         monPortrait.faceData = (PortraitGfx *) monPortrait.faceFile->data;
         monPortrait.pos.x = 2;
         monPortrait.pos.y = 9;
@@ -383,7 +420,7 @@ void DisplayDungeonMessageStartDismiss_Async(struct MonDialogueSpriteInfo *monSp
         && monSpriteInfo != NULL
         && IsPokemonDialogueSpriteAvail(monSpriteInfo->species, monSpriteInfo->spriteId))
     {
-        monPortrait.faceFile = GetDialogueSpriteDataPtr(monSpriteInfo->species);
+        monPortrait.faceFile = GetDungeonDialogueSpriteDataPtrForCurrentShinyState(monSpriteInfo->species);
         monPortrait.faceData = (PortraitGfx *) monPortrait.faceFile->data;
         monPortrait.pos.x = 2;
         monPortrait.pos.y = 9;
@@ -511,7 +548,7 @@ void DisplayDungeonDialogue_Async(const struct DungeonDialogueStruct *dialogueIn
         const PortraitPlacementInfo *placementInfo = GetPortraitPlacementInfo(dialogueInfo->spritePlacementId);
 
         monPortraitPtr = &monPortrait;
-        monPortraitPtr->faceFile = GetDialogueSpriteDataPtr(dialogueMonId);
+        monPortraitPtr->faceFile = GetDungeonDialogueSpriteDataPtrForCurrentShinyState(dialogueMonId);
         if (monPortraitPtr->faceFile != NULL) {
             monPortraitPtr->faceData = (PortraitGfx *) monPortraitPtr->faceFile->data;
             monPortraitPtr->unkE = 0;
@@ -563,7 +600,7 @@ bool32 DisplayDungeonYesNoMessage_Async(struct MonDialogueSpriteInfo *monSpriteI
         && monSpriteInfo != NULL
         && IsPokemonDialogueSpriteAvail(monSpriteInfo->species, monSpriteInfo->spriteId))
     {
-        monPortrait.faceFile = GetDialogueSpriteDataPtr(monSpriteInfo->species);
+        monPortrait.faceFile = GetDungeonDialogueSpriteDataPtrForCurrentShinyState(monSpriteInfo->species);
         monPortrait.faceData = (PortraitGfx *) monPortrait.faceFile->data;
         monPortrait.pos.x = 2;
         monPortrait.pos.y = 9;
@@ -613,7 +650,7 @@ s32 DisplayDungeonMenuMessage(struct MonDialogueSpriteInfo *monSpriteInfo, const
         && monSpriteInfo != NULL
         && IsPokemonDialogueSpriteAvail(monSpriteInfo->species, monSpriteInfo->spriteId))
     {
-        monPortrait.faceFile = GetDialogueSpriteDataPtr(monSpriteInfo->species);
+        monPortrait.faceFile = GetDungeonDialogueSpriteDataPtrForCurrentShinyState(monSpriteInfo->species);
         monPortrait.faceData = (PortraitGfx *) monPortrait.faceFile->data;
         monPortrait.pos.x = 2;
         monPortrait.pos.y = 9;

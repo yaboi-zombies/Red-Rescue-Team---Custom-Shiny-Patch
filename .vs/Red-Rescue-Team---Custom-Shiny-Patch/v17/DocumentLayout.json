@@ -96,7 +96,7 @@
               "RelativeDocumentMoniker": "include\\shiny_version.h",
               "ToolTip": "C:\\Users\\joshb\\Documents\\Hobbies\\Scripting\\Pokemon\\MysteryDungeonShinyPatch\\Custom\\Red-Rescue-Team---Custom-Shiny-Patch\\include\\shiny_version.h",
               "RelativeToolTip": "include\\shiny_version.h",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-06-19T05:55:13.046Z",
               "EditorCaption": ""
@@ -111,8 +111,7 @@
               "RelativeToolTip": "README.md",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAAAIAAADUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2026-06-19T05:55:09.91Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-19T05:55:09.91Z"
             },
             {
               "$type": "Document",
@@ -124,8 +123,7 @@
               "RelativeToolTip": "include\\dungeon_items.h",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABAAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-06-17T23:41:59.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-17T23:41:59.774Z"
             },
             {
               "$type": "Document",
