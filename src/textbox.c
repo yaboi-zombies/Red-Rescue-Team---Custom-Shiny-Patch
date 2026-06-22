@@ -434,6 +434,17 @@ static Pokemon *GetTextboxSpecialSpeakerPokemon(s16 speakerId)
     }
 }
 
+
+static bool8 HasTextboxGeneratedPortrait(s16 speciesId)
+{
+    if (speciesId <= MONSTER_NONE || speciesId >= MONSTER_MAX)
+        return FALSE;
+
+    return GetGeneratedDialogueSpriteDataPtr(speciesId, FALSE) != NULL
+        || GetGeneratedDialogueSpriteDataPtr(speciesId, TRUE) != NULL;
+}
+
+
 static bool8 sub_809A8B8(s32 param_1, s32 param_2)
 {
     bool8 ret;
@@ -527,7 +538,7 @@ static bool8 sub_809A8B8(s32 param_1, s32 param_2)
         case 7:
         case 33:
         case 34:
-        if (IsStarterMonster(speciesId)) {
+        if (IsStarterMonster(speciesId) || HasTextboxGeneratedPortrait(speciesId)) {
             byte1 = TRUE;
         }
         else {
@@ -535,6 +546,11 @@ static bool8 sub_809A8B8(s32 param_1, s32 param_2)
         }
         break;
     }
+    if (!showPortrait && HasTextboxGeneratedPortrait(speciesId)) {
+        showPortrait = TRUE;
+    }
+
+
 
     if (local_28 != -1) {
         s32 sVar3 = (s16) sub_80A7AE8(local_28);
@@ -745,7 +761,7 @@ bool8 ScriptSetPortraitInfo(s32 portraitId_, s32 spriteId_, s32 placementId_)
                 portraitPtr->monPortrait.faceFile = portraitPtr->faceFile;
 
                 if (!IsGeneratedDialogueSpriteFile(portraitPtr->faceFile)) {
-                    GetFileDataPtr(portraitPtr->faceFile, 0);
+                    portraitPtr->monPortrait.faceData = (PortraitGfx *) GetFileDataPtr(portraitPtr->faceFile, 0);
                 }
                 // first 4 bits are actually spriteId, there's also some 0x40 flag which isn't really used. I assume it marks that the spriteId was changed?
                 switch (portraitPtr->unk0) {
@@ -778,7 +794,8 @@ bool8 ScriptSetPortraitInfo(s32 portraitId_, s32 spriteId_, s32 placementId_)
                         break;
                 }
 
-                portraitPtr->monPortrait.faceData = (void *) portraitPtr->faceFile->data;
+                if (portraitPtr->monPortrait.faceData == NULL)
+                    portraitPtr->monPortrait.faceData = (PortraitGfx *) portraitPtr->faceFile->data;
                 portraitPtr->monPortrait.spriteId = spriteId & 0xF;
 
                 if (IsGeneratedDialogueSpriteFile(portraitPtr->faceFile) &&

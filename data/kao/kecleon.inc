@@ -3,6 +3,7 @@ gKaoKecleon:
 kao_siro sPortraitsKecleon
 sKecleonNormalPal:
 .incbin "baserom.gba", 0x16B8960, 0x40
+.global sKecleonNormalGfx
 sKecleonNormalGfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x16B89A5, 0x2DF

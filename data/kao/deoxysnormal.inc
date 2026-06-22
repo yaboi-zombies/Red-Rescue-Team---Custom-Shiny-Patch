@@ -1,10 +1,9 @@
-/* Export gfx labels for generated shiny runtime portraits. */
-.global sDeoxysNormalNormalGfx
 .global gKaoDeoxysNormal
 gKaoDeoxysNormal:
 kao_siro sPortraitsDeoxysNormal
 sDeoxysNormalNormalPal:
 .incbin "baserom.gba", 0x16BBBC4, 0x40
+.global sDeoxysNormalNormalGfx
 sDeoxysNormalNormalGfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x16BBC09, 0x277

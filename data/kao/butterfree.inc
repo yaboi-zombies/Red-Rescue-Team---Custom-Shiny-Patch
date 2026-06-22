@@ -1,4 +1,23 @@
-    .align 2
-    .global gKaoButterfree
+.global gKaoButterfree
 gKaoButterfree:
-    .byte 0
+kao_siro sPortraitsButterfree
+sButterfreeNormalPal:
+.incbin "baserom.gba", 0x1689734, 0x40
+.global sButterfreeNormalGfx
+sButterfreeNormalGfx:
+.string "AT4PX"
+.incbin "baserom.gba", 0x1689779, 0x2E7
+sPortraitsButterfree:
+kao_portrait sButterfreeNormalPal, sButterfreeNormalGfx
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0

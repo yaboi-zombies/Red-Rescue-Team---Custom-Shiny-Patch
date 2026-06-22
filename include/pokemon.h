@@ -100,13 +100,8 @@ s32 CalculateEXPGain(s16 index, s32 level);
 s16 GetPokemonEvolveConditions(s16 index, unkEvolve *r1);
 u8 GetPokemonOverworldPalette(s16 index, bool32 recolorShopKecleon);
 const u8 *GetGeneratedDialogueSpriteDataPtr(s32 index, bool8 isShiny);
-OpenedFile *OpenPokemonDialogueSpriteFile(s16 index);
-OpenedFile *OpenPokemonDialogueSpriteFileForShiny(s16 index, bool8 isShiny);
-OpenedFile *GetDialogueSpriteDataPtr(s32 index);
 OpenedFile *GetKecleonShopVanillaDialogueSpriteDataPtr(void);
 OpenedFile *GetKecleonPurpleDialogueSpriteDataPtr(void);
-OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny);
-bool8 IsGeneratedDialogueSpriteFile(OpenedFile *file);
 bool8 IsPokemonDialogueSpriteAvail(s16 index, s32 spriteId);
 void RecruitedPokemonToDungeonMon(DungeonMon *dst, u32 recruitedPokemonId);
 void PokemonToDungeonMon(DungeonMon *dst, Pokemon *src, s32 recruitedPokemonId);
@@ -174,5 +169,11 @@ static inline s16 SpeciesId(s32 id)
 {
     return id;
 }
+
+OpenedFile *OpenPokemonDialogueSpriteFile(s16 index);
+OpenedFile *OpenPokemonDialogueSpriteFileForShiny(s16 index, bool8 isShiny);
+OpenedFile *GetDialogueSpriteDataPtr(s32 index);
+OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny);
+bool8 IsGeneratedDialogueSpriteFile(OpenedFile *file);
 
 #endif // GUARD_POKEMON_H

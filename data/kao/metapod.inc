@@ -1,4 +1,22 @@
-    .align 2
-    .global gKaoMetapod
+.global gKaoMetapod
 gKaoMetapod:
-    .byte 0
+kao_siro sPortraitsMetapod
+sMetapodNormalPal:
+.incbin "baserom.gba", 0x16893DC, 0x40
+.global sMetapodNormalGfx
+sMetapodNormalGfx:
+.incbin "baserom.gba", 0x168941C, 0x298
+sPortraitsMetapod:
+kao_portrait sMetapodNormalPal, sMetapodNormalGfx
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0

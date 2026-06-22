@@ -1,4 +1,28 @@
-    .align 2
-    .global gKaoWhiscash
+.global gKaoWhiscash
 gKaoWhiscash:
-    .byte 0
+kao_siro sPortraitsWhiscash
+sWhiscashNormalPal:
+.incbin "baserom.gba", 0x16B838C, 0x40
+.global sWhiscashNormalGfx
+sWhiscashNormalGfx:
+.incbin "baserom.gba", 0x16B83CC, 0x27C
+sWhiscashHappyPal:
+.incbin "baserom.gba", 0x16B8648, 0x40
+.global sWhiscashHappyGfx
+sWhiscashHappyGfx:
+.string "AT4PX"
+.incbin "baserom.gba", 0x16B868D, 0x25B
+sPortraitsWhiscash:
+kao_portrait sWhiscashNormalPal, sWhiscashNormalGfx
+kao_portrait sWhiscashHappyPal, sWhiscashHappyGfx
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0

@@ -1,4 +1,22 @@
-    .align 2
-    .global gKaoDugtrio
+.global gKaoDugtrio
 gKaoDugtrio:
-    .byte 0
+kao_siro sPortraitsDugtrio
+sDugtrioNormalPal:
+.incbin "baserom.gba", 0x168D30C, 0x40
+.global sDugtrioNormalGfx
+sDugtrioNormalGfx:
+.incbin "baserom.gba", 0x168D34C, 0x270
+sPortraitsDugtrio:
+kao_portrait sDugtrioNormalPal, sDugtrioNormalGfx
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0

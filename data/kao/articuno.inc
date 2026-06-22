@@ -1,4 +1,23 @@
-    .align 2
-    .global gKaoArticuno
+.global gKaoArticuno
 gKaoArticuno:
-    .byte 0
+kao_siro sPortraitsArticuno
+sArticunoNormalPal:
+.incbin "baserom.gba", 0x169D748, 0x40
+.global sArticunoNormalGfx
+sArticunoNormalGfx:
+.string "AT4PX"
+.incbin "baserom.gba", 0x169D78D, 0x2BB
+sPortraitsArticuno:
+kao_portrait sArticunoNormalPal, sArticunoNormalGfx
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0

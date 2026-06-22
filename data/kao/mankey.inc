@@ -1,15 +1,14 @@
-/* Export gfx labels for generated shiny runtime portraits. */
-.global sMankeyAngryGfx
-.global sMankeyNormalGfx
 .global gKaoMankey
 gKaoMankey:
 kao_siro sPortraitsMankey
 sMankeyNormalPal:
 .incbin "baserom.gba", 0x169271C, 0x40
+.global sMankeyNormalGfx
 sMankeyNormalGfx:
 .incbin "baserom.gba", 0x169275C, 0x2CC
 sMankeyAngryPal:
 .incbin "baserom.gba", 0x1692A28, 0x40
+.global sMankeyAngryGfx
 sMankeyAngryGfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x1692A6D, 0x2EB

@@ -1,10 +1,3 @@
-/* Export gfx labels for generated shiny runtime portraits. */
-.global sMunchlax1Gfx
-.global sMunchlax2Gfx
-.global sMunchlax3Gfx
-.global sMunchlax4Gfx
-.global sMunchlax5Gfx
-.global sMunchlaxNormalGfx
 .global gKaoMunchlax
 gKaoMunchlax:
 kao_siro sPortraitsMunchlax

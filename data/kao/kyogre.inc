@@ -1,4 +1,23 @@
-    .align 2
-    .global gKaoKyogre
+.global gKaoKyogre
 gKaoKyogre:
-    .byte 0
+kao_siro sPortraitsKyogre
+sKyogreNormalPal:
+.incbin "baserom.gba", 0x16BABB0, 0x40
+.global sKyogreNormalGfx
+sKyogreNormalGfx:
+.string "AT4PX"
+.incbin "baserom.gba", 0x16BABF5, 0x257
+sPortraitsKyogre:
+kao_portrait sKyogreNormalPal, sKyogreNormalGfx
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0
+kao_portrait 0, 0

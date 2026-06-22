@@ -1001,24 +1001,39 @@ static bool8 HasAnyGeneratedDialoguePortraitById(s32 id)
     if (!IsValidGeneratedPortraitSpecies(id))
         return FALSE;
 
-    return gGeneratedKaoShinyPortraitData[id] != NULL ||
-           gGeneratedKaoPortraitData[id] != NULL;
+    /*
+     * Option A: normal vanilla Pokémon must not be routed into the generated
+     * portrait path just because shiny generated data exists.
+     */
+    return gGeneratedKaoPortraitData[id] != NULL;
 }
 
 const u8 *GetGeneratedDialogueSpriteDataPtr(s32 index, bool8 isShiny)
 {
-    s32 id = index;
+    s32 id = SpeciesId(index);
 
     if (!IsValidGeneratedPortraitSpecies(id))
         return NULL;
 
-    if (isShiny && gGeneratedKaoShinyPortraitData[id] != NULL)
-        return gGeneratedKaoShinyPortraitData[id];
+    if (isShiny) {
+        if (gGeneratedKaoShinyPortraitData[id] != NULL)
+            return gGeneratedKaoShinyPortraitData[id];
 
-    if (!isShiny && gGeneratedKaoPortraitData[id] != NULL)
-        return gGeneratedKaoPortraitData[id];
+        if (gGeneratedKaoPortraitData[id] != NULL)
+            return gGeneratedKaoPortraitData[id];
 
-    return NULL;
+        return NULL;
+    }
+
+    return gGeneratedKaoPortraitData[id];
+}
+
+
+#define GENERATED_SHINY_MONSTER_OFFSET 12800
+
+static bool8 IsEncodedShinyPortraitSpecies(s32 index)
+{
+    return index >= GENERATED_SHINY_MONSTER_OFFSET;
 }
 
 static EWRAM_DATA OpenedFile sGeneratedDialogueSpriteFile = {0};
@@ -1052,14 +1067,67 @@ bool8 IsGeneratedDialogueSpriteFile(OpenedFile *file)
     return file == &sGeneratedDialogueSpriteFile;
 }
 
+static void BuildVanillaDialogueSpriteFilename(char *buffer, s16 id)
+{
+    sprintf(buffer, "kao%03d", id);
+}
+
+static OpenedFile *OpenVanillaDialogueSpriteFileById(s16 id)
+{
+    char buffer[0xC];
+
+    BuildVanillaDialogueSpriteFilename(buffer, id);
+    return OpenFile(buffer, &gMonsterFileArchive);
+}
+
+static OpenedFile *OpenAndLoadVanillaDialogueSpriteFileById(s16 id)
+{
+    char buffer[0xC];
+    OpenedFile *file;
+    void *data;
+
+    BuildVanillaDialogueSpriteFilename(buffer, id);
+
+    file = OpenFile(buffer, &gMonsterFileArchive);
+    if (file == NULL)
+        return NULL;
+
+    data = GetFileDataPtr(file, 0);
+    if (data == NULL) {
+        CloseFile(file);
+        return NULL;
+    }
+
+    /*
+     * Important split-path rule:
+     * Vanilla direct-data callers expect faceFile->data to be the usable
+     * PortraitGfx pointer. Do not leave vanilla loaded files with an unloaded
+     * archive pointer while generated sentinel files use faceFile->data.
+     */
+    file->data = data;
+    return file;
+}
+
+static bool8 VanillaDialogueSpriteFileExistsById(s16 id)
+{
+    OpenedFile *file = OpenVanillaDialogueSpriteFileById(id);
+
+    if (file == NULL)
+        return FALSE;
+
+    CloseFile(file);
+    return TRUE;
+}
+
 static OpenedFile *OpenGeneratedDialogueSpriteFileForPortrait(s16 index, bool8 isShiny)
 {
     const u8 *generatedFaceData;
+    s32 id = SpeciesId(index);
 
-    if (!IsValidGeneratedPortraitSpecies(index))
+    if (!IsValidGeneratedPortraitSpecies(id))
         return NULL;
 
-    generatedFaceData = GetGeneratedDialogueSpriteDataPtr(index, isShiny);
+    generatedFaceData = GetGeneratedDialogueSpriteDataPtr(id, isShiny);
 
     if (generatedFaceData != NULL) {
         sGeneratedDialogueSpriteFile.data = (void *) generatedFaceData;
@@ -1071,43 +1139,52 @@ static OpenedFile *OpenGeneratedDialogueSpriteFileForPortrait(s16 index, bool8 i
 
 OpenedFile *OpenPokemonDialogueSpriteFileForShiny(s16 index, bool8 isShiny)
 {
-    char buffer[0xC];
-    OpenedFile *generatedFile;
+    s16 id = SpeciesId(index);
+    OpenedFile *file;
 
     /*
-     * Generated portrait behavior:
-     *
-     * 1. If this individual is shiny and generated shiny data exists, use it.
-     * 2. If generated normal data exists, use it before vanilla KAO.
-     * 3. Otherwise preserve vanilla dialogue portraits as a fallback.
-     *
-     * This allows reclaimed base KAO files to be safely replaced by generated
-     * runtime portraits while still preserving vanilla fallback behavior for
-     * any species not generated.
+     * Non-shiny vanilla-first path:
+     * If the original kao### exists, return the original vanilla file.
+     * Generated portrait logic is only fallback when vanilla is absent.
      */
-    if (isShiny) {
-        generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(index, TRUE);
+    if (!isShiny) {
+        file = OpenVanillaDialogueSpriteFileById(id);
 
-        if (generatedFile != NULL)
-            return generatedFile;
+        if (file != NULL)
+            return file;
+
+        if (!IsValidGeneratedPortraitSpecies(id))
+            return NULL;
+
+        return OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
     }
 
-    generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(index, FALSE);
+    /*
+     * Shiny path:
+     * Prefer generated shiny. If missing, fall back to vanilla normal, then
+     * generated normal.
+     */
+    if (IsValidGeneratedPortraitSpecies(id)) {
+        file = OpenGeneratedDialogueSpriteFileForPortrait(id, TRUE);
 
-    if (generatedFile != NULL)
-        return generatedFile;
-
-    if (sMonsterParameters[index].dialogueSprites != 0) {
-        sprintf(buffer, "kao%03d", index);
-        return OpenFile(buffer, &gMonsterFileArchive);
+        if (file != NULL)
+            return file;
     }
 
-    return NULL;
+    file = OpenVanillaDialogueSpriteFileById(id);
+
+    if (file != NULL)
+        return file;
+
+    if (!IsValidGeneratedPortraitSpecies(id))
+        return NULL;
+
+    return OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
 }
 
 OpenedFile *OpenPokemonDialogueSpriteFile(s16 index)
 {
-    return OpenPokemonDialogueSpriteFileForShiny(index, FALSE);
+    return OpenPokemonDialogueSpriteFileForShiny(index, IsEncodedShinyPortraitSpecies(index));
 }
 
 // arm9.bin::0205AC60
@@ -1124,60 +1201,76 @@ OpenedFile *GetKecleonPurpleDialogueSpriteDataPtr(void)
 
 OpenedFile *GetDialogueSpriteDataPtrForShiny(s32 index, bool8 isShiny)
 {
-    char buffer[0xC];
     s16 id = SpeciesId(index);
-    OpenedFile *generatedFile;
+    OpenedFile *file;
 
     /*
-     * Prefer generated portraits when available, but always preserve the
-     * original vanilla KAO fallback. This is required for special vanilla-only
-     * cases such as the Kecleon Bros, where normal MONSTER_KECLEON is now
-     * intentionally NULL in gGeneratedKaoPortraitData so the vanilla KAO file
-     * supplies the green/purple shop portraits.
-     *
-     * Force normal Kecleon through vanilla KAO. Shiny Kecleon still uses the
-     * generated shiny table through the normal shiny branch below.
+     * Non-shiny vanilla-first direct-data path:
+     * If the original kao### exists, open it through the vanilla loader and
+     * preserve the loaded PortraitGfx pointer in file->data.
      */
+    if (!isShiny) {
+        file = OpenAndLoadVanillaDialogueSpriteFileById(id);
 
+        if (file != NULL)
+            return file;
+
+        if (!IsValidGeneratedPortraitSpecies(id))
+            return NULL;
+
+        return OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
+    }
+
+    /*
+     * Shiny path:
+     * Prefer generated shiny. If missing, fall back to loaded vanilla normal,
+     * then generated normal.
+     */
     if (IsValidGeneratedPortraitSpecies(id)) {
-        if (isShiny) {
-            generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(id, TRUE);
+        file = OpenGeneratedDialogueSpriteFileForPortrait(id, TRUE);
 
-            if (generatedFile != NULL)
-                return generatedFile;
-        }
-
-        generatedFile = OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
-
-        if (generatedFile != NULL)
-            return generatedFile;
+        if (file != NULL)
+            return file;
     }
 
-    if (sMonsterParameters[id].dialogueSprites != 0) {
-        sprintf(buffer, "kao%03d", id);
-        return OpenFileAndGetFileDataPtr(buffer, &gMonsterFileArchive);
-    }
+    file = OpenAndLoadVanillaDialogueSpriteFileById(id);
 
-    return NULL;
+    if (file != NULL)
+        return file;
+
+    if (!IsValidGeneratedPortraitSpecies(id))
+        return NULL;
+
+    return OpenGeneratedDialogueSpriteFileForPortrait(id, FALSE);
 }
 
 OpenedFile *GetDialogueSpriteDataPtr(s32 index)
 {
-    return GetDialogueSpriteDataPtrForShiny(index, FALSE);
+    return GetDialogueSpriteDataPtrForShiny(index, IsEncodedShinyPortraitSpecies(index));
 }
-
-
 
 bool8 IsPokemonDialogueSpriteAvail(s16 index, s32 spriteId)
 {
-    if (sMonsterParameters[index].dialogueSprites != 0)
-        return (sMonsterParameters[index].dialogueSprites >> spriteId) & 1;
+    s16 id = SpeciesId(index);
 
-    if (GetGeneratedDialogueSpriteDataPtr(index, FALSE) != NULL ||
-        GetGeneratedDialogueSpriteDataPtr(index, TRUE) != NULL)
-        return TRUE;
+    if (!IsValidGeneratedPortraitSpecies(id))
+        return FALSE;
 
-    return FALSE;
+    if (spriteId < 0 || spriteId >= 16)
+        return FALSE;
+
+    if (sMonsterParameters[id].dialogueSprites != 0)
+        return (sMonsterParameters[id].dialogueSprites & (1 << spriteId)) != 0;
+
+    /*
+     * Some vanilla portrait species may have had dialogueSprites cleared by
+     * generated-portrait experiments. Do not use that as proof that kao### is
+     * absent. If a vanilla file exists, allow normal expression at minimum.
+     */
+    if (VanillaDialogueSpriteFileExistsById(id))
+        return spriteId == 0;
+
+    return GetGeneratedDialogueSpriteDataPtr(id, FALSE) != NULL;
 }
 
 void RecruitedPokemonToDungeonMon(DungeonMon *dst, u32 recruitedPokemonId)

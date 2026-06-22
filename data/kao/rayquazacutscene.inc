@@ -1,5 +1,3 @@
-/* Export gfx labels for generated shiny runtime portraits. */
-.global sRayquazaCutsceneNormalGfx
 .global gKaoRayquazaCutscene
 gKaoRayquazaCutscene:
 kao_siro sPortraitsRayquazaCutscene
