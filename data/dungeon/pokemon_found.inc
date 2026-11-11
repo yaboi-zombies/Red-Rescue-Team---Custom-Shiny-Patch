@@ -61,6 +61,7 @@
 #include "D61/pokemon_found.inc"
 #include "PurityForest/pokemon_found.inc"
 
+.align 2,0
 .global DungeonPokemonFoundTable
 DungeonPokemonFoundTable:
 .4byte TinyWoods1F_2F_Pokemon
@@ -68,7 +69,7 @@ DungeonPokemonFoundTable:
 .4byte ThunderwaveCave_1F_2F_Pokemon
 .4byte ThunderwaveCave_3F_Pokemon
 .4byte ThunderwaveCave_4F_5F_Pokemon
-.4byte MtSteel_1F_4F_Pokemon
+.4byte MtSteel_1F_3F_Pokemon
 .4byte MtSteel_5F_Pokemon
 .4byte MtSteel_6F_Pokemon
 .4byte MtSteel_7F_8F_Pokemon
@@ -902,3 +903,4 @@ DungeonPokemonFoundTable:
 .4byte pokemon_found_out836
 .4byte pokemon_found_out837
 .4byte pokemon_found_out838
+.4byte MtSteel_4F_Pokemon

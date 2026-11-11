@@ -1,12 +1,10 @@
-HOSTCXX ?= /c/msys64/mingw64/bin/g++
-CXX := $(HOSTCXX)
+CXX ?= g++
 
-CXXFLAGS := -Wall -std=c++11 -O2 -pipe -I.
+CXXFLAGS := -Wall -std=c++11 -O2
 
 INCLUDES := -I .
 
 SRCS := jsonproc.cpp
-OBJS := $(SRCS:.cpp=.o)
 
 HEADERS := jsonproc.h inja.hpp nlohmann/json.hpp
 
@@ -21,11 +19,8 @@ endif
 all: jsonproc$(EXE)
 	@:
 
-jsonproc$(EXE): $(OBJS) $(HEADERS)
+jsonproc$(EXE): $(SRCS) $(HEADERS)
 	$(CXX) $(CXXFLAGS) $(INCLUDES) $(SRCS) -o $@ $(LDFLAGS)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
 clean:
-	$(RM) jsonproc jsonproc.exe $(OBJS) *.i *.s
+	$(RM) jsonproc jsonproc.exe

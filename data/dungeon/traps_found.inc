@@ -1,6 +1,7 @@
 @ Start of Traps Found (0x84c37b8)
 #include "trap_data.inc"
 
+.align 2,0
 .global DungeonTrapsFoundTable
 DungeonTrapsFoundTable:
 .4byte trap_found_out0

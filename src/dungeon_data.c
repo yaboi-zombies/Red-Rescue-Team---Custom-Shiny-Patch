@@ -209,7 +209,7 @@ const FriendAreaSettings gFriendAreaSettings[NUM_FRIEND_AREAS] =
         .price = 5000,
     },
     [MT_DEEPGREEN] = {
-        .num_pokemon = 12,
+        .num_pokemon = 14,
         .unlock_condition = UNLOCK_SHOP_STORY,
         .price = 130,
     },
@@ -229,7 +229,7 @@ const FriendAreaSettings gFriendAreaSettings[NUM_FRIEND_AREAS] =
         .price = 6500,
     },
     [WILD_PLAINS] = {
-        .num_pokemon = 13,
+        .num_pokemon = 15,
         .unlock_condition = UNLOCK_SHOP_STORY,
         .price = 100,
     },
@@ -269,7 +269,7 @@ const FriendAreaSettings gFriendAreaSettings[NUM_FRIEND_AREAS] =
         .price = 550
     },
     [OVERGROWN_FOREST] = {
-        .num_pokemon = 9,
+        .num_pokemon = 10,
         .unlock_condition = UNLOCK_SHOP_STORY,
         .price = 600
     },
@@ -294,7 +294,7 @@ const FriendAreaSettings gFriendAreaSettings[NUM_FRIEND_AREAS] =
         .price = 500
     },
     [SECRETIVE_FOREST] = {
-        .num_pokemon = 9,
+        .num_pokemon = 11,
         .unlock_condition = UNLOCK_SHOP_POST_GAME,
         .price = 6500
     },
@@ -359,7 +359,7 @@ const FriendAreaSettings gFriendAreaSettings[NUM_FRIEND_AREAS] =
         .price = 800
     },
     [DECREPIT_LAB] = {
-        .num_pokemon = 7,
+        .num_pokemon = 8,
         .unlock_condition = UNLOCK_SHOP_STORY,
         .price = 1000
     },
@@ -404,7 +404,7 @@ const FriendAreaSettings gFriendAreaSettings[NUM_FRIEND_AREAS] =
         .price = 8000
     },
     [DARKNESS_RIDGE] = {
-        .num_pokemon = 13,
+        .num_pokemon = 14,
         .unlock_condition = UNLOCK_LEGENDARY_REQUEST,
         .price = 0
     },

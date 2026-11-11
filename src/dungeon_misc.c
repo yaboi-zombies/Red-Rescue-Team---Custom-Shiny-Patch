@@ -1372,10 +1372,26 @@ static void LoadTalkString(u8 *dst, s32 species, s32 id, bool8 usePartnerTalk)
     CloseFile(file);
 }
 
+static s32 GetTalkStringSpecies(s32 species)
+{
+    switch (species) {
+    case MONSTER_WEAVILE: return MONSTER_SNEASEL;
+    case MONSTER_RIOLU: return MONSTER_MEDITITE;
+    case MONSTER_LUCARIO: return MONSTER_MEDICHAM;
+    case MONSTER_BONSLY: return MONSTER_SUDOWOODO;
+    case MONSTER_MIMEJR: return MONSTER_MR_MIME;
+    case MONSTER_JOLTIK: return MONSTER_SPINARAK;
+    case MONSTER_GALVANTULA: return MONSTER_ARIADOS;
+    default: return species;
+    }
+}
+
 void sub_806A3D4(u8 *dst, s32 _a1, s32 id, bool32 _a3)
 {
     s32 a1 = (s16)(_a1);
     bool8 a3 = _a3;
+
+    a1 = GetTalkStringSpecies(a1);
 
     if ((a1 == MONSTER_MUNCHLAX || a1 == MONSTER_DECOY) && id >= 0 && id < ARRAY_COUNT(sDefaultDungeonTalk)) {
         strcpy(dst, sDefaultDungeonTalk[id]);

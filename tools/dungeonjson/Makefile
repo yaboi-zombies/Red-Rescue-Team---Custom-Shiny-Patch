@@ -1,10 +1,8 @@
-HOSTCXX ?= /c/msys64/mingw64/bin/g++
-CXX := $(HOSTCXX)
+CXX ?= g++
 
-CXXFLAGS := -Wall -std=c++11 -O2 -pipe
+CXXFLAGS := -Wall -std=c++11 -O2
 
 SRCS := json11.cpp dungeonjson.cpp move_id_json.cpp item_id_json.cpp
-OBJS := $(SRCS:.cpp=.o)
 
 HEADERS := dungeonjson.h move_id_json.h
 
@@ -13,11 +11,8 @@ HEADERS := dungeonjson.h move_id_json.h
 all: dungeonjson
 	@:
 
-dungeonjson: $(OBJS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+dungeonjson: $(SRCS) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $@ $(LDFLAGS)
 
 clean:
-	$(RM) dungeonjson dungeonjson.exe $(OBJS) *.i *.s
+	$(RM) dungeonjson dungeonjson.exe

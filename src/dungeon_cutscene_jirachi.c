@@ -45,7 +45,6 @@ static void JirachiSpinEffect(Entity * jirachiEntity);
 static void JirachiWishGrantDialogue(Entity *jirachiEntity);
 static void CreateJirachiWishWarpTile(void);
 static void EnableJirachiWishWarpTile(void);
-static u8 JirachiFriendAreaSearch(void);
 static void MakeLeaderAndPartnerShiny(void);
 static void MakePokemonAndDungeonCopyShiny(Pokemon *pokemon);
 
@@ -219,7 +218,6 @@ static void JirachiWish_Async(void)
 {
   Entity *jirachiEntity;
   DungeonPos *LeaderPos;
-  Entity *leaderEntity;
   s32 wishChoice;
 
   jirachiEntity = GetEntityFromMonsterBehavior(BEHAVIOR_JIRACHI);
@@ -530,37 +528,5 @@ static void EnableJirachiWishWarpTile(void)
   UpdateMinimap();
 }
 
-static u8 JirachiFriendAreaSearch(void)
-{
-  u8 unlockCondition;
-  s32 friendAreaCounter;
-  s32 numUnlockableAreas;
-  u8 friendAreas[NUM_FRIEND_AREAS];
-  u32 friendAreaIndex;
-
-  // Build a copy of friend area list and keep track of
-  // how many are only Story Unlockable
-  numUnlockableAreas = 0;
-  for(friendAreaCounter = 1; friendAreaCounter < NUM_FRIEND_AREAS; friendAreaCounter++){
-    unlockCondition = GetFriendAreaUnlockCondition(friendAreaCounter);
-    if (!(unlockCondition == UNLOCK_LEGENDARY_REQUEST)){
-        if (!(unlockCondition == UNLOCK_WONDER_MAIL)){
-            if(!gFriendAreas[friendAreaCounter]) {
-                friendAreas[numUnlockableAreas] = friendAreaCounter;
-                numUnlockableAreas++;
-            }
-        }
-    }
-  }
-
-  if (numUnlockableAreas == 0) {
-    return NUM_FRIEND_AREAS;
-  }
-  else {
-      // Randomly pick 1
-    friendAreaIndex = DungeonRandInt(numUnlockableAreas);
-    return friendAreas[friendAreaIndex];
-  }
-}
 
 

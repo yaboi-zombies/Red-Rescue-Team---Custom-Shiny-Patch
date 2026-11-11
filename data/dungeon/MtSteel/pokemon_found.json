@@ -1,6 +1,6 @@
 {
 	"tables": [{
-		"name": "MtSteel_1F_4F_Pokemon",
+		"name": "MtSteel_1F_3F_Pokemon",
 		"pokemon": [{
 				"species": "MONSTER_SPEAROW",
 				"level": 4,
@@ -37,27 +37,32 @@
 		"pokemon": [{
 				"species": "MONSTER_GEODUDE",
 				"level": 5,
-				"probability": 1905
+				"probability": 1524
 			},
 			{
 				"species": "MONSTER_TYROGUE",
 				"level": 6,
-				"probability": 1905
+				"probability": 1524
 			},
 			{
 				"species": "MONSTER_ZIGZAGOON",
 				"level": 5,
-				"probability": 1904
+				"probability": 1523
 			},
 			{
 				"species": "MONSTER_ARON",
 				"level": 6,
-				"probability": 2381
+				"probability": 1905
 			},
 			{
 				"species": "MONSTER_MEDITITE",
 				"level": 6,
-				"probability": 1905
+				"probability": 1524
+			},
+			{
+				"species": "MONSTER_MIMEJR",
+				"level": 5,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
@@ -75,22 +80,27 @@
 		"pokemon": [{
 				"species": "MONSTER_GEODUDE",
 				"level": 5,
-				"probability": 2051
+				"probability": 1641
 			},
 			{
 				"species": "MONSTER_TYROGUE",
 				"level": 6,
-				"probability": 2052
+				"probability": 1642
 			},
 			{
 				"species": "MONSTER_ARON",
 				"level": 6,
-				"probability": 2564
+				"probability": 2050
 			},
 			{
 				"species": "MONSTER_MEDITITE",
 				"level": 6,
-				"probability": 2051
+				"probability": 1641
+			},
+			{
+				"species": "MONSTER_MIMEJR",
+				"level": 5,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
@@ -100,7 +110,7 @@
 			{
 				"species": "MONSTER_BELDUM",
 				"level": 5,
-				"probability": 1282
+				"probability": 1026
 			},
 			{
 				"species": "MONSTER_DECOY",
@@ -177,6 +187,45 @@
 				"species": "MONSTER_BELDUM",
 				"level": 5,
 				"probability": 3333
+			},
+			{
+				"species": "MONSTER_DECOY",
+				"level": 1,
+				"probability": 0
+			}
+		]
+	}, {
+		"name": "MtSteel_4F_Pokemon",
+		"pokemon": [
+                        {
+				"species": "MONSTER_SPEAROW",
+				"level": 4,
+				"probability": 1882
+			},
+			{
+				"species": "MONSTER_ZIGZAGOON",
+				"level": 5,
+				"probability": 1882
+			},
+			{
+				"species": "MONSTER_ARON",
+				"level": 6,
+				"probability": 2354
+			},
+			{
+				"species": "MONSTER_BALTOY",
+				"level": 5,
+				"probability": 1882
+			},
+			{
+				"species": "MONSTER_MIMEJR",
+				"level": 5,
+				"probability": 2000
+			},
+			{
+				"species": "MONSTER_KECLEON",
+				"level": 90,
+				"probability": 0
 			},
 			{
 				"species": "MONSTER_DECOY",

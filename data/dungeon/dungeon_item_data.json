@@ -39088,5 +39088,31 @@
                 ]
             }
         ]
+    },
+    {
+        "name": "items_found_out178",
+        "description": "Murky Cave 18F",
+        "categories": [
+            {
+                "category": "CATEGORY_POKE",
+                "categoryProbability": 9000,
+                "items": [
+                    {
+                        "item": "ITEM_POKE",
+                        "itemProbability": 10000
+                    }
+                ]
+            },
+            {
+                "category": "CATEGORY_OTHER",
+                "categoryProbability": 1000,
+                "items": [
+                    {
+                        "item": "ITEM_RAZOR_CLAW",
+                        "itemProbability": 10000
+                    }
+                ]
+            }
+        ]
     }
 ]

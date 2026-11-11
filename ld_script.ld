@@ -135,6 +135,8 @@ SECTIONS {
         src/wigglytuff_shop1.o(.text);
         src/wigglytuff_shop2.o(.text);
         src/wigglytuff_shop3.o(.text);
+        src/wigglytuff_config.o(.text);
+        src/wigglytuff_info.o(.text);
         src/code_80227B8.o(.text);
         src/code_8023144.o(.text);
         src/friend_list.o(.text);
@@ -507,6 +509,8 @@ SECTIONS {
         src/wigglytuff_shop1.o(.rodata);
         src/wigglytuff_shop2.o(.rodata);
         src/wigglytuff_shop3.o(.rodata);
+        src/wigglytuff_config.o(.rodata);
+        src/wigglytuff_info.o(.rodata);
         src/code_80227B8.o(.rodata);
         src/code_8023144.o(.rodata);
         src/friend_list.o(.rodata);
@@ -714,6 +718,8 @@ SECTIONS {
         src/dungeon_run_end.o(.rodata);
         src/data_serializer.o(.rodata);
         src/data/shiny_palette_table.o(.rodata);
+        src/data/ax/shared_dedup_anims.o(.rodata);
+        src/data/generated_kao_table.o(.rodata);
         src/game_options.o(.rodata);
         src/random_mersenne_twister.o(.rodata);
         src/play_time.o(.rodata);
@@ -1023,6 +1029,7 @@ SECTIONS {
         src/monster_gfx43.o(.rodata);
         data/monster_sbin.o(.rodata);
         src/monster_sbin_palet.o(.rodata);
+        data/generated_kao_runtime_sbin.o(.rodata);
     } > ROM =0
 
     unk_96BD7AC_section :

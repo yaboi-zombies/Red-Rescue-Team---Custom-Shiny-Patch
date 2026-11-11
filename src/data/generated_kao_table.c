@@ -26,6 +26,7 @@ extern const u8 gPortraitsRuntimeGenerated168ARIADOS[];
 extern const u8 gPortraitsRuntimeGenerated168ShinyARIADOS[];
 extern const u8 gPortraitsRuntimeGenerated348ARMALDO[];
 extern const u8 gPortraitsRuntimeGenerated348ShinyARMALDO[];
+extern const u8 gPortraitsRuntimeGenerated304ARON[];
 extern const u8 gPortraitsRuntimeGenerated304ShinyARON[];
 extern const u8 gPortraitsRuntimeGenerated144ShinyARTICUNO[];
 extern const u8 gPortraitsRuntimeGenerated184AZUMARILL[];
@@ -56,6 +57,8 @@ extern const u8 gPortraitsRuntimeGenerated257BLAZIKEN[];
 extern const u8 gPortraitsRuntimeGenerated257ShinyBLAZIKEN[];
 extern const u8 gPortraitsRuntimeGenerated242BLISSEY[];
 extern const u8 gPortraitsRuntimeGenerated242ShinyBLISSEY[];
+extern const u8 gPortraitsRuntimeGenerated438BONSLY[];
+extern const u8 gPortraitsRuntimeGenerated438ShinyBONSLY[];
 extern const u8 gPortraitsRuntimeGenerated286BRELOOM[];
 extern const u8 gPortraitsRuntimeGenerated286ShinyBRELOOM[];
 extern const u8 gPortraitsRuntimeGenerated001ShinyBULBASAUR[];
@@ -68,6 +71,7 @@ extern const u8 gPortraitsRuntimeGenerated323CAMERUPT[];
 extern const u8 gPortraitsRuntimeGenerated323ShinyCAMERUPT[];
 extern const u8 gPortraitsRuntimeGenerated318CARVANHA[];
 extern const u8 gPortraitsRuntimeGenerated318ShinyCARVANHA[];
+extern const u8 gPortraitsRuntimeGenerated268CASCOON[];
 extern const u8 gPortraitsRuntimeGenerated268ShinyCASCOON[];
 extern const u8 gPortraitsRuntimeGenerated351CASTFORM[];
 extern const u8 gPortraitsRuntimeGenerated351ShinyCASTFORM[];
@@ -99,6 +103,7 @@ extern const u8 gPortraitsRuntimeGenerated091CLOYSTER[];
 extern const u8 gPortraitsRuntimeGenerated091ShinyCLOYSTER[];
 extern const u8 gPortraitsRuntimeGenerated256COMBUSKEN[];
 extern const u8 gPortraitsRuntimeGenerated256ShinyCOMBUSKEN[];
+extern const u8 gPortraitsRuntimeGenerated341CORPHISH[];
 extern const u8 gPortraitsRuntimeGenerated341ShinyCORPHISH[];
 extern const u8 gPortraitsRuntimeGenerated222CORSOLA[];
 extern const u8 gPortraitsRuntimeGenerated222ShinyCORSOLA[];
@@ -146,6 +151,7 @@ extern const u8 gPortraitsRuntimeGenerated356DUSCLOPS[];
 extern const u8 gPortraitsRuntimeGenerated356ShinyDUSCLOPS[];
 extern const u8 gPortraitsRuntimeGenerated355DUSKULL[];
 extern const u8 gPortraitsRuntimeGenerated355ShinyDUSKULL[];
+extern const u8 gPortraitsRuntimeGenerated269DUSTOX[];
 extern const u8 gPortraitsRuntimeGenerated269ShinyDUSTOX[];
 extern const u8 gPortraitsRuntimeGenerated133ShinyEEVEE[];
 extern const u8 gPortraitsRuntimeGenerated023ShinyEKANS[];
@@ -184,6 +190,8 @@ extern const u8 gPortraitsRuntimeGenerated205FORRETRESS[];
 extern const u8 gPortraitsRuntimeGenerated205ShinyFORRETRESS[];
 extern const u8 gPortraitsRuntimeGenerated162FURRET[];
 extern const u8 gPortraitsRuntimeGenerated162ShinyFURRET[];
+extern const u8 gPortraitsRuntimeGenerated596GALVANTULA[];
+extern const u8 gPortraitsRuntimeGenerated596ShinyGALVANTULA[];
 extern const u8 gPortraitsRuntimeGenerated282ShinyGARDEVOIR[];
 extern const u8 gPortraitsRuntimeGenerated092GASTLY[];
 extern const u8 gPortraitsRuntimeGenerated092ShinyGASTLY[];
@@ -260,6 +268,8 @@ extern const u8 gPortraitsRuntimeGenerated039ShinyJIGGLYPUFF[];
 extern const u8 gPortraitsRuntimeGenerated385ShinyJIRACHI[];
 extern const u8 gPortraitsRuntimeGenerated135JOLTEON[];
 extern const u8 gPortraitsRuntimeGenerated135ShinyJOLTEON[];
+extern const u8 gPortraitsRuntimeGenerated595JOLTIK[];
+extern const u8 gPortraitsRuntimeGenerated595ShinyJOLTIK[];
 extern const u8 gPortraitsRuntimeGenerated189ShinyJUMPLUFF[];
 extern const u8 gPortraitsRuntimeGenerated124JYNX[];
 extern const u8 gPortraitsRuntimeGenerated124ShinyJYNX[];
@@ -305,9 +315,12 @@ extern const u8 gPortraitsRuntimeGenerated345ShinyLILEEP[];
 extern const u8 gPortraitsRuntimeGenerated264LINOONE[];
 extern const u8 gPortraitsRuntimeGenerated264ShinyLINOONE[];
 extern const u8 gPortraitsRuntimeGenerated271ShinyLOMBRE[];
+extern const u8 gPortraitsRuntimeGenerated270LOTAD[];
 extern const u8 gPortraitsRuntimeGenerated270ShinyLOTAD[];
 extern const u8 gPortraitsRuntimeGenerated294LOUDRED[];
 extern const u8 gPortraitsRuntimeGenerated294ShinyLOUDRED[];
+extern const u8 gPortraitsRuntimeGenerated448LUCARIO[];
+extern const u8 gPortraitsRuntimeGenerated448ShinyLUCARIO[];
 extern const u8 gPortraitsRuntimeGenerated272LUDICOLO[];
 extern const u8 gPortraitsRuntimeGenerated272ShinyLUDICOLO[];
 extern const u8 gPortraitsRuntimeGenerated249ShinyLUGIA[];
@@ -350,6 +363,7 @@ extern const u8 gPortraitsRuntimeGenerated284ShinyMASQUERAIN[];
 extern const u8 gPortraitsRuntimeGenerated303MAWILE[];
 extern const u8 gPortraitsRuntimeGenerated303ShinyMAWILE[];
 extern const u8 gPortraitsRuntimeGenerated308ShinyMEDICHAM[];
+extern const u8 gPortraitsRuntimeGenerated307MEDITITE[];
 extern const u8 gPortraitsRuntimeGenerated307ShinyMEDITITE[];
 extern const u8 gPortraitsRuntimeGenerated154MEGANIUM[];
 extern const u8 gPortraitsRuntimeGenerated154ShinyMEGANIUM[];
@@ -368,6 +382,8 @@ extern const u8 gPortraitsRuntimeGenerated350MILOTIC[];
 extern const u8 gPortraitsRuntimeGenerated350ShinyMILOTIC[];
 extern const u8 gPortraitsRuntimeGenerated241MILTANK[];
 extern const u8 gPortraitsRuntimeGenerated241ShinyMILTANK[];
+extern const u8 gPortraitsRuntimeGenerated439MIMEJR[];
+extern const u8 gPortraitsRuntimeGenerated439ShinyMIMEJR[];
 extern const u8 gPortraitsRuntimeGenerated312MINUN[];
 extern const u8 gPortraitsRuntimeGenerated312ShinyMINUN[];
 extern const u8 gPortraitsRuntimeGenerated200MISDREAVUS[];
@@ -378,6 +394,8 @@ extern const u8 gPortraitsRuntimeGenerated122ShinyMR_MIME[];
 extern const u8 gPortraitsRuntimeGenerated258ShinyMUDKIP[];
 extern const u8 gPortraitsRuntimeGenerated089MUK[];
 extern const u8 gPortraitsRuntimeGenerated089ShinyMUK[];
+extern const u8 gPortraitsRuntimeGenerated446MUNCHLAX[];
+extern const u8 gPortraitsRuntimeGenerated446ShinyMUNCHLAX[];
 extern const u8 gPortraitsRuntimeGenerated198MURKROW[];
 extern const u8 gPortraitsRuntimeGenerated198ShinyMURKROW[];
 extern const u8 gPortraitsRuntimeGenerated177NATU[];
@@ -405,6 +423,7 @@ extern const u8 gPortraitsRuntimeGenerated299NOSEPASS[];
 extern const u8 gPortraitsRuntimeGenerated299ShinyNOSEPASS[];
 extern const u8 gPortraitsRuntimeGenerated322NUMEL[];
 extern const u8 gPortraitsRuntimeGenerated322ShinyNUMEL[];
+extern const u8 gPortraitsRuntimeGenerated274NUZLEAF[];
 extern const u8 gPortraitsRuntimeGenerated274ShinyNUZLEAF[];
 extern const u8 gPortraitsRuntimeGenerated224ShinyOCTILLERY[];
 extern const u8 gPortraitsRuntimeGenerated043ODDISH[];
@@ -470,6 +489,7 @@ extern const u8 gPortraitsRuntimeGenerated211ShinyQWILFISH[];
 extern const u8 gPortraitsRuntimeGenerated026RAICHU[];
 extern const u8 gPortraitsRuntimeGenerated026ShinyRAICHU[];
 extern const u8 gPortraitsRuntimeGenerated243ShinyRAIKOU[];
+extern const u8 gPortraitsRuntimeGenerated280RALTS[];
 extern const u8 gPortraitsRuntimeGenerated280ShinyRALTS[];
 extern const u8 gPortraitsRuntimeGenerated078RAPIDASH[];
 extern const u8 gPortraitsRuntimeGenerated078ShinyRAPIDASH[];
@@ -492,6 +512,8 @@ extern const u8 gPortraitsRuntimeGenerated112RHYDON[];
 extern const u8 gPortraitsRuntimeGenerated112ShinyRHYDON[];
 extern const u8 gPortraitsRuntimeGenerated111RHYHORN[];
 extern const u8 gPortraitsRuntimeGenerated111ShinyRHYHORN[];
+extern const u8 gPortraitsRuntimeGenerated447RIOLU[];
+extern const u8 gPortraitsRuntimeGenerated447ShinyRIOLU[];
 extern const u8 gPortraitsRuntimeGenerated315ROSELIA[];
 extern const u8 gPortraitsRuntimeGenerated315ShinyROSELIA[];
 extern const u8 gPortraitsRuntimeGenerated302SABLEYE[];
@@ -514,6 +536,7 @@ extern const u8 gPortraitsRuntimeGenerated119SEAKING[];
 extern const u8 gPortraitsRuntimeGenerated119ShinySEAKING[];
 extern const u8 gPortraitsRuntimeGenerated364SEALEO[];
 extern const u8 gPortraitsRuntimeGenerated364ShinySEALEO[];
+extern const u8 gPortraitsRuntimeGenerated273SEEDOT[];
 extern const u8 gPortraitsRuntimeGenerated273ShinySEEDOT[];
 extern const u8 gPortraitsRuntimeGenerated086SEEL[];
 extern const u8 gPortraitsRuntimeGenerated086ShinySEEL[];
@@ -573,8 +596,10 @@ extern const u8 gPortraitsRuntimeGenerated363ShinySPHEAL[];
 extern const u8 gPortraitsRuntimeGenerated167SPINARAK[];
 extern const u8 gPortraitsRuntimeGenerated167ShinySPINARAK[];
 extern const u8 gPortraitsRuntimeGenerated327ShinySPINDA[];
+extern const u8 gPortraitsRuntimeGenerated325SPOINK[];
 extern const u8 gPortraitsRuntimeGenerated325ShinySPOINK[];
 extern const u8 gPortraitsRuntimeGenerated007ShinySQUIRTLE[];
+extern const u8 gPortraitsRuntimeGenerated234STANTLER[];
 extern const u8 gPortraitsRuntimeGenerated234ShinySTANTLER[];
 extern const u8 gPortraitsRuntimeGenerated121STARMIE[];
 extern const u8 gPortraitsRuntimeGenerated121ShinySTARMIE[];
@@ -589,11 +614,15 @@ extern const u8 gPortraitsRuntimeGenerated192SUNFLORA[];
 extern const u8 gPortraitsRuntimeGenerated192ShinySUNFLORA[];
 extern const u8 gPortraitsRuntimeGenerated191SUNKERN[];
 extern const u8 gPortraitsRuntimeGenerated191ShinySUNKERN[];
+extern const u8 gPortraitsRuntimeGenerated283SURSKIT[];
 extern const u8 gPortraitsRuntimeGenerated283ShinySURSKIT[];
+extern const u8 gPortraitsRuntimeGenerated333SWABLU[];
 extern const u8 gPortraitsRuntimeGenerated333ShinySWABLU[];
 extern const u8 gPortraitsRuntimeGenerated317SWALOT[];
 extern const u8 gPortraitsRuntimeGenerated317ShinySWALOT[];
+extern const u8 gPortraitsRuntimeGenerated260SWAMPERT[];
 extern const u8 gPortraitsRuntimeGenerated260ShinySWAMPERT[];
+extern const u8 gPortraitsRuntimeGenerated277SWELLOW[];
 extern const u8 gPortraitsRuntimeGenerated277ShinySWELLOW[];
 extern const u8 gPortraitsRuntimeGenerated220SWINUB[];
 extern const u8 gPortraitsRuntimeGenerated220ShinySWINUB[];
@@ -629,6 +658,62 @@ extern const u8 gPortraitsRuntimeGenerated236TYROGUE[];
 extern const u8 gPortraitsRuntimeGenerated236ShinyTYROGUE[];
 extern const u8 gPortraitsRuntimeGenerated197UMBREON[];
 extern const u8 gPortraitsRuntimeGenerated197ShinyUMBREON[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_B[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_B[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_C[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_C[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_D[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_D[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_E[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_E[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_EMARK[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_EMARK[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_F[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_F[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_G[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_G[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_H[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_H[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_I[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_I[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_J[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_J[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_K[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_K[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_L[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_L[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_M[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_M[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_N[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_N[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_O[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_O[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_P[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_P[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_Q[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_Q[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_QMARK[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_QMARK[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_R[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_R[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_S[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_S[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_T[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_T[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_U[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_U[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_V[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_V[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_W[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_W[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_X[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_X[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_Y[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_Y[];
+extern const u8 gPortraitsRuntimeGenerated201UNOWN_Z[];
+extern const u8 gPortraitsRuntimeGenerated201ShinyUNOWN_Z[];
 extern const u8 gPortraitsRuntimeGenerated217URSARING[];
 extern const u8 gPortraitsRuntimeGenerated217ShinyURSARING[];
 extern const u8 gPortraitsRuntimeGenerated134VAPOREON[];
@@ -655,10 +740,14 @@ extern const u8 gPortraitsRuntimeGenerated037VULPIX[];
 extern const u8 gPortraitsRuntimeGenerated037ShinyVULPIX[];
 extern const u8 gPortraitsRuntimeGenerated320WAILMER[];
 extern const u8 gPortraitsRuntimeGenerated320ShinyWAILMER[];
+extern const u8 gPortraitsRuntimeGenerated321WAILORD[];
 extern const u8 gPortraitsRuntimeGenerated321ShinyWAILORD[];
+extern const u8 gPortraitsRuntimeGenerated365WALREIN[];
 extern const u8 gPortraitsRuntimeGenerated365ShinyWALREIN[];
 extern const u8 gPortraitsRuntimeGenerated008WARTORTLE[];
 extern const u8 gPortraitsRuntimeGenerated008ShinyWARTORTLE[];
+extern const u8 gPortraitsRuntimeGenerated461WEAVILE[];
+extern const u8 gPortraitsRuntimeGenerated461ShinyWEAVILE[];
 extern const u8 gPortraitsRuntimeGenerated013WEEDLE[];
 extern const u8 gPortraitsRuntimeGenerated013ShinyWEEDLE[];
 extern const u8 gPortraitsRuntimeGenerated070WEEPINBELL[];
@@ -700,6 +789,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_ARCANINE] = gPortraitsRuntimeGenerated059ARCANINE,
     [MONSTER_ARIADOS] = gPortraitsRuntimeGenerated168ARIADOS,
     [MONSTER_ARMALDO] = gPortraitsRuntimeGenerated348ARMALDO,
+    [MONSTER_ARON] = gPortraitsRuntimeGenerated304ARON,
     [MONSTER_AZUMARILL] = gPortraitsRuntimeGenerated184AZUMARILL,
     [MONSTER_AZURILL] = gPortraitsRuntimeGenerated298AZURILL,
     [MONSTER_BAGON] = gPortraitsRuntimeGenerated371BAGON,
@@ -713,11 +803,13 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_BELLOSSOM] = gPortraitsRuntimeGenerated182BELLOSSOM,
     [MONSTER_BLAZIKEN] = gPortraitsRuntimeGenerated257BLAZIKEN,
     [MONSTER_BLISSEY] = gPortraitsRuntimeGenerated242BLISSEY,
+    [MONSTER_BONSLY] = gPortraitsRuntimeGenerated438BONSLY,
     [MONSTER_BRELOOM] = gPortraitsRuntimeGenerated286BRELOOM,
     [MONSTER_CACNEA] = gPortraitsRuntimeGenerated331CACNEA,
     [MONSTER_CACTURNE] = gPortraitsRuntimeGenerated332CACTURNE,
     [MONSTER_CAMERUPT] = gPortraitsRuntimeGenerated323CAMERUPT,
     [MONSTER_CARVANHA] = gPortraitsRuntimeGenerated318CARVANHA,
+    [MONSTER_CASCOON] = gPortraitsRuntimeGenerated268CASCOON,
     [MONSTER_CASTFORM] = gPortraitsRuntimeGenerated351CASTFORM,
     [MONSTER_CELEBI] = gPortraitsRuntimeGenerated251CELEBI,
     [MONSTER_CHANSEY] = gPortraitsRuntimeGenerated113CHANSEY,
@@ -731,6 +823,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_CLEFFA] = gPortraitsRuntimeGenerated173CLEFFA,
     [MONSTER_CLOYSTER] = gPortraitsRuntimeGenerated091CLOYSTER,
     [MONSTER_COMBUSKEN] = gPortraitsRuntimeGenerated256COMBUSKEN,
+    [MONSTER_CORPHISH] = gPortraitsRuntimeGenerated341CORPHISH,
     [MONSTER_CORSOLA] = gPortraitsRuntimeGenerated222CORSOLA,
     [MONSTER_CRADILY] = gPortraitsRuntimeGenerated346CRADILY,
     [MONSTER_CRAWDAUNT] = gPortraitsRuntimeGenerated342CRAWDAUNT,
@@ -750,6 +843,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_DUNSPARCE] = gPortraitsRuntimeGenerated206DUNSPARCE,
     [MONSTER_DUSCLOPS] = gPortraitsRuntimeGenerated356DUSCLOPS,
     [MONSTER_DUSKULL] = gPortraitsRuntimeGenerated355DUSKULL,
+    [MONSTER_DUSTOX] = gPortraitsRuntimeGenerated269DUSTOX,
     [MONSTER_ELECTABUZZ] = gPortraitsRuntimeGenerated125ELECTABUZZ,
     [MONSTER_ELECTRIKE] = gPortraitsRuntimeGenerated309ELECTRIKE,
     [MONSTER_ELECTRODE] = gPortraitsRuntimeGenerated101ELECTRODE,
@@ -767,6 +861,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_FLYGON] = gPortraitsRuntimeGenerated330FLYGON,
     [MONSTER_FORRETRESS] = gPortraitsRuntimeGenerated205FORRETRESS,
     [MONSTER_FURRET] = gPortraitsRuntimeGenerated162FURRET,
+    [MONSTER_GALVANTULA] = gPortraitsRuntimeGenerated596GALVANTULA,
     [MONSTER_GASTLY] = gPortraitsRuntimeGenerated092GASTLY,
     [MONSTER_GEODUDE] = gPortraitsRuntimeGenerated074GEODUDE,
     [MONSTER_GIRAFARIG] = gPortraitsRuntimeGenerated203GIRAFARIG,
@@ -801,6 +896,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_IVYSAUR] = gPortraitsRuntimeGenerated002IVYSAUR,
     [MONSTER_JIGGLYPUFF] = gPortraitsRuntimeGenerated039JIGGLYPUFF,
     [MONSTER_JOLTEON] = gPortraitsRuntimeGenerated135JOLTEON,
+    [MONSTER_JOLTIK] = gPortraitsRuntimeGenerated595JOLTIK,
     [MONSTER_JYNX] = gPortraitsRuntimeGenerated124JYNX,
     [MONSTER_KABUTO] = gPortraitsRuntimeGenerated140KABUTO,
     [MONSTER_KABUTOPS] = gPortraitsRuntimeGenerated141KABUTOPS,
@@ -820,7 +916,9 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_LICKITUNG] = gPortraitsRuntimeGenerated108LICKITUNG,
     [MONSTER_LILEEP] = gPortraitsRuntimeGenerated345LILEEP,
     [MONSTER_LINOONE] = gPortraitsRuntimeGenerated264LINOONE,
+    [MONSTER_LOTAD] = gPortraitsRuntimeGenerated270LOTAD,
     [MONSTER_LOUDRED] = gPortraitsRuntimeGenerated294LOUDRED,
+    [MONSTER_LUCARIO] = gPortraitsRuntimeGenerated448LUCARIO,
     [MONSTER_LUDICOLO] = gPortraitsRuntimeGenerated272LUDICOLO,
     [MONSTER_LUNATONE] = gPortraitsRuntimeGenerated337LUNATONE,
     [MONSTER_LUVDISC] = gPortraitsRuntimeGenerated370LUVDISC,
@@ -839,6 +937,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_MARSHTOMP] = gPortraitsRuntimeGenerated259MARSHTOMP,
     [MONSTER_MASQUERAIN] = gPortraitsRuntimeGenerated284MASQUERAIN,
     [MONSTER_MAWILE] = gPortraitsRuntimeGenerated303MAWILE,
+    [MONSTER_MEDITITE] = gPortraitsRuntimeGenerated307MEDITITE,
     [MONSTER_MEGANIUM] = gPortraitsRuntimeGenerated154MEGANIUM,
     [MONSTER_METAGROSS] = gPortraitsRuntimeGenerated376METAGROSS,
     [MONSTER_METANG] = gPortraitsRuntimeGenerated375METANG,
@@ -846,10 +945,12 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_MIGHTYENA] = gPortraitsRuntimeGenerated262MIGHTYENA,
     [MONSTER_MILOTIC] = gPortraitsRuntimeGenerated350MILOTIC,
     [MONSTER_MILTANK] = gPortraitsRuntimeGenerated241MILTANK,
+    [MONSTER_MIMEJR] = gPortraitsRuntimeGenerated439MIMEJR,
     [MONSTER_MINUN] = gPortraitsRuntimeGenerated312MINUN,
     [MONSTER_MISDREAVUS] = gPortraitsRuntimeGenerated200MISDREAVUS,
     [MONSTER_MR_MIME] = gPortraitsRuntimeGenerated122MR_MIME,
     [MONSTER_MUK] = gPortraitsRuntimeGenerated089MUK,
+    [MONSTER_MUNCHLAX] = gPortraitsRuntimeGenerated446MUNCHLAX,
     [MONSTER_MURKROW] = gPortraitsRuntimeGenerated198MURKROW,
     [MONSTER_NATU] = gPortraitsRuntimeGenerated177NATU,
     [MONSTER_NIDOKING] = gPortraitsRuntimeGenerated034NIDOKING,
@@ -863,6 +964,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_NOCTOWL] = gPortraitsRuntimeGenerated164NOCTOWL,
     [MONSTER_NOSEPASS] = gPortraitsRuntimeGenerated299NOSEPASS,
     [MONSTER_NUMEL] = gPortraitsRuntimeGenerated322NUMEL,
+    [MONSTER_NUZLEAF] = gPortraitsRuntimeGenerated274NUZLEAF,
     [MONSTER_ODDISH] = gPortraitsRuntimeGenerated043ODDISH,
     [MONSTER_OMANYTE] = gPortraitsRuntimeGenerated138OMANYTE,
     [MONSTER_OMASTAR] = gPortraitsRuntimeGenerated139OMASTAR,
@@ -892,6 +994,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_QUILAVA] = gPortraitsRuntimeGenerated156QUILAVA,
     [MONSTER_QWILFISH] = gPortraitsRuntimeGenerated211QWILFISH,
     [MONSTER_RAICHU] = gPortraitsRuntimeGenerated026RAICHU,
+    [MONSTER_RALTS] = gPortraitsRuntimeGenerated280RALTS,
     [MONSTER_RAPIDASH] = gPortraitsRuntimeGenerated078RAPIDASH,
     [MONSTER_RATICATE] = gPortraitsRuntimeGenerated020RATICATE,
     [MONSTER_RATTATA] = gPortraitsRuntimeGenerated019RATTATA,
@@ -902,6 +1005,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_REMORAID] = gPortraitsRuntimeGenerated223REMORAID,
     [MONSTER_RHYDON] = gPortraitsRuntimeGenerated112RHYDON,
     [MONSTER_RHYHORN] = gPortraitsRuntimeGenerated111RHYHORN,
+    [MONSTER_RIOLU] = gPortraitsRuntimeGenerated447RIOLU,
     [MONSTER_ROSELIA] = gPortraitsRuntimeGenerated315ROSELIA,
     [MONSTER_SABLEYE] = gPortraitsRuntimeGenerated302SABLEYE,
     [MONSTER_SALAMENCE] = gPortraitsRuntimeGenerated373SALAMENCE,
@@ -913,6 +1017,7 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_SEADRA] = gPortraitsRuntimeGenerated117SEADRA,
     [MONSTER_SEAKING] = gPortraitsRuntimeGenerated119SEAKING,
     [MONSTER_SEALEO] = gPortraitsRuntimeGenerated364SEALEO,
+    [MONSTER_SEEDOT] = gPortraitsRuntimeGenerated273SEEDOT,
     [MONSTER_SEEL] = gPortraitsRuntimeGenerated086SEEL,
     [MONSTER_SENTRET] = gPortraitsRuntimeGenerated161SENTRET,
     [MONSTER_SEVIPER] = gPortraitsRuntimeGenerated336SEVIPER,
@@ -939,13 +1044,19 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_SPEAROW] = gPortraitsRuntimeGenerated021SPEAROW,
     [MONSTER_SPHEAL] = gPortraitsRuntimeGenerated363SPHEAL,
     [MONSTER_SPINARAK] = gPortraitsRuntimeGenerated167SPINARAK,
+    [MONSTER_SPOINK] = gPortraitsRuntimeGenerated325SPOINK,
+    [MONSTER_STANTLER] = gPortraitsRuntimeGenerated234STANTLER,
     [MONSTER_STARMIE] = gPortraitsRuntimeGenerated121STARMIE,
     [MONSTER_STARYU] = gPortraitsRuntimeGenerated120STARYU,
     [MONSTER_STEELIX] = gPortraitsRuntimeGenerated208STEELIX,
     [MONSTER_SUDOWOODO] = gPortraitsRuntimeGenerated185SUDOWOODO,
     [MONSTER_SUNFLORA] = gPortraitsRuntimeGenerated192SUNFLORA,
     [MONSTER_SUNKERN] = gPortraitsRuntimeGenerated191SUNKERN,
+    [MONSTER_SURSKIT] = gPortraitsRuntimeGenerated283SURSKIT,
+    [MONSTER_SWABLU] = gPortraitsRuntimeGenerated333SWABLU,
     [MONSTER_SWALOT] = gPortraitsRuntimeGenerated317SWALOT,
+    [MONSTER_SWAMPERT] = gPortraitsRuntimeGenerated260SWAMPERT,
+    [MONSTER_SWELLOW] = gPortraitsRuntimeGenerated277SWELLOW,
     [MONSTER_SWINUB] = gPortraitsRuntimeGenerated220SWINUB,
     [MONSTER_TAILLOW] = gPortraitsRuntimeGenerated276TAILLOW,
     [MONSTER_TANGELA] = gPortraitsRuntimeGenerated114TANGELA,
@@ -961,6 +1072,34 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_TYPHLOSION] = gPortraitsRuntimeGenerated157TYPHLOSION,
     [MONSTER_TYROGUE] = gPortraitsRuntimeGenerated236TYROGUE,
     [MONSTER_UMBREON] = gPortraitsRuntimeGenerated197UMBREON,
+    [MONSTER_UNOWN] = gPortraitsRuntimeGenerated201UNOWN,
+    [MONSTER_UNOWN_B] = gPortraitsRuntimeGenerated201UNOWN_B,
+    [MONSTER_UNOWN_C] = gPortraitsRuntimeGenerated201UNOWN_C,
+    [MONSTER_UNOWN_D] = gPortraitsRuntimeGenerated201UNOWN_D,
+    [MONSTER_UNOWN_E] = gPortraitsRuntimeGenerated201UNOWN_E,
+    [MONSTER_UNOWN_EMARK] = gPortraitsRuntimeGenerated201UNOWN_EMARK,
+    [MONSTER_UNOWN_F] = gPortraitsRuntimeGenerated201UNOWN_F,
+    [MONSTER_UNOWN_G] = gPortraitsRuntimeGenerated201UNOWN_G,
+    [MONSTER_UNOWN_H] = gPortraitsRuntimeGenerated201UNOWN_H,
+    [MONSTER_UNOWN_I] = gPortraitsRuntimeGenerated201UNOWN_I,
+    [MONSTER_UNOWN_J] = gPortraitsRuntimeGenerated201UNOWN_J,
+    [MONSTER_UNOWN_K] = gPortraitsRuntimeGenerated201UNOWN_K,
+    [MONSTER_UNOWN_L] = gPortraitsRuntimeGenerated201UNOWN_L,
+    [MONSTER_UNOWN_M] = gPortraitsRuntimeGenerated201UNOWN_M,
+    [MONSTER_UNOWN_N] = gPortraitsRuntimeGenerated201UNOWN_N,
+    [MONSTER_UNOWN_O] = gPortraitsRuntimeGenerated201UNOWN_O,
+    [MONSTER_UNOWN_P] = gPortraitsRuntimeGenerated201UNOWN_P,
+    [MONSTER_UNOWN_Q] = gPortraitsRuntimeGenerated201UNOWN_Q,
+    [MONSTER_UNOWN_QMARK] = gPortraitsRuntimeGenerated201UNOWN_QMARK,
+    [MONSTER_UNOWN_R] = gPortraitsRuntimeGenerated201UNOWN_R,
+    [MONSTER_UNOWN_S] = gPortraitsRuntimeGenerated201UNOWN_S,
+    [MONSTER_UNOWN_T] = gPortraitsRuntimeGenerated201UNOWN_T,
+    [MONSTER_UNOWN_U] = gPortraitsRuntimeGenerated201UNOWN_U,
+    [MONSTER_UNOWN_V] = gPortraitsRuntimeGenerated201UNOWN_V,
+    [MONSTER_UNOWN_W] = gPortraitsRuntimeGenerated201UNOWN_W,
+    [MONSTER_UNOWN_X] = gPortraitsRuntimeGenerated201UNOWN_X,
+    [MONSTER_UNOWN_Y] = gPortraitsRuntimeGenerated201UNOWN_Y,
+    [MONSTER_UNOWN_Z] = gPortraitsRuntimeGenerated201UNOWN_Z,
     [MONSTER_URSARING] = gPortraitsRuntimeGenerated217URSARING,
     [MONSTER_VAPOREON] = gPortraitsRuntimeGenerated134VAPOREON,
     [MONSTER_VENOMOTH] = gPortraitsRuntimeGenerated049VENOMOTH,
@@ -974,7 +1113,10 @@ const u8 *const gGeneratedKaoPortraitData[MONSTER_MAX] = {
     [MONSTER_VOLTORB] = gPortraitsRuntimeGenerated100VOLTORB,
     [MONSTER_VULPIX] = gPortraitsRuntimeGenerated037VULPIX,
     [MONSTER_WAILMER] = gPortraitsRuntimeGenerated320WAILMER,
+    [MONSTER_WAILORD] = gPortraitsRuntimeGenerated321WAILORD,
+    [MONSTER_WALREIN] = gPortraitsRuntimeGenerated365WALREIN,
     [MONSTER_WARTORTLE] = gPortraitsRuntimeGenerated008WARTORTLE,
+    [MONSTER_WEAVILE] = gPortraitsRuntimeGenerated461WEAVILE,
     [MONSTER_WEEDLE] = gPortraitsRuntimeGenerated013WEEDLE,
     [MONSTER_WEEPINBELL] = gPortraitsRuntimeGenerated070WEEPINBELL,
     [MONSTER_WEEZING] = gPortraitsRuntimeGenerated110WEEZING,
@@ -1019,6 +1161,7 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_BLASTOISE] = gPortraitsRuntimeGenerated009ShinyBLASTOISE,
     [MONSTER_BLAZIKEN] = gPortraitsRuntimeGenerated257ShinyBLAZIKEN,
     [MONSTER_BLISSEY] = gPortraitsRuntimeGenerated242ShinyBLISSEY,
+    [MONSTER_BONSLY] = gPortraitsRuntimeGenerated438ShinyBONSLY,
     [MONSTER_BRELOOM] = gPortraitsRuntimeGenerated286ShinyBRELOOM,
     [MONSTER_BULBASAUR] = gPortraitsRuntimeGenerated001ShinyBULBASAUR,
     [MONSTER_BUTTERFREE] = gPortraitsRuntimeGenerated012ShinyBUTTERFREE,
@@ -1054,10 +1197,10 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_CYNDAQUIL] = gPortraitsRuntimeGenerated155ShinyCYNDAQUIL,
     [MONSTER_DELCATTY] = gPortraitsRuntimeGenerated301ShinyDELCATTY,
     [MONSTER_DELIBIRD] = gPortraitsRuntimeGenerated225ShinyDELIBIRD,
-    [MONSTER_DEOXYS_ATTACK] = NULL,
-    [MONSTER_DEOXYS_DEFENSE] = NULL,
+    [MONSTER_DEOXYS_ATTACK] = gPortraitsRuntimeGenerated386ShinyDEOXYS_ATTACK,
+    [MONSTER_DEOXYS_DEFENSE] = gPortraitsRuntimeGenerated386ShinyDEOXYS_DEFENSE,
     [MONSTER_DEOXYS_NORMAL] = gPortraitsRuntimeGenerated386ShinyDEOXYS_NORMAL,
-    [MONSTER_DEOXYS_SPEED] = NULL,
+    [MONSTER_DEOXYS_SPEED] = gPortraitsRuntimeGenerated386ShinyDEOXYS_SPEED,
     [MONSTER_DEWGONG] = gPortraitsRuntimeGenerated087ShinyDEWGONG,
     [MONSTER_DIGLETT] = gPortraitsRuntimeGenerated050ShinyDIGLETT,
     [MONSTER_DITTO] = gPortraitsRuntimeGenerated132ShinyDITTO,
@@ -1093,6 +1236,7 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_FLYGON] = gPortraitsRuntimeGenerated330ShinyFLYGON,
     [MONSTER_FORRETRESS] = gPortraitsRuntimeGenerated205ShinyFORRETRESS,
     [MONSTER_FURRET] = gPortraitsRuntimeGenerated162ShinyFURRET,
+    [MONSTER_GALVANTULA] = gPortraitsRuntimeGenerated596ShinyGALVANTULA,
     [MONSTER_GARDEVOIR] = gPortraitsRuntimeGenerated282ShinyGARDEVOIR,
     [MONSTER_GASTLY] = gPortraitsRuntimeGenerated092ShinyGASTLY,
     [MONSTER_GENGAR] = gPortraitsRuntimeGenerated094ShinyGENGAR,
@@ -1135,6 +1279,7 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_JIGGLYPUFF] = gPortraitsRuntimeGenerated039ShinyJIGGLYPUFF,
     [MONSTER_JIRACHI] = gPortraitsRuntimeGenerated385ShinyJIRACHI,
     [MONSTER_JOLTEON] = gPortraitsRuntimeGenerated135ShinyJOLTEON,
+    [MONSTER_JOLTIK] = gPortraitsRuntimeGenerated595ShinyJOLTIK,
     [MONSTER_JUMPLUFF] = gPortraitsRuntimeGenerated189ShinyJUMPLUFF,
     [MONSTER_JYNX] = gPortraitsRuntimeGenerated124ShinyJYNX,
     [MONSTER_KABUTO] = gPortraitsRuntimeGenerated140ShinyKABUTO,
@@ -1163,6 +1308,7 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_LOMBRE] = gPortraitsRuntimeGenerated271ShinyLOMBRE,
     [MONSTER_LOTAD] = gPortraitsRuntimeGenerated270ShinyLOTAD,
     [MONSTER_LOUDRED] = gPortraitsRuntimeGenerated294ShinyLOUDRED,
+    [MONSTER_LUCARIO] = gPortraitsRuntimeGenerated448ShinyLUCARIO,
     [MONSTER_LUDICOLO] = gPortraitsRuntimeGenerated272ShinyLUDICOLO,
     [MONSTER_LUGIA] = gPortraitsRuntimeGenerated249ShinyLUGIA,
     [MONSTER_LUNATONE] = gPortraitsRuntimeGenerated337ShinyLUNATONE,
@@ -1198,12 +1344,14 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_MIGHTYENA] = gPortraitsRuntimeGenerated262ShinyMIGHTYENA,
     [MONSTER_MILOTIC] = gPortraitsRuntimeGenerated350ShinyMILOTIC,
     [MONSTER_MILTANK] = gPortraitsRuntimeGenerated241ShinyMILTANK,
+    [MONSTER_MIMEJR] = gPortraitsRuntimeGenerated439ShinyMIMEJR,
     [MONSTER_MINUN] = gPortraitsRuntimeGenerated312ShinyMINUN,
     [MONSTER_MISDREAVUS] = gPortraitsRuntimeGenerated200ShinyMISDREAVUS,
     [MONSTER_MOLTRES] = gPortraitsRuntimeGenerated146ShinyMOLTRES,
     [MONSTER_MR_MIME] = gPortraitsRuntimeGenerated122ShinyMR_MIME,
     [MONSTER_MUDKIP] = gPortraitsRuntimeGenerated258ShinyMUDKIP,
     [MONSTER_MUK] = gPortraitsRuntimeGenerated089ShinyMUK,
+    [MONSTER_MUNCHLAX] = gPortraitsRuntimeGenerated446ShinyMUNCHLAX,
     [MONSTER_MURKROW] = gPortraitsRuntimeGenerated198ShinyMURKROW,
     [MONSTER_NATU] = gPortraitsRuntimeGenerated177ShinyNATU,
     [MONSTER_NIDOKING] = gPortraitsRuntimeGenerated034ShinyNIDOKING,
@@ -1266,6 +1414,7 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_REMORAID] = gPortraitsRuntimeGenerated223ShinyREMORAID,
     [MONSTER_RHYDON] = gPortraitsRuntimeGenerated112ShinyRHYDON,
     [MONSTER_RHYHORN] = gPortraitsRuntimeGenerated111ShinyRHYHORN,
+    [MONSTER_RIOLU] = gPortraitsRuntimeGenerated447ShinyRIOLU,
     [MONSTER_ROSELIA] = gPortraitsRuntimeGenerated315ShinyROSELIA,
     [MONSTER_SABLEYE] = gPortraitsRuntimeGenerated302ShinySABLEYE,
     [MONSTER_SALAMENCE] = gPortraitsRuntimeGenerated373ShinySALAMENCE,
@@ -1344,6 +1493,34 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_TYRANITAR] = gPortraitsRuntimeGenerated248ShinyTYRANITAR,
     [MONSTER_TYROGUE] = gPortraitsRuntimeGenerated236ShinyTYROGUE,
     [MONSTER_UMBREON] = gPortraitsRuntimeGenerated197ShinyUMBREON,
+    [MONSTER_UNOWN] = gPortraitsRuntimeGenerated201ShinyUNOWN,
+    [MONSTER_UNOWN_B] = gPortraitsRuntimeGenerated201ShinyUNOWN_B,
+    [MONSTER_UNOWN_C] = gPortraitsRuntimeGenerated201ShinyUNOWN_C,
+    [MONSTER_UNOWN_D] = gPortraitsRuntimeGenerated201ShinyUNOWN_D,
+    [MONSTER_UNOWN_E] = gPortraitsRuntimeGenerated201ShinyUNOWN_E,
+    [MONSTER_UNOWN_EMARK] = gPortraitsRuntimeGenerated201ShinyUNOWN_EMARK,
+    [MONSTER_UNOWN_F] = gPortraitsRuntimeGenerated201ShinyUNOWN_F,
+    [MONSTER_UNOWN_G] = gPortraitsRuntimeGenerated201ShinyUNOWN_G,
+    [MONSTER_UNOWN_H] = gPortraitsRuntimeGenerated201ShinyUNOWN_H,
+    [MONSTER_UNOWN_I] = gPortraitsRuntimeGenerated201ShinyUNOWN_I,
+    [MONSTER_UNOWN_J] = gPortraitsRuntimeGenerated201ShinyUNOWN_J,
+    [MONSTER_UNOWN_K] = gPortraitsRuntimeGenerated201ShinyUNOWN_K,
+    [MONSTER_UNOWN_L] = gPortraitsRuntimeGenerated201ShinyUNOWN_L,
+    [MONSTER_UNOWN_M] = gPortraitsRuntimeGenerated201ShinyUNOWN_M,
+    [MONSTER_UNOWN_N] = gPortraitsRuntimeGenerated201ShinyUNOWN_N,
+    [MONSTER_UNOWN_O] = gPortraitsRuntimeGenerated201ShinyUNOWN_O,
+    [MONSTER_UNOWN_P] = gPortraitsRuntimeGenerated201ShinyUNOWN_P,
+    [MONSTER_UNOWN_Q] = gPortraitsRuntimeGenerated201ShinyUNOWN_Q,
+    [MONSTER_UNOWN_QMARK] = gPortraitsRuntimeGenerated201ShinyUNOWN_QMARK,
+    [MONSTER_UNOWN_R] = gPortraitsRuntimeGenerated201ShinyUNOWN_R,
+    [MONSTER_UNOWN_S] = gPortraitsRuntimeGenerated201ShinyUNOWN_S,
+    [MONSTER_UNOWN_T] = gPortraitsRuntimeGenerated201ShinyUNOWN_T,
+    [MONSTER_UNOWN_U] = gPortraitsRuntimeGenerated201ShinyUNOWN_U,
+    [MONSTER_UNOWN_V] = gPortraitsRuntimeGenerated201ShinyUNOWN_V,
+    [MONSTER_UNOWN_W] = gPortraitsRuntimeGenerated201ShinyUNOWN_W,
+    [MONSTER_UNOWN_X] = gPortraitsRuntimeGenerated201ShinyUNOWN_X,
+    [MONSTER_UNOWN_Y] = gPortraitsRuntimeGenerated201ShinyUNOWN_Y,
+    [MONSTER_UNOWN_Z] = gPortraitsRuntimeGenerated201ShinyUNOWN_Z,
     [MONSTER_URSARING] = gPortraitsRuntimeGenerated217ShinyURSARING,
     [MONSTER_VAPOREON] = gPortraitsRuntimeGenerated134ShinyVAPOREON,
     [MONSTER_VENOMOTH] = gPortraitsRuntimeGenerated049ShinyVENOMOTH,
@@ -1360,6 +1537,7 @@ const u8 *const gGeneratedKaoShinyPortraitData[MONSTER_MAX] = {
     [MONSTER_WAILORD] = gPortraitsRuntimeGenerated321ShinyWAILORD,
     [MONSTER_WALREIN] = gPortraitsRuntimeGenerated365ShinyWALREIN,
     [MONSTER_WARTORTLE] = gPortraitsRuntimeGenerated008ShinyWARTORTLE,
+    [MONSTER_WEAVILE] = gPortraitsRuntimeGenerated461ShinyWEAVILE,
     [MONSTER_WEEDLE] = gPortraitsRuntimeGenerated013ShinyWEEDLE,
     [MONSTER_WEEPINBELL] = gPortraitsRuntimeGenerated070ShinyWEEPINBELL,
     [MONSTER_WEEZING] = gPortraitsRuntimeGenerated110ShinyWEEZING,

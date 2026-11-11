@@ -1,3 +1,8 @@
+.global ItemNameRazorClaw
+ItemNameRazorClaw:
+.string "Razor Claw\0"
+.align 2,0
+
 .global ItemNameGMachine8
 ItemNameGMachine8:
 .string "G Machine 8\0"

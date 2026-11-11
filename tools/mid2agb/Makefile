@@ -1,10 +1,8 @@
-HOSTCXX ?= /c/msys64/mingw64/bin/g++
-CXX := $(HOSTCXX)
+CXX ?= g++
 
-CXXFLAGS := -std=c++11 -O2 -Wall -Wno-switch -Werror -pipe
+CXXFLAGS := -std=c++11 -O2 -Wall -Wno-switch -Werror
 
 SRCS := agb.cpp error.cpp main.cpp midi.cpp tables.cpp
-OBJS := $(SRCS:.cpp=.o)
 
 HEADERS := agb.h error.h main.h midi.h tables.h
 
@@ -19,11 +17,8 @@ endif
 all: mid2agb$(EXE)
 	@:
 
-mid2agb$(EXE): $(OBJS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+mid2agb$(EXE): $(SRCS) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $@ $(LDFLAGS)
 
 clean:
-	$(RM) mid2agb mid2agb.exe $(OBJS) *.i *.s
+	$(RM) mid2agb mid2agb.exe

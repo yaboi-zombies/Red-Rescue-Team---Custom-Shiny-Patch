@@ -6,12 +6,17 @@
                 {
                     "species": "MONSTER_HITMONCHAN",
                     "level": 22,
-                    "probability": 3333
+                    "probability": 3183
                 },
                 {
                     "species": "MONSTER_LUNATONE",
                     "level": 24,
-                    "probability": 3334
+                    "probability": 3184
+                },
+                {
+                    "species": "MONSTER_RIOLU",
+                    "level": 22,
+                    "probability": 450
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -21,7 +26,7 @@
                 {
                     "species": "MONSTER_SNORUNT",
                     "level": 20,
-                    "probability": 3333
+                    "probability": 3183
                 },
                 {
                     "species": "MONSTER_DECOY",
@@ -36,12 +41,17 @@
                 {
                     "species": "MONSTER_HITMONCHAN",
                     "level": 22,
-                    "probability": 3333
+                    "probability": 3183
                 },
                 {
                     "species": "MONSTER_SOLROCK",
                     "level": 24,
-                    "probability": 3334
+                    "probability": 3184
+                },
+                {
+                    "species": "MONSTER_RIOLU",
+                    "level": 22,
+                    "probability": 450
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -51,7 +61,7 @@
                 {
                     "species": "MONSTER_SNORUNT",
                     "level": 20,
-                    "probability": 3333
+                    "probability": 3183
                 },
                 {
                     "species": "MONSTER_DECOY",
@@ -241,27 +251,32 @@
                 {
                     "species": "MONSTER_DUGTRIO",
                     "level": 20,
-                    "probability": 1403
+                    "probability": 1340
                 },
                 {
                     "species": "MONSTER_WEEZING",
                     "level": 20,
-                    "probability": 878
+                    "probability": 838
                 },
                 {
                     "species": "MONSTER_CROCONAW",
                     "level": 28,
-                    "probability": 1403
+                    "probability": 1340
                 },
                 {
                     "species": "MONSTER_AZUMARILL",
                     "level": 24,
-                    "probability": 3509
+                    "probability": 3351
                 },
                 {
                     "species": "MONSTER_GRANBULL",
                     "level": 23,
-                    "probability": 1403
+                    "probability": 1340
+                },
+                {
+                    "species": "MONSTER_LUCARIO",
+                    "level": 28,
+                    "probability": 450
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -271,7 +286,7 @@
                 {
                     "species": "MONSTER_GLALIE",
                     "level": 45,
-                    "probability": 1404
+                    "probability": 1341
                 },
                 {
                     "species": "MONSTER_DECOY",
@@ -286,17 +301,22 @@
                 {
                     "species": "MONSTER_DUGTRIO",
                     "level": 20,
-                    "probability": 2759
+                    "probability": 2635
                 },
                 {
                     "species": "MONSTER_WEEZING",
                     "level": 20,
-                    "probability": 1724
+                    "probability": 1646
                 },
                 {
                     "species": "MONSTER_CROCONAW",
                     "level": 28,
-                    "probability": 2758
+                    "probability": 2634
+                },
+                {
+                    "species": "MONSTER_LUCARIO",
+                    "level": 28,
+                    "probability": 450
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -306,7 +326,7 @@
                 {
                     "species": "MONSTER_GLALIE",
                     "level": 45,
-                    "probability": 2759
+                    "probability": 2635
                 },
                 {
                     "species": "MONSTER_DECOY",
@@ -321,22 +341,27 @@
                 {
                     "species": "MONSTER_DUGTRIO",
                     "level": 20,
-                    "probability": 1633
+                    "probability": 1560
                 },
                 {
                     "species": "MONSTER_WEEZING",
                     "level": 20,
-                    "probability": 1020
+                    "probability": 974
                 },
                 {
                     "species": "MONSTER_CROCONAW",
                     "level": 28,
-                    "probability": 1633
+                    "probability": 1560
                 },
                 {
                     "species": "MONSTER_AZUMARILL",
                     "level": 24,
-                    "probability": 4081
+                    "probability": 3896
+                },
+                {
+                    "species": "MONSTER_LUCARIO",
+                    "level": 28,
+                    "probability": 450
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -346,7 +371,7 @@
                 {
                     "species": "MONSTER_GLALIE",
                     "level": 45,
-                    "probability": 1633
+                    "probability": 1560
                 },
                 {
                     "species": "MONSTER_DECOY",
@@ -361,12 +386,17 @@
                 {
                     "species": "MONSTER_DUGTRIO",
                     "level": 20,
-                    "probability": 3333
+                    "probability": 3183
                 },
                 {
                     "species": "MONSTER_CROCONAW",
                     "level": 28,
-                    "probability": 3334
+                    "probability": 3184
+                },
+                {
+                    "species": "MONSTER_LUCARIO",
+                    "level": 28,
+                    "probability": 450
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -376,7 +406,7 @@
                 {
                     "species": "MONSTER_GLALIE",
                     "level": 45,
-                    "probability": 3333
+                    "probability": 3183
                 },
                 {
                     "species": "MONSTER_DECOY",
