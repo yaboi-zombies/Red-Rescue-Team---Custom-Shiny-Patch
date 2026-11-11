@@ -8,7 +8,7 @@
 				"probability": 1579
 			},
 			{
-				"species": "MONSTER_SUDOWOODO",
+				"species": "MONSTER_BONSLY",
 				"level": 7,
 				"probability": 4210
 			},
@@ -37,7 +37,7 @@
 				"probability": 1364
 			},
 			{
-				"species": "MONSTER_SUDOWOODO",
+				"species": "MONSTER_BONSLY",
 				"level": 7,
 				"probability": 3636
 			},
@@ -76,7 +76,7 @@
 				"probability": 2667
 			},
 			{
-				"species": "MONSTER_SUDOWOODO",
+				"species": "MONSTER_BONSLY",
 				"level": 7,
 				"probability": 2666
 			},
@@ -115,7 +115,7 @@
 				"probability": 2500
 			},
 			{
-				"species": "MONSTER_SUDOWOODO",
+				"species": "MONSTER_BONSLY",
 				"level": 7,
 				"probability": 2500
 			},
@@ -151,22 +151,27 @@
                         {
 				"species": "MONSTER_SENTRET",
 				"level": 6,
-				"probability": 3810
+				"probability": 3048
 			},
 			{
 				"species": "MONSTER_SUNFLORA",
 				"level": 8,
-				"probability": 1428
+				"probability": 1142
 			},
 			{
 				"species": "MONSTER_SILCOON",
 				"level": 8,
-				"probability": 2381
+				"probability": 1905
 			},
 			{
 				"species": "MONSTER_CASCOON",
 				"level": 8,
-				"probability": 2381
+				"probability": 1905
+			},
+			{
+				"species": "MONSTER_SUDOWOODO",
+				"level": 8,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
@@ -185,27 +190,32 @@
                         {
 				"species": "MONSTER_SENTRET",
 				"level": 6,
-				"probability": 2759
+				"probability": 2208
 			},
 			{
 				"species": "MONSTER_SUNFLORA",
 				"level": 8,
-				"probability": 1034
+				"probability": 827
 			},
 			{
 				"species": "MONSTER_SILCOON",
 				"level": 8,
-				"probability": 1724
+				"probability": 1379
 			},
 			{
 				"species": "MONSTER_CASCOON",
 				"level": 8,
-				"probability": 1724
+				"probability": 1379
 			},
 			{
 				"species": "MONSTER_SHROOMISH",
 				"level": 9,
-				"probability": 2759
+				"probability": 2207
+			},
+			{
+				"species": "MONSTER_SUDOWOODO",
+				"level": 8,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
@@ -224,22 +234,27 @@
                         {
 				"species": "MONSTER_LEDYBA",
 				"level": 7,
-				"probability": 2400
+				"probability": 1920
 			},
 			{
 				"species": "MONSTER_SUNFLORA",
 				"level": 8,
-				"probability": 1200
+				"probability": 960
 			},
 			{
 				"species": "MONSTER_LINOONE",
 				"level": 8,
-				"probability": 3200
+				"probability": 2560
 			},
 			{
 				"species": "MONSTER_SHROOMISH",
 				"level": 9,
-				"probability": 3200
+				"probability": 2560
+			},
+			{
+				"species": "MONSTER_SUDOWOODO",
+				"level": 8,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
@@ -258,27 +273,32 @@
                         {
 				"species": "MONSTER_SCYTHER",
 				"level": 10,
-				"probability": 2286
+				"probability": 1829
 			},
 			{
 				"species": "MONSTER_LEDYBA",
 				"level": 7,
-				"probability": 1714
+				"probability": 1371
 			},
 			{
 				"species": "MONSTER_WOOPER",
 				"level": 10,
-				"probability": 1429
+				"probability": 1143
 			},
 			{
 				"species": "MONSTER_LINOONE",
 				"level": 8,
-				"probability": 2285
+				"probability": 1828
 			},
 			{
 				"species": "MONSTER_SHROOMISH",
 				"level": 9,
-				"probability": 2286
+				"probability": 1829
+			},
+			{
+				"species": "MONSTER_SUDOWOODO",
+				"level": 9,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
@@ -297,37 +317,42 @@
                         {
 				"species": "MONSTER_EXEGGUTOR",
 				"level": 8,
-				"probability": 1569
+				"probability": 1256
 			},
 			{
 				"species": "MONSTER_SCYTHER",
 				"level": 10,
-				"probability": 1568
+				"probability": 1254
 			},
 			{
 				"species": "MONSTER_HOOTHOOT",
 				"level": 6,
-				"probability": 1569
+				"probability": 1255
 			},
 			{
 				"species": "MONSTER_LEDYBA",
 				"level": 7,
-				"probability": 1176
+				"probability": 941
 			},
 			{
 				"species": "MONSTER_WOOPER",
 				"level": 10,
-				"probability": 981
+				"probability": 785
 			},
 			{
 				"species": "MONSTER_SHROOMISH",
 				"level": 9,
-				"probability": 1568
+				"probability": 1254
 			},
 			{
 				"species": "MONSTER_SLAKOTH",
 				"level": 8,
-				"probability": 1569
+				"probability": 1255
+			},
+			{
+				"species": "MONSTER_SUDOWOODO",
+				"level": 9,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
@@ -346,26 +371,31 @@
                         {
 				"species": "MONSTER_EXEGGUTOR",
 				"level": 8,
-				"probability": 2000
+				"probability": 1600
 			},
 			{
 				"species": "MONSTER_SCYTHER",
 				"level": 10,
-				"probability": 2000
+				"probability": 1600
 			},
 			{
 				"species": "MONSTER_HOOTHOOT",
 				"level": 6,
-				"probability": 2000
+				"probability": 1600
 			},
 			{
 				"species": "MONSTER_SHROOMISH",
 				"level": 9,
-				"probability": 2000
+				"probability": 1600
 			},
 			{
 				"species": "MONSTER_SLAKOTH",
 				"level": 8,
+				"probability": 1600
+			},
+			{
+				"species": "MONSTER_SUDOWOODO",
+				"level": 9,
 				"probability": 2000
 			},
 			{
@@ -385,22 +415,27 @@
                         {
 				"species": "MONSTER_EXEGGUTOR",
 				"level": 8,
-				"probability": 2500
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_HOOTHOOT",
 				"level": 6,
-				"probability": 2500
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_SHROOMISH",
 				"level": 9,
-				"probability": 2500
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_SLAKOTH",
 				"level": 8,
-				"probability": 2500
+				"probability": 2000
+			},
+			{
+				"species": "MONSTER_SUDOWOODO",
+				"level": 9,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",

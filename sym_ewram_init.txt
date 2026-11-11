@@ -143,3 +143,5 @@
 .include "src/ground_script.o"
 .include "src/ground_sprite.o"
 .include "src/ground_link.o"
+.include "src/wigglytuff_config.o"
+.include "src/wigglytuff_info.o"

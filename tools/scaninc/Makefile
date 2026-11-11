@@ -1,10 +1,8 @@
-HOSTCXX ?= /c/msys64/mingw64/bin/g++
-CXX := $(HOSTCXX)
+CXX ?= g++
 
-CXXFLAGS = -Wall -Werror -std=c++11 -O2 -pipe
+CXXFLAGS = -Wall -Werror -std=c++11 -O2
 
 SRCS = scaninc.cpp c_file.cpp asm_file.cpp source_file.cpp
-OBJS := $(SRCS:.cpp=.o)
 
 HEADERS := scaninc.h asm_file.h c_file.h source_file.h
 
@@ -19,11 +17,8 @@ endif
 all: scaninc$(EXE)
 	@:
 
-scaninc$(EXE): $(OBJS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+scaninc$(EXE): $(SRCS) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $@ $(LDFLAGS)
 
 clean:
-	$(RM) scaninc scaninc.exe $(OBJS) *.i *.s
+	$(RM) scaninc scaninc.exe

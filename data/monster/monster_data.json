@@ -6907,7 +6907,7 @@
         "types": [
             "TYPE_NORMAL"
         ],
-        "friendArea": "ENERGETIC_FOREST",
+        "friendArea": "WILD_PLAINS",
         "abilities": [
             "ABILITY_IMMUNITY",
             "ABILITY_THICK_FAT"
@@ -19959,7 +19959,7 @@
         "types": [
             "TYPE_NORMAL"
         ],
-        "friendArea": "FRIGID_CAVERN",
+        "friendArea": "WILD_PLAINS",
         "abilities": [
             "ABILITY_PRESSURE"
         ],
@@ -19991,6 +19991,334 @@
         "alphabetParent": [
             220,
             414
+        ]
+    },
+    {
+        "name": "MonsterNameWeavile",
+        "category": "MonsterCategorySharpClaw",
+        "overworldPalette": 2,
+        "bodySize": 1,
+        "movementSpeed": 1,
+        "types": [
+            "TYPE_DARK",
+            "TYPE_ICE"
+        ],
+        "friendArea": "DARKNESS_RIDGE",
+        "abilities": [
+            "ABILITY_INNER_FOCUS",
+            "ABILITY_KEEN_EYE"
+        ],
+        "shadowSize": 1,
+        "regenSpeed": 100,
+        "canMove": true,
+        "chanceAsleep": 8,
+        "baseHP": 35,
+        "expYield": 84,
+        "baseAtkSpAtk": [
+            14,
+            10
+        ],
+        "baseDefSpDef": [
+            8,
+            10
+        ],
+        "weight": 204,
+        "size": 52,
+        "unk30": 10,
+        "unk31": 10,
+        "unk32": 24,
+        "canThrowItems": true,
+        "preEvolution": {
+            "evolveFrom": "MONSTER_SNEASEL",
+            "evolveType": "EVOLVE_TYPE_ITEM"
+        },
+        "evolutionRequirements": {
+            "mainRequirement": "ITEM_RAZOR_CLAW"
+        },
+        "dexInternal": [
+            388,
+            420
+        ],
+        "recruitRate": -999,
+        "alphabetParent": [
+            413,
+            415
+        ]
+    },
+    {
+        "name": "MonsterNameRiolu",
+        "category": "MonsterCategoryEmanation",
+        "overworldPalette": 5,
+        "bodySize": 1,
+        "movementSpeed": 1,
+        "types": [
+            "TYPE_FIGHTING"
+        ],
+        "friendArea": "MT_DEEPGREEN",
+        "abilities": [
+            "ABILITY_INNER_FOCUS"
+        ],
+        "shadowSize": 1,
+        "regenSpeed": 100,
+        "canMove": true,
+        "chanceAsleep": 8,
+        "baseHP": 20,
+        "expYield": 18,
+        "baseAtkSpAtk": [
+            3,
+            4
+        ],
+        "baseDefSpDef": [
+            2,
+            2
+        ],
+        "weight": 179,
+        "size": 29,
+        "unk30": 10,
+        "unk31": 10,
+        "unk32": 24,
+        "canThrowItems": true,
+        "dexInternal": [
+            389,
+            421
+        ],
+        "recruitRate": 105,
+        "alphabetParent": [
+            289,
+            416
+        ]
+    },
+    {
+        "name": "MonsterNameLucario",
+        "category": "MonsterCategoryAura",
+        "overworldPalette": 5,
+        "bodySize": 1,
+        "movementSpeed": 1,
+        "types": [
+            "TYPE_FIGHTING",
+            "TYPE_STEEL"
+        ],
+        "friendArea": "MT_DEEPGREEN",
+        "abilities": [
+            "ABILITY_INNER_FOCUS"
+        ],
+        "shadowSize": 1,
+        "regenSpeed": 100,
+        "canMove": true,
+        "chanceAsleep": 8,
+        "baseHP": 40,
+        "expYield": 50,
+        "baseAtkSpAtk": [
+            15,
+            15
+        ],
+        "baseDefSpDef": [
+            15,
+            15
+        ],
+        "weight": 230,
+        "size": 39,
+        "unk30": 10,
+        "unk31": 10,
+        "unk32": 24,
+        "canThrowItems": true,
+        "preEvolution": {
+            "evolveFrom": "MONSTER_RIOLU",
+            "evolveType": "EVOLVE_TYPE_IQ"
+        },
+        "evolutionRequirements": {
+            "mainRequirement": 200
+        },
+        "dexInternal": [
+            390,
+            422
+        ],
+        "recruitRate": -999,
+        "alphabetParent": [
+            182,
+            417
+        ]
+    },
+    {
+        "name": "MonsterNameBonsly",
+        "category": "MonsterCategoryBonsai",
+        "overworldPalette": 8,
+        "bodySize": 1,
+        "movementSpeed": 1,
+        "types": [
+            "TYPE_ROCK"
+        ],
+        "friendArea": "OVERGROWN_FOREST",
+        "abilities": [
+            "ABILITY_STURDY",
+            "ABILITY_ROCK_HEAD"
+        ],
+        "shadowSize": 1,
+        "regenSpeed": 100,
+        "canMove": true,
+        "chanceAsleep": 100,
+        "baseHP": 23,
+        "expYield": 48,
+        "baseAtkSpAtk": [
+            11,
+            12
+        ],
+        "baseDefSpDef": [
+            4,
+            4
+        ],
+        "weight": 153,
+        "size": 28,
+        "unk30": 10,
+        "unk31": 10,
+        "unk32": 24,
+        "canThrowItems": true,
+        "dexInternal": [
+            391,
+            423
+        ],
+        "recruitRate": 164,
+        "alphabetParent": [
+            31,
+            418
+        ]
+    },
+    {
+        "name": "MonsterNameMimeJr",
+        "category": "MonsterCategoryMime",
+        "overworldPalette": 11,
+        "bodySize": 1,
+        "movementSpeed": 1,
+        "types": [
+            "TYPE_PSYCHIC"
+        ],
+        "friendArea": "DECREPIT_LAB",
+        "abilities": [
+            "ABILITY_SOUNDPROOF"
+        ],
+        "shadowSize": 1,
+        "regenSpeed": 100,
+        "canMove": true,
+        "chanceAsleep": 8,
+        "baseHP": 11,
+        "expYield": 160,
+        "baseAtkSpAtk": [
+            3,
+            3
+        ],
+        "baseDefSpDef": [
+            4,
+            4
+        ],
+        "weight": 153,
+        "size": 30,
+        "unk30": 10,
+        "unk31": 10,
+        "unk32": 24,
+        "canThrowItems": true,
+        "dexInternal": [
+            392,
+            424
+        ],
+        "recruitRate": 132,
+        "alphabetParent": [
+            218,
+            419
+        ]
+    },
+    {
+        "name": "MonsterNameJoltik",
+        "category": "MonsterCategoryAttaching",
+        "overworldPalette": 0,
+        "bodySize": 1,
+        "movementSpeed": 1,
+        "types": [
+            "TYPE_BUG",
+            "TYPE_ELECTRIC"
+        ],
+        "friendArea": "SECRETIVE_FOREST",
+        "abilities": [
+            "ABILITY_COMPOUNDEYES"
+        ],
+        "shadowSize": 1,
+        "regenSpeed": 100,
+        "canMove": true,
+        "chanceAsleep": 8,
+        "baseHP": 10,
+        "expYield": 15,
+        "baseAtkSpAtk": [
+            3,
+            3
+        ],
+        "baseDefSpDef": [
+            4,
+            3
+        ],
+        "weight": 153,
+        "size": 16,
+        "unk30": 10,
+        "unk31": 10,
+        "unk32": 24,
+        "canThrowItems": true,
+        "dexInternal": [
+            393,
+            425
+        ],
+        "recruitRate": 156,
+        "alphabetParent": [
+            153,
+            420
+        ]
+    },
+    {
+        "name": "MonsterNameGalvantula",
+        "category": "MonsterCategoryEleSpider",
+        "overworldPalette": 2,
+        "bodySize": 1,
+        "movementSpeed": 1,
+        "types": [
+            "TYPE_BUG",
+            "TYPE_ELECTRIC"
+        ],
+        "friendArea": "SECRETIVE_FOREST",
+        "abilities": [
+            "ABILITY_COMPOUNDEYES"
+        ],
+        "shadowSize": 1,
+        "regenSpeed": 100,
+        "canMove": true,
+        "chanceAsleep": 8,
+        "baseHP": 22,
+        "expYield": 26,
+        "baseAtkSpAtk": [
+            17,
+            18
+        ],
+        "baseDefSpDef": [
+            6,
+            6
+        ],
+        "weight": 153,
+        "size": 16,
+        "unk30": 10,
+        "unk31": 10,
+        "unk32": 24,
+        "canThrowItems": true,
+        "preEvolution": {
+            "evolveFrom": "MONSTER_JOLTIK",
+            "evolveType": "EVOLVE_TYPE_LEVEL"
+        },
+        "evolutionRequirements": {
+            "mainRequirement": 36
+        },
+        "dexInternal": [
+            394,
+            426
+        ],
+        "recruitRate": -999,
+        "alphabetParent": [
+            110,
+            421
         ]
     },
     {

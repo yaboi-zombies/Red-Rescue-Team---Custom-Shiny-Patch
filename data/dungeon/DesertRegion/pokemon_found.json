@@ -6,7 +6,7 @@
                 {
                     "species": "MONSTER_SANDSHREW",
                     "level": 30,
-                    "probability": 3077
+                    "probability": 2462
                 },
                 {
                     "species": "MONSTER_SANDSLASH",
@@ -16,22 +16,27 @@
                 {
                     "species": "MONSTER_SHEDINJA",
                     "level": 5,
-                    "probability": 1923
+                    "probability": 1538
                 },
                 {
                     "species": "MONSTER_NOSEPASS",
                     "level": 31,
-                    "probability": 1923
+                    "probability": 1538
                 },
                 {
                     "species": "MONSTER_TRAPINCH",
                     "level": 35,
-                    "probability": 3077
+                    "probability": 2462
                 },
                 {
                     "species": "MONSTER_VIBRAVA",
                     "level": 30,
                     "probability": 0
+                },
+                {
+                    "species": "MONSTER_JOLTIK",
+                    "level": 30,
+                    "probability": 2000
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -151,22 +156,27 @@
                 {
                     "species": "MONSTER_SANDSLASH",
                     "level": 35,
-                    "probability": 2759
+                    "probability": 2208
                 },
                 {
                     "species": "MONSTER_GLIGAR",
                     "level": 12,
-                    "probability": 2758
+                    "probability": 2206
                 },
                 {
                     "species": "MONSTER_BALTOY",
                     "level": 35,
-                    "probability": 2759
+                    "probability": 2207
                 },
                 {
                     "species": "MONSTER_CLAYDOL",
                     "level": 26,
                     "probability": 0
+                },
+                {
+                    "species": "MONSTER_GALVANTULA",
+                    "level": 33,
+                    "probability": 2000
                 },
                 {
                     "species": "MONSTER_KECLEON",
@@ -176,7 +186,7 @@
                 {
                     "species": "MONSTER_DUSCLOPS",
                     "level": 33,
-                    "probability": 1724
+                    "probability": 1379
                 },
                 {
                     "species": "MONSTER_DECOY",

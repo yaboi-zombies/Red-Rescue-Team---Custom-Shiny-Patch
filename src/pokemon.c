@@ -39,8 +39,29 @@ static s16 GetStatGrowthSpecies(s32 species_)
     if (species == MONSTER_MUNCHLAX) {
         return MONSTER_WAILMER;
     }
+    if (species == MONSTER_WEAVILE) {
+        return MONSTER_CHARIZARD;
+    }
     if (species == MONSTER_DECOY) {
         return MONSTER_CATERPIE;
+    }
+    if (species == MONSTER_RIOLU) {
+        return MONSTER_CUBONE;
+    }
+    if (species == MONSTER_LUCARIO) {
+        return MONSTER_MAROWAK;
+    }
+    if (species == MONSTER_BONSLY) {
+        return MONSTER_IGGLYBUFF;
+    }
+    if (species == MONSTER_MIMEJR) {
+        return MONSTER_CLEFFA;
+    }
+    if (species == MONSTER_JOLTIK) {
+        return MONSTER_JIGGLYPUFF;
+    }
+    if (species == MONSTER_GALVANTULA) {
+        return MONSTER_WIGGLYTUFF;
     }
     return species;
 }
@@ -996,18 +1017,6 @@ static bool8 IsValidGeneratedPortraitSpecies(s32 species)
 }
 
 
-static bool8 HasAnyGeneratedDialoguePortraitById(s32 id)
-{
-    if (!IsValidGeneratedPortraitSpecies(id))
-        return FALSE;
-
-    /*
-     * Option A: normal vanilla Pokémon must not be routed into the generated
-     * portrait path just because shiny generated data exists.
-     */
-    return gGeneratedKaoPortraitData[id] != NULL;
-}
-
 const u8 *GetGeneratedDialogueSpriteDataPtr(s32 index, bool8 isShiny)
 {
     s32 id = SpeciesId(index);
@@ -1084,7 +1093,7 @@ static OpenedFile *OpenAndLoadVanillaDialogueSpriteFileById(s16 id)
 {
     char buffer[0xC];
     OpenedFile *file;
-    void *data;
+    const void *data;
 
     BuildVanillaDialogueSpriteFilename(buffer, id);
 

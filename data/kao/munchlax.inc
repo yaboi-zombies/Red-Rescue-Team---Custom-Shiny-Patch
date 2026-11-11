@@ -3,30 +3,36 @@ gKaoMunchlax:
 kao_siro sPortraitsMunchlax
 sMunchlaxNormalPal:
 .incbin "baserom.gba", 0x16BBEF8, 0x40
+.global sMunchlaxNormalGfx
 sMunchlaxNormalGfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x16BBF3D, 0x293
 sMunchlax1Pal:
 .incbin "baserom.gba", 0x16BC1D0, 0x40
+.global sMunchlax1Gfx
 sMunchlax1Gfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x16BC215, 0x2A3
 sMunchlax2Pal:
 .incbin "baserom.gba", 0x16BC4B8, 0x40
+.global sMunchlax2Gfx
 sMunchlax2Gfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x16BC4FD, 0x2BF
 sMunchlax3Pal:
 .incbin "baserom.gba", 0x16BC7BC, 0x40
+.global sMunchlax3Gfx
 sMunchlax3Gfx:
 .incbin "baserom.gba", 0x16BC7FC, 0x284
 sMunchlax4Pal:
 .incbin "baserom.gba", 0x16BCA80, 0x40
+.global sMunchlax4Gfx
 sMunchlax4Gfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x16BCAC5, 0x2AB
 sMunchlax5Pal:
 .incbin "baserom.gba", 0x16BCD70, 0x40
+.global sMunchlax5Gfx
 sMunchlax5Gfx:
 .string "AT4PX"
 .incbin "baserom.gba", 0x16BCDB5, 0x287

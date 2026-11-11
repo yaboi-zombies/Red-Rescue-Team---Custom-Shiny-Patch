@@ -265,6 +265,7 @@ void set_item_ids(){
     item_macro_ids["ITEM_G_MACHINE_6"] = 0xF9;
     item_macro_ids["ITEM_G_MACHINE_7"] = 0xFA;
     item_macro_ids["ITEM_G_MACHINE_8"] = 0xFB;
+    item_macro_ids["ITEM_RAZOR_CLAW"] = 0xFC;
 }
 
 int get_item_id(string item_macro){

@@ -37,10 +37,9 @@ DEV ?= 0
 PREFIX := arm-none-eabi-
 OBJDUMP := $(PREFIX)objdump
 AS := $(PREFIX)as
-CC := C:/devkitPro/devkitARM/bin/arm-none-eabi-gcc.exe
-AS := C:/devkitPro/devkitARM/bin/arm-none-eabi-as.exe
-LD := C:/devkitPro/devkitARM/bin/arm-none-eabi-ld.exe
-OBJCOPY := C:/devkitPro/devkitARM/bin/arm-none-eabi-objcopy.exe
+CC := $(PREFIX)gcc
+LD := $(PREFIX)ld
+OBJCOPY := $(PREFIX)objcopy
 
 # use arm-none-eabi-cpp for macOS
 # as macOS's default compiler is clang
@@ -51,12 +50,12 @@ OBJCOPY := C:/devkitPro/devkitARM/bin/arm-none-eabi-objcopy.exe
 # don't come with it
 ifneq ($(MODERN),1)
   ifeq ($(shell uname -s),Darwin)
-    CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
+    CPP := $(PREFIX)cpp
   else
-    CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
+    CPP := $(CC) -E
   endif
 else
-  CPP := C:/devkitPro/devkitARM/bin/arm-none-eabi-cpp.exe
+  CPP := $(PREFIX)cpp
 endif
 
 ifeq ($(OS),Windows_NT)
@@ -150,7 +149,7 @@ ifeq ($(MODERN),0)
   INCLUDE_PATHS   := -I include -I tools/agbcc/include
   CPPFLAGS        := -iquote include -I tools/agbcc/include -nostdinc -undef
 else
-  MODERNCC := C:/devkitPro/devkitARM/bin/arm-none-eabi-gcc.exe
+  MODERNCC := $(PREFIX)gcc
   PATH_MODERNCC := $(MODERNCC)
   CC1 := $(shell $(PATH_MODERNCC) --print-prog-name=cc1) -quiet
   LIBPATH := -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libnosys.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libc.a))"
@@ -202,8 +201,7 @@ C_SRCS_IN := \
         $(GENERATED_KAO_TABLE_SRC)
 C_SOURCES := $(foreach src,$(C_SRCS_IN),$(if $(findstring .inc.c,$(src)),,$(src)))
 ASM_SOURCES := \
-        $(filter-out $(GENERATED_KAO_RUNTIME_ASM),$(wildcard asm/*.s data/*.s)) \
-        $(GENERATED_KAO_RUNTIME_ASM)
+        $(filter-out $(GENERATED_KAO_RUNTIME_ASM),$(wildcard asm/*.s data/*.s))
 C_ASM_SOURCES := $(wildcard src/*.s)
 SONG_SRCS := $(wildcard sound/songs/*.s)
 

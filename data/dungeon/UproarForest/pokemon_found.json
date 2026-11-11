@@ -176,17 +176,22 @@
                 {
                     "species": "MONSTER_MANKEY",
                     "level": 11,
-                    "probability": 4444
+                    "probability": 3555
                 },
                 {
                     "species": "MONSTER_SEEDOT",
                     "level": 16,
-                    "probability": 4445
+                    "probability": 3556
                 },
                 {
                     "species": "MONSTER_NUZLEAF",
                     "level": 10,
-                    "probability": 1111
+                    "probability": 889
+                },
+                {
+                    "species": "MONSTER_GALVANTULA",
+                    "level": 13,
+                    "probability": 2000
                 },
                 {
                     "species": "MONSTER_KECLEON",

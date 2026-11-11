@@ -1,6 +1,7 @@
 @ Start of Items Found (0x84c5128)
 #include "dungeon_item_data.inc"
 
+.align 2,0
 .global DungeonItemsFoundTable
 DungeonItemsFoundTable:
 .4byte items_found_out0
@@ -181,4 +182,5 @@ DungeonItemsFoundTable:
 .4byte items_found_out175
 .4byte items_found_out176
 .4byte items_found_out177
+.4byte items_found_out178
 

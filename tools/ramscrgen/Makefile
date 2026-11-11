@@ -1,10 +1,8 @@
-HOSTCXX ?= /c/msys64/mingw64/bin/g++
-CXX := $(HOSTCXX)
+CXX ?= g++
 
-CXXFLAGS := -std=c++11 -O2 -Wall -Wno-switch -Werror -pipe
+CXXFLAGS := -std=c++11 -O2 -Wall -Wno-switch -Werror
 
 SRCS := main.cpp sym_file.cpp elf.cpp
-OBJS := $(SRCS:.cpp=.o)
 
 HEADERS := ramscrgen.h sym_file.h elf.h char_util.h
 
@@ -19,11 +17,8 @@ endif
 all: ramscrgen$(EXE)
 	@:
 
-ramscrgen$(EXE): $(OBJS) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+ramscrgen$(EXE): $(SRCS) $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $@ $(LDFLAGS)
 
 clean:
-	$(RM) ramscrgen ramscrgen.exe $(OBJS) *.i *.s
+	$(RM) ramscrgen ramscrgen.exe

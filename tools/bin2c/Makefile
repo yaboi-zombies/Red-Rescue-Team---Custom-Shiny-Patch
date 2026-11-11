@@ -1,17 +1,22 @@
-HOSTCC ?= /c/msys64/mingw64/bin/gcc
-CC := $(HOSTCC)
-CFLAGS := -Wall -Wextra -Werror -std=c11 -O2 -pipe
-LIBS := 
+CC ?= gcc
+
+CFLAGS = -Wall -Wextra -Werror -std=c11 -O2
 
 .PHONY: all clean
 
-all: bin2c
+SRCS = bin2c.c
+
+ifeq ($(OS),Windows_NT)
+EXE := .exe
+else
+EXE :=
+endif
+
+all: bin2c$(EXE)
+	@:
+
+bin2c$(EXE): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $@ $(LDFLAGS)
 
 clean:
-	rm -f bin2c bin2c.exe *.o *.i *.s
-
-bin2c: bin2c.o
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(RM) bin2c bin2c.exe

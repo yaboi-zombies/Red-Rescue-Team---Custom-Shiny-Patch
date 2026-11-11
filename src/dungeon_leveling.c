@@ -255,11 +255,11 @@ static void sub_807218C(Entity *pokemon)
         r1 = info->id;
         if(info->joinedAt.id == DUNGEON_JOIN_LOCATION_CLIENT_POKEMON)
         {
-            r1 = 0x1A4;
+            r1 = MONSTER_MUNCHLAX;
         }
         else if(info->joinedAt.id == DUNGEON_RESCUE_TEAM_BASE)
         {
-            r1 = 0x1A5;
+            r1 = MONSTER_DECOY;
         }
         else if(info->joinedAt.id == DUNGEON_JOIN_LOCATION_PARTNER)
         {

@@ -5,15 +5,20 @@
                         {
 				"species": "MONSTER_RATTATA",
 				"level": 3,
-				"probability": 5000
+				"probability": 3750
 			},
 			{
 				"species": "MONSTER_NIDORAN_F",
 				"level": 4,
-				"probability": 2500
+				"probability": 1875
 			},
 			{
 				"species": "MONSTER_POOCHYENA",
+				"level": 3,
+				"probability": 1875
+			},
+			{
+				"species": "MONSTER_JOLTIK",
 				"level": 3,
 				"probability": 2500
 			},
@@ -34,22 +39,27 @@
                         {
 				"species": "MONSTER_RATTATA",
 				"level": 3,
-				"probability": 4167
+				"probability": 3334
 			},
 			{
 				"species": "MONSTER_NIDORAN_F",
 				"level": 4,
-				"probability": 2083
+				"probability": 1666
 			},
 			{
 				"species": "MONSTER_VOLTORB",
 				"level": 3,
-				"probability": 1667
+				"probability": 1334
 			},
 			{
 				"species": "MONSTER_POOCHYENA",
 				"level": 3,
-				"probability": 2083
+				"probability": 1666
+			},
+			{
+				"species": "MONSTER_JOLTIK",
+				"level": 3,
+				"probability": 2000
 			},
 			{
 				"species": "MONSTER_KECLEON",
